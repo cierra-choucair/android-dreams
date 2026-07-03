@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { NewsletterForm } from "@/components/NewsletterForm";
 import type { Post } from "@/lib/types";
-import { formatDateStamp, stripHtml, truncate } from "@/lib/utils";
+import { formatDateStamp, truncate } from "@/lib/utils";
 import { getPosts, REVALIDATE } from "@/lib/wp";
 
 export const revalidate = 300;
+
+const QF_SUBSCRIBE_URL =
+  process.env.NEXT_PUBLIC_QF_SUBSCRIBE_URL ||
+  "https://qfrontline.beehiiv.com/subscribe";
 
 export const metadata: Metadata = {
   title: "QFrontline — Quantum Technology for Builders",
@@ -36,31 +39,15 @@ const AUDIENCES = [
   },
 ];
 
-/** Prompt lines derived from the latest Dev Brief post. */
-function briefLines(post: Post | undefined): string[] {
-  if (!post) {
-    return [
-      "no brief loaded — first dispatch imminent",
-      "subscribe to receive issue_001",
-    ];
-  }
-  return post.content
-    .split(/<\/p>/i)
-    .map((p) => stripHtml(p))
-    .filter((p) => p.length > 24)
-    .slice(0, 5)
-    .map((p) => truncate(p, 110));
-}
-
 /** The primary mark: prompt · wordmark · cursor bar. One unit, always. */
-function Lockup({ className = "" }: { className?: string }) {
+function Lockup({ word = "qfrontline" }: { word?: string }) {
   return (
-    <span className={`inline-flex items-baseline gap-[0.18em] ${className}`}>
+    <span className="inline-flex items-baseline gap-[0.18em]">
       <span aria-hidden className="font-qf-mono font-medium text-qf-signal">
         &gt;
       </span>
       <span className="font-qf-sans font-bold lowercase tracking-[-0.035em] text-qf-ink">
-        qfrontline
+        {word}
       </span>
       <span
         aria-hidden
@@ -70,148 +57,224 @@ function Lockup({ className = "" }: { className?: string }) {
   );
 }
 
+/** Terminal-window post card — the Dev Brief aesthetic, for every post. */
+function TerminalCard({ post }: { post: Post }) {
+  const isBrief = post.tags.some((t) => t.slug === "dev-brief");
+  return (
+    <article className="group relative flex h-full flex-col border border-qf-void/15 bg-white transition-all hover:border-qf-signal/60 hover:shadow-[0_2px_28px_rgba(255,43,94,0.12)]">
+      {/* Title bar */}
+      <div className="flex items-center justify-between gap-3 border-b border-qf-void/15 bg-qf-void px-4 py-2">
+        <p className="truncate font-qf-mono text-[0.65rem] text-qf-ink/80">
+          <span aria-hidden className="text-qf-signal">&gt; </span>
+          {isBrief ? "dev_brief" : "qfrontline"} · {formatDateStamp(post.date)}
+        </p>
+        <span
+          aria-hidden
+          className="h-[0.8em] w-[0.4em] shrink-0 bg-qf-signal opacity-60 transition-opacity group-hover:animate-cursor group-hover:opacity-100"
+        />
+      </div>
+      {/* Body */}
+      <div className="flex flex-1 flex-col p-5">
+        <h3 className="font-qf-sans text-xl font-semibold leading-snug tracking-tight text-qf-void">
+          <Link href={`/qfrontline/${post.slug}`}>
+            <span className="absolute inset-0" aria-hidden />
+            {post.title}
+          </Link>
+        </h3>
+        <p className="mt-3 line-clamp-3 font-qf-mono text-[0.75rem] leading-relaxed text-qf-void/65">
+          {post.excerpt}
+        </p>
+        <p className="mt-auto pt-4 font-qf-mono text-[0.62rem] uppercase tracking-[0.15em] text-qf-void/45">
+          {post.author.name} · {post.readingMinutes} min
+        </p>
+      </div>
+    </article>
+  );
+}
+
 export default async function QFrontlinePage() {
-  const [latest, devBrief] = await Promise.all([
-    getPosts({ category: "qfrontline", perPage: 6, revalidate: REVALIDATE.archive }),
+  const [latest, briefs] = await Promise.all([
+    getPosts({
+      category: "qfrontline",
+      excludeTag: "dev-brief",
+      perPage: 6,
+      revalidate: REVALIDATE.archive,
+    }),
     getPosts({
       category: "qfrontline",
       tag: "dev-brief",
-      perPage: 1,
+      perPage: 3,
       revalidate: REVALIDATE.archive,
     }),
   ]);
-  const brief = devBrief.posts[0];
+
+  // Hero signal feed: newest posts across the vertical, briefs included.
+  const feed = [...latest.posts, ...briefs.posts]
+    .sort((a, b) => (a.date < b.date ? 1 : -1))
+    .slice(0, 4);
 
   return (
     <div className="bg-white text-qf-void">
-      {/* ───────────── HERO — Void surface, per brand: masthead/hero ───────────── */}
-      <section aria-label="QFrontline" className="relative overflow-hidden bg-qf-void">
+      {/* ─────────────── HERO — the masthead, full screen ─────────────── */}
+      <section
+        aria-label="QFrontline"
+        className="relative flex min-h-[calc(100vh-6.25rem)] flex-col overflow-hidden bg-qf-void"
+      >
         <div className="pointer-events-none absolute inset-0 glow-signal-tl" />
-        <div className="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:py-32">
-          <p className="font-qf-mono text-[0.65rem] uppercase tracking-[0.3em] text-qf-dust">
-            A section of Android Dreams
-          </p>
-          <h1 className="mt-8 text-[clamp(3rem,9vw,7rem)] leading-none">
-            <Lockup />
-          </h1>
-          <p className="mt-8 font-qf-sans text-sm font-extralight uppercase tracking-[0.42em] text-qf-dust sm:text-base">
-            Quantum technology for builders.
-          </p>
-          <p className="mt-8 max-w-2xl font-qf-sans text-lg font-light leading-relaxed text-qf-ink/85">
-            The developer vertical inside Android Dreams — technical depth,
-            working code, and the weekly Dev Brief that keeps quantum builders
-            at the frontier.
-          </p>
-        </div>
-        {/* The bar, closing the masthead line */}
-        <div aria-hidden className="h-[3px] w-full bg-qf-signal" />
-      </section>
-
-      {/* ───────────────────────── DEV BRIEF ───────────────────────── */}
-      <section aria-labelledby="dev-brief" className="mx-auto max-w-7xl px-4 py-20 sm:px-6">
-        <h2
-          id="dev-brief"
-          className="font-qf-sans text-4xl font-semibold tracking-tight text-qf-signal sm:text-5xl"
+        {/* Oversized ghost prompt, watermark of the mark */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -right-[4rem] top-1/2 hidden -translate-y-1/2 select-none font-qf-mono text-[38rem] font-medium leading-none text-qf-ink/[0.03] lg:block"
         >
-          The Dev Brief
-        </h2>
-        <p className="mt-2 font-qf-mono text-xs uppercase tracking-[0.2em] text-qf-void/50">
-          Weekly · Five things worth your attention
-        </p>
+          &gt;
+        </div>
 
-        <div className="mt-8 max-w-3xl border border-qf-void/15">
-          <div className="flex items-center justify-between gap-4 border-b border-qf-void/15 bg-qf-void px-5 py-3">
-            <p className="font-qf-mono text-xs text-qf-ink">
-              <span className="text-qf-signal">&gt;</span> DEV BRIEF
-              {brief && (
-                <span className="text-qf-dust"> · {formatDateStamp(brief.date)}</span>
-              )}
+        <div className="relative mx-auto grid w-full max-w-7xl flex-1 items-center gap-14 px-4 py-16 sm:px-6 lg:grid-cols-[1.15fr_1fr]">
+          {/* Left: lockup, tagline, CTAs */}
+          <div>
+            <p className="font-qf-mono text-[0.65rem] uppercase tracking-[0.3em] text-qf-dust">
+              A section of Android Dreams
             </p>
-            <span aria-hidden className="h-[0.9em] w-[0.45em] animate-cursor bg-qf-signal" />
+            <h1 className="mt-8 text-[clamp(3.25rem,8vw,6.75rem)] leading-none">
+              <Lockup />
+            </h1>
+            <p className="mt-8 font-qf-sans text-sm font-extralight uppercase tracking-[0.42em] text-qf-dust sm:text-base">
+              Quantum technology for builders.
+            </p>
+            <p className="mt-8 max-w-xl font-qf-sans text-lg font-light leading-relaxed text-qf-ink/85">
+              The developer vertical inside Android Dreams — technical depth,
+              working code, and the weekly Dev Brief that keeps quantum
+              builders at the frontier.
+            </p>
+            <div className="mt-10 flex flex-wrap items-center gap-4">
+              <a
+                href={QF_SUBSCRIBE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-qf-signal px-7 py-3.5 font-qf-mono text-xs uppercase tracking-[0.2em] text-qf-void transition-colors hover:bg-qf-ink"
+              >
+                Subscribe to the Dev Brief
+              </a>
+              <Link
+                href="/community"
+                className="group border border-qf-ink/30 px-7 py-3.5 font-qf-mono text-xs uppercase tracking-[0.2em] text-qf-ink transition-colors hover:border-qf-signal hover:text-qf-signal"
+              >
+                <span aria-hidden className="text-qf-signal">&gt; </span>
+                qrc · Join the community
+              </Link>
+            </div>
+            <p className="mt-4 font-qf-mono text-[0.62rem] uppercase tracking-[0.2em] text-qf-dust/70">
+              Free · Weekly · Five things worth your terminal time
+            </p>
           </div>
-          <div className="space-y-3 px-5 py-6 font-qf-mono text-[0.8rem] leading-relaxed text-qf-void sm:px-6">
-            {briefLines(brief).map((line, i) => (
-              <p key={i} className="flex gap-3">
-                <span aria-hidden className="shrink-0 text-qf-signal">
-                  &gt;
-                </span>
-                <span>{line}</span>
+
+          {/* Right: the signal feed — a live terminal of the latest posts */}
+          <div className="border border-qf-ink/15 bg-[#070410] shadow-[0_0_80px_rgba(255,43,94,0.1)]">
+            <div className="flex items-center justify-between gap-3 border-b border-qf-ink/15 px-4 py-2.5">
+              <p className="font-qf-mono text-xs text-qf-dust">
+                qfrontline — signal.log
               </p>
-            ))}
-            {brief && (
-              <p className="pt-3">
-                <Link
-                  href={`/qfrontline/${brief.slug}`}
-                  className="border-b border-qf-signal/50 pb-0.5 font-medium text-qf-signal-deep transition-colors hover:border-qf-signal hover:text-qf-signal"
-                >
-                  read the full brief →
-                </Link>
+              <span aria-hidden className="flex gap-1.5">
+                <span className="h-2 w-2 border border-qf-dust/40" />
+                <span className="h-2 w-2 border border-qf-dust/40" />
+                <span className="h-2 w-2 bg-qf-signal/70" />
+              </span>
+            </div>
+            <div className="space-y-4 px-5 py-6 font-qf-mono text-[0.78rem] leading-relaxed">
+              <p className="text-qf-dust">$ tail -f signal.log</p>
+              {feed.length > 0 ? (
+                feed.map((post) => (
+                  <p key={post.id} className="text-qf-ink/90">
+                    <span aria-hidden className="text-qf-signal">&gt; </span>
+                    <span className="text-qf-dust">{formatDateStamp(post.date)}</span>{" "}
+                    <Link
+                      href={`/qfrontline/${post.slug}`}
+                      className="transition-colors hover:text-qf-signal"
+                    >
+                      {truncate(post.title, 64)}
+                    </Link>
+                  </p>
+                ))
+              ) : (
+                <p className="text-qf-ink/70">
+                  <span aria-hidden className="text-qf-signal">&gt; </span>
+                  awaiting first signal…
+                </p>
+              )}
+              <p aria-hidden>
+                <span className="text-qf-signal">&gt; </span>
+                <span className="inline-block h-[0.9em] w-[0.45em] translate-y-[0.1em] animate-cursor bg-qf-signal" />
               </p>
-            )}
+            </div>
           </div>
         </div>
 
-        {/* Dev Brief subscribe — in context, in brand */}
-        <div className="mt-8 max-w-3xl">
-          <p className="font-qf-mono text-xs uppercase tracking-[0.2em] text-qf-void">
-            <span aria-hidden className="text-qf-signal">&gt; </span>
-            Get the Dev Brief in your inbox — every week
-          </p>
-          <div className="mt-4">
-            <NewsletterForm accent="qf" publication="qf" />
-          </div>
-        </div>
+        {/* The bar, closing the masthead line */}
+        <div aria-hidden className="relative h-[3px] w-full bg-qf-signal" />
       </section>
 
       {/* ─────────────────── LATEST FROM QFRONTLINE ─────────────────── */}
-      <section aria-labelledby="qf-latest" className="border-y border-qf-void/10 bg-qf-void/[0.025]">
+      <section aria-labelledby="qf-latest" className="mx-auto max-w-7xl px-4 py-20 sm:px-6">
+        <div className="mb-10 flex flex-wrap items-end justify-between gap-4 border-b border-qf-void/10 pb-5">
+          <h2
+            id="qf-latest"
+            className="font-qf-sans text-4xl font-semibold tracking-tight text-qf-signal sm:text-5xl"
+          >
+            Latest from QFrontline
+          </h2>
+          <span className="font-qf-mono text-[0.65rem] uppercase tracking-[0.2em] text-qf-void/50">
+            Weekly
+          </span>
+        </div>
+        {latest.posts.length > 0 ? (
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {latest.posts.map((post) => (
+              <TerminalCard key={post.id} post={post} />
+            ))}
+          </div>
+        ) : (
+          <p className="font-qf-mono text-xs uppercase tracking-[0.2em] text-qf-void/50">
+            First posts compiling.
+          </p>
+        )}
+      </section>
+
+      {/* ──────────── THE DEV BRIEF — its own category shelf ──────────── */}
+      <section
+        aria-labelledby="dev-brief"
+        className="border-y border-qf-void/10 bg-qf-void/[0.025]"
+      >
         <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6">
           <div className="mb-10 flex flex-wrap items-end justify-between gap-4 border-b border-qf-void/10 pb-5">
-            <h2
-              id="qf-latest"
-              className="font-qf-sans text-4xl font-semibold tracking-tight text-qf-signal sm:text-5xl"
+            <div>
+              <h2
+                id="dev-brief"
+                className="font-qf-sans text-4xl font-semibold tracking-tight text-qf-signal sm:text-5xl"
+              >
+                The Dev Brief
+              </h2>
+              <p className="mt-2 font-qf-mono text-xs uppercase tracking-[0.2em] text-qf-void/50">
+                The weekly newsletter · Five things worth your attention
+              </p>
+            </div>
+            <a
+              href={QF_SUBSCRIBE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-qf-signal px-6 py-3 font-qf-mono text-xs uppercase tracking-[0.2em] text-qf-void transition-colors hover:bg-qf-ink"
             >
-              Latest from QFrontline
-            </h2>
-            <span className="font-qf-mono text-[0.65rem] uppercase tracking-[0.2em] text-qf-void/50">
-              Weekly
-            </span>
+              Subscribe
+            </a>
           </div>
-          {latest.posts.length > 0 ? (
+          {briefs.posts.length > 0 ? (
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {latest.posts.map((post) => (
-                <article
-                  key={post.id}
-                  className="group relative flex h-full flex-col border border-qf-void/10 bg-white transition-shadow hover:shadow-[0_2px_24px_rgba(10,6,16,0.08)]"
-                >
-                  <span
-                    aria-hidden
-                    className="block h-[2px] w-full bg-qf-signal opacity-50 transition-opacity group-hover:opacity-100"
-                  />
-                  <div className="flex flex-1 flex-col p-5">
-                    <p className="font-qf-mono text-[0.6rem] uppercase tracking-[0.25em] text-qf-signal-deep">
-                      &gt; qfrontline
-                    </p>
-                    <h3 className="mt-3 font-qf-sans text-xl font-semibold leading-snug tracking-tight text-qf-void">
-                      <Link href={`/qfrontline/${post.slug}`}>
-                        <span className="absolute inset-0" aria-hidden />
-                        {post.title}
-                      </Link>
-                    </h3>
-                    <p className="mt-3 line-clamp-2 font-qf-sans text-[0.9rem] font-light leading-relaxed text-qf-void/70">
-                      {post.excerpt}
-                    </p>
-                    <p className="mt-auto pt-4 font-qf-mono text-[0.62rem] uppercase tracking-[0.15em] text-qf-void/50">
-                      {formatDateStamp(post.date)}
-                      {post.author.name && <> · {post.author.name}</>}
-                    </p>
-                  </div>
-                </article>
+              {briefs.posts.map((post) => (
+                <TerminalCard key={post.id} post={post} />
               ))}
             </div>
           ) : (
             <p className="font-qf-mono text-xs uppercase tracking-[0.2em] text-qf-void/50">
-              First posts compiling.
+              Issue 001 is compiling. Subscribe to receive it first.
             </p>
           )}
         </div>
@@ -240,7 +303,6 @@ export default async function QFrontlinePage() {
             </div>
           ))}
         </div>
-
       </section>
 
       {/* ───────── THE COMMUNITY — QFrontline is the entrance to QRC ───────── */}
