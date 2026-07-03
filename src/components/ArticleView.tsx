@@ -52,7 +52,7 @@ export function ArticleView({
       />
       <div
         className={`pointer-events-none absolute inset-x-0 top-0 h-[60vh] ${
-          isQf ? "glow-matrix-tl" : "glow-orange-tl"
+          isQf ? "glow-signal-tl" : "glow-orange-tl"
         }`}
       />
 

@@ -70,12 +70,12 @@ export const FORMATS: Record<FormatSlug, Format> = {
   qfrontline: {
     slug: "qfrontline",
     name: "QFrontline",
-    text: "text-matrix",
-    border: "border-matrix",
-    bg: "bg-matrix",
-    hex: "#00FF41",
+    text: "text-qf-signal",
+    border: "border-qf-signal",
+    bg: "bg-qf-signal",
+    hex: "#FF2B5E",
     description:
-      "Quantum technology for developers & builders. Technical depth, terminal aesthetic, and the weekly Dev Brief.",
+      "Quantum technology for builders. The developer vertical inside Android Dreams — technical depth and the weekly Dev Brief.",
     cadence: "WEEKLY",
   },
 };

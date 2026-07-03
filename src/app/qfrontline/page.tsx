@@ -1,17 +1,30 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArticleCard } from "@/components/ArticleCard";
-import { FORMATS } from "@/lib/formats";
+import { JetBrains_Mono, Outfit } from "next/font/google";
 import type { Post } from "@/lib/types";
 import { formatDateStamp, stripHtml, truncate } from "@/lib/utils";
 import { getPosts, REVALIDATE } from "@/lib/wp";
 
 export const revalidate = 300;
 
+// QFrontline brand v1.0 typography: Outfit for everything visual,
+// JetBrains Mono for prompts, code, and metadata. Scoped to this page.
+const outfit = Outfit({
+  subsets: ["latin"],
+  variable: "--font-outfit",
+  display: "swap",
+});
+
+const jetbrains = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
-  title: "QFrontline — Quantum Technology for Developers & Builders",
+  title: "QFrontline — Quantum Technology for Builders",
   description:
-    "The developer vertical inside Android Dreams — technical depth, terminal aesthetic, and the weekly Dev Brief that keeps quantum builders at the frontier.",
+    "The developer vertical inside Android Dreams — technical depth, working code, and the weekly Dev Brief that keeps quantum builders at the frontier.",
   alternates: {
     canonical: "/qfrontline",
     types: {
@@ -37,23 +50,38 @@ const AUDIENCES = [
   },
 ];
 
-/** Faux terminal lines derived from the latest Dev Brief post. */
-function terminalLines(post: Post | undefined): string[] {
+/** Prompt lines derived from the latest Dev Brief post. */
+function briefLines(post: Post | undefined): string[] {
   if (!post) {
     return [
-      "$ ./dev_brief.sh --latest",
-      "connecting to frontier …",
       "no brief loaded — first dispatch imminent",
-      "subscribe to receive week 01",
-      "$ ▌",
+      "subscribe to receive issue_001",
     ];
   }
-  const paragraphs = post.content
+  return post.content
     .split(/<\/p>/i)
     .map((p) => stripHtml(p))
     .filter((p) => p.length > 24)
-    .slice(0, 5);
-  return paragraphs.map((p) => `> ${truncate(p, 92)}`);
+    .slice(0, 5)
+    .map((p) => truncate(p, 110));
+}
+
+/** The primary mark: prompt · wordmark · cursor bar. One unit, always. */
+function Lockup({ className = "" }: { className?: string }) {
+  return (
+    <span className={`inline-flex items-baseline gap-[0.18em] ${className}`}>
+      <span aria-hidden className="font-qf-mono font-medium text-qf-signal">
+        &gt;
+      </span>
+      <span className="font-qf-sans font-bold lowercase tracking-[-0.035em] text-qf-ink">
+        qfrontline
+      </span>
+      <span
+        aria-hidden
+        className="inline-block h-[0.72em] w-[0.14em] translate-y-[0.04em] animate-cursor bg-qf-signal"
+      />
+    </span>
+  );
 }
 
 export default async function QFrontlinePage() {
@@ -67,77 +95,70 @@ export default async function QFrontlinePage() {
     }),
   ]);
   const brief = devBrief.posts[0];
-  const qf = FORMATS.qfrontline;
 
   return (
-    <div className="relative">
-      {/* ─────────────────────────── HERO ─────────────────────────── */}
-      <section
-        aria-label="QFrontline"
-        className="relative overflow-hidden border-b border-matrix/20"
-      >
-        <div className="pointer-events-none absolute inset-0 scanlines" />
-        <div className="pointer-events-none absolute inset-0 glow-matrix-tl" />
-        <div className="pointer-events-none absolute inset-0 bg-grid" />
+    <div className={`${outfit.variable} ${jetbrains.variable} bg-white text-qf-void`}>
+      {/* ───────────── HERO — Void surface, per brand: masthead/hero ───────────── */}
+      <section aria-label="QFrontline" className="relative overflow-hidden bg-qf-void">
+        <div className="pointer-events-none absolute inset-0 glow-signal-tl" />
         <div className="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:py-32">
-          <h1 className="flex flex-wrap items-baseline gap-1 leading-none">
-            <span
-              className="text-[clamp(4rem,10vw,8rem)] font-bold text-matrix"
-              style={{ fontFamily: "'Courier New', Courier, monospace" }}
-            >
-              Q
-            </span>
-            <span className="font-display text-[clamp(4rem,10vw,8rem)] tracking-wide text-cream">
-              FRONTLINE
-            </span>
-          </h1>
-          <p className="mt-6 font-mono text-sm uppercase tracking-wide2 text-matrix sm:text-base">
-            Quantum technology for developers &amp; builders.
+          <p className="font-qf-mono text-[0.65rem] uppercase tracking-[0.3em] text-qf-dust">
+            A section of Android Dreams
           </p>
-          <p className="mt-6 max-w-2xl text-lg italic leading-relaxed text-dim">
+          <h1 className="mt-8 text-[clamp(3rem,9vw,7rem)] leading-none">
+            <Lockup />
+          </h1>
+          <p className="mt-8 font-qf-sans text-sm font-extralight uppercase tracking-[0.42em] text-qf-dust sm:text-base">
+            Quantum technology for builders.
+          </p>
+          <p className="mt-8 max-w-2xl font-qf-sans text-lg font-light leading-relaxed text-qf-ink/85">
             The developer vertical inside Android Dreams — technical depth,
-            terminal aesthetic, and the weekly Dev Brief that keeps quantum
-            builders at the frontier.
+            working code, and the weekly Dev Brief that keeps quantum builders
+            at the frontier.
           </p>
         </div>
+        {/* The bar, closing the masthead line */}
+        <div aria-hidden className="h-[3px] w-full bg-qf-signal" />
       </section>
 
-      {/* ──────────────────── DEV BRIEF TERMINAL ──────────────────── */}
+      {/* ───────────────────────── DEV BRIEF ───────────────────────── */}
       <section aria-labelledby="dev-brief" className="mx-auto max-w-7xl px-4 py-20 sm:px-6">
-        <h2 id="dev-brief" className="eyebrow text-matrix">
-          The Dev Brief · Weekly
+        <h2
+          id="dev-brief"
+          className="font-qf-sans text-4xl font-semibold tracking-tight text-qf-signal sm:text-5xl"
+        >
+          The Dev Brief
         </h2>
-        <div className="mt-8 border border-matrix-dark bg-[#040705] shadow-[0_0_60px_rgba(0,255,65,0.06)]">
-          {/* Title bar */}
-          <div className="flex items-center gap-3 border-b border-matrix-dark bg-[#071009] px-4 py-2.5">
-            <span aria-hidden className="flex gap-1.5">
-              <span className="h-2.5 w-2.5 border border-matrix/40" />
-              <span className="h-2.5 w-2.5 border border-matrix/40" />
-              <span className="h-2.5 w-2.5 bg-matrix/40" />
-            </span>
-            <p className="font-mono text-xs text-matrix/70">
-              qfrontline — dev_brief.sh
+        <p className="mt-2 font-qf-mono text-xs uppercase tracking-[0.2em] text-qf-void/50">
+          Weekly · Five things worth your attention
+        </p>
+
+        <div className="mt-8 max-w-3xl border border-qf-void/15">
+          <div className="flex items-center justify-between gap-4 border-b border-qf-void/15 bg-qf-void px-5 py-3">
+            <p className="font-qf-mono text-xs text-qf-ink">
+              <span className="text-qf-signal">&gt;</span> DEV BRIEF
+              {brief && (
+                <span className="text-qf-dust"> · {formatDateStamp(brief.date)}</span>
+              )}
             </p>
+            <span aria-hidden className="h-[0.9em] w-[0.45em] animate-cursor bg-qf-signal" />
           </div>
-          {/* Output */}
-          <div className="overflow-x-auto p-5 font-mono text-[0.8rem] leading-[1.9] text-matrix sm:p-6">
-            {brief && (
-              <p className="text-matrix/60">
-                $ ./dev_brief.sh --week {formatDateStamp(brief.date)}
-              </p>
-            )}
-            {terminalLines(brief).map((line, i) => (
-              <p key={i} className="whitespace-pre-wrap">
-                {line}
+          <div className="space-y-3 px-5 py-6 font-qf-mono text-[0.8rem] leading-relaxed text-qf-void sm:px-6">
+            {briefLines(brief).map((line, i) => (
+              <p key={i} className="flex gap-3">
+                <span aria-hidden className="shrink-0 text-qf-signal">
+                  &gt;
+                </span>
+                <span>{line}</span>
               </p>
             ))}
             {brief && (
-              <p className="mt-4">
+              <p className="pt-3">
                 <Link
                   href={`/qfrontline/${brief.slug}`}
-                  className="border-b border-matrix/50 pb-0.5 transition-colors hover:border-matrix hover:text-cream"
+                  className="border-b border-qf-signal/50 pb-0.5 font-medium text-qf-signal-deep transition-colors hover:border-qf-signal hover:text-qf-signal"
                 >
-                  $ open full_brief ↵
+                  read the full brief →
                 </Link>
               </p>
             )}
@@ -146,32 +167,54 @@ export default async function QFrontlinePage() {
       </section>
 
       {/* ─────────────────── LATEST FROM QFRONTLINE ─────────────────── */}
-      <section
-        aria-labelledby="qf-latest"
-        className="relative border-y border-matrix/15 bg-cream/[0.015]"
-      >
-        <div className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6">
-          <div className="mb-10 flex flex-wrap items-end justify-between gap-4 border-b border-matrix/15 pb-5">
-            <h2 id="qf-latest" className="font-display text-4xl tracking-wide text-cream sm:text-5xl">
+      <section aria-labelledby="qf-latest" className="border-y border-qf-void/10 bg-qf-void/[0.025]">
+        <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6">
+          <div className="mb-10 flex flex-wrap items-end justify-between gap-4 border-b border-qf-void/10 pb-5">
+            <h2
+              id="qf-latest"
+              className="font-qf-sans text-4xl font-semibold tracking-tight text-qf-signal sm:text-5xl"
+            >
               Latest from QFrontline
             </h2>
-            <span className="font-mono text-[0.65rem] uppercase tracking-wide2 text-matrix">
-              {qf.cadence}
+            <span className="font-qf-mono text-[0.65rem] uppercase tracking-[0.2em] text-qf-void/50">
+              Weekly
             </span>
           </div>
           {latest.posts.length > 0 ? (
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {latest.posts.map((post) => (
-                <ArticleCard
+                <article
                   key={post.id}
-                  post={post}
-                  accentOverride={{ text: "text-matrix", bg: "bg-matrix" }}
-                />
+                  className="group relative flex h-full flex-col border border-qf-void/10 bg-white transition-shadow hover:shadow-[0_2px_24px_rgba(10,6,16,0.08)]"
+                >
+                  <span
+                    aria-hidden
+                    className="block h-[2px] w-full bg-qf-signal opacity-50 transition-opacity group-hover:opacity-100"
+                  />
+                  <div className="flex flex-1 flex-col p-5">
+                    <p className="font-qf-mono text-[0.6rem] uppercase tracking-[0.25em] text-qf-signal-deep">
+                      &gt; qfrontline
+                    </p>
+                    <h3 className="mt-3 font-qf-sans text-xl font-semibold leading-snug tracking-tight text-qf-void">
+                      <Link href={`/qfrontline/${post.slug}`}>
+                        <span className="absolute inset-0" aria-hidden />
+                        {post.title}
+                      </Link>
+                    </h3>
+                    <p className="mt-3 line-clamp-2 font-qf-sans text-[0.9rem] font-light leading-relaxed text-qf-void/70">
+                      {post.excerpt}
+                    </p>
+                    <p className="mt-auto pt-4 font-qf-mono text-[0.62rem] uppercase tracking-[0.15em] text-qf-void/50">
+                      {formatDateStamp(post.date)}
+                      {post.author.name && <> · {post.author.name}</>}
+                    </p>
+                  </div>
+                </article>
               ))}
             </div>
           ) : (
-            <p className="font-mono text-xs uppercase tracking-wide2 text-dimmer">
-              stdout is quiet. First posts compiling.
+            <p className="font-qf-mono text-xs uppercase tracking-[0.2em] text-qf-void/50">
+              First posts compiling.
             </p>
           )}
         </div>
@@ -179,27 +222,36 @@ export default async function QFrontlinePage() {
 
       {/* ─────────────────────── WHO IT SERVES ─────────────────────── */}
       <section aria-labelledby="qf-serves" className="mx-auto max-w-7xl px-4 py-20 sm:px-6">
-        <h2 id="qf-serves" className="eyebrow text-matrix">
+        <h2
+          id="qf-serves"
+          className="font-qf-sans text-4xl font-semibold tracking-tight text-qf-signal sm:text-5xl"
+        >
           Who it serves
         </h2>
-        <div className="mt-8 grid gap-5 md:grid-cols-3">
+        <div className="mt-10 grid gap-5 md:grid-cols-3">
           {AUDIENCES.map((a, i) => (
-            <div key={a.title} className="border border-matrix/20 bg-[#050A06] p-6">
-              <p className="font-mono text-xs text-matrix/60">
+            <div key={a.title} className="border border-qf-void/10 bg-white p-6">
+              <p className="font-qf-mono text-xs text-qf-signal-deep">
                 [{String(i + 1).padStart(2, "0")}]
               </p>
-              <h3 className="mt-3 font-display text-2xl tracking-wide text-cream">
+              <h3 className="mt-3 font-qf-sans text-2xl font-semibold tracking-tight text-qf-void">
                 {a.title}
               </h3>
-              <p className="mt-3 text-[0.95rem] leading-relaxed text-dim">{a.body}</p>
+              <p className="mt-3 font-qf-sans text-[0.95rem] font-light leading-relaxed text-qf-void/75">
+                {a.body}
+              </p>
             </div>
           ))}
         </div>
 
         {/* Attribution */}
-        <p className="mt-16 border-t border-matrix/15 pt-8 text-center font-mono text-[0.65rem] uppercase tracking-wide4 text-dimmer">
+        <p className="mt-16 border-t border-qf-void/10 pt-8 text-center font-qf-mono text-[0.65rem] uppercase tracking-[0.3em] text-qf-void/50">
+          <span aria-hidden className="text-qf-signal-deep">&gt; </span>
           A section of{" "}
-          <Link href="/" className="text-dim transition-colors hover:text-orange">
+          <Link
+            href="/"
+            className="text-qf-void/70 underline decoration-qf-signal/40 underline-offset-4 transition-colors hover:text-qf-signal-deep"
+          >
             Android Dreams
           </Link>
         </p>
