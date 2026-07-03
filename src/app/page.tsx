@@ -175,7 +175,7 @@ export default async function HomePage() {
         <div className="mb-10 flex flex-wrap items-end justify-between gap-4 border-b border-cream/10 pb-5">
           <h2
             id="home-sci-fi-lens"
-            className="text-stroke-magenta font-display text-5xl tracking-wide sm:text-6xl"
+            className="font-display text-5xl font-bold tracking-wide text-magenta sm:text-6xl"
           >
             The Sci-Fi Lens
           </h2>

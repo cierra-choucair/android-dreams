@@ -8,7 +8,7 @@ export default function NotFound() {
       <div className="pointer-events-none absolute inset-0 glow-magenta-br" />
       <div className="relative mx-auto flex min-h-[70vh] max-w-3xl flex-col items-center justify-center px-4 py-24 text-center sm:px-6">
         <p className="eyebrow text-magenta">Signal lost</p>
-        <h1 className="text-stroke-magenta mt-6 font-display text-[8rem] leading-none tracking-wide">
+        <h1 className="mt-6 font-display text-[8rem] font-bold leading-none tracking-wide text-magenta">
           404
         </h1>
         <p className="mt-6 max-w-md text-lg italic leading-relaxed text-dim">

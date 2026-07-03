@@ -137,24 +137,6 @@
     );
   }
 
-  /* Dramatic outlined display text */
-  .text-stroke-magenta {
-    color: transparent;
-    -webkit-text-stroke: 1.5px #FF1F3D;
-  }
-  .text-stroke-gold {
-    color: transparent;
-    -webkit-text-stroke: 1.5px #A098B8;
-  }
-  .text-stroke-white {
-    color: transparent;
-    -webkit-text-stroke: 1.5px #F6F3FF;
-  }
-  .text-stroke-cream-thin {
-    color: transparent;
-    -webkit-text-stroke: 1px rgba(246, 243, 255, 0.85);
-  }
-
   /* Section eyebrow: mono, all-caps, wide tracking — color via text-* */
   .eyebrow {
     @apply font-mono text-[0.7rem] uppercase tracking-eyebrow;
