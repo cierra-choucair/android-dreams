@@ -30,10 +30,14 @@ npm run dev
 | --- | --- |
 | `NEXT_PUBLIC_WP_API_URL` | WordPress base URL (no trailing slash). **When unset, the site serves built-in sample content** so the design is reviewable before the CMS exists. |
 | `NEXT_PUBLIC_SITE_URL` | Public site URL for canonicals, OG tags, RSS, sitemap. |
-| `NEXT_PUBLIC_BEEHIIV_PUBLICATION_ID` | beehiiv publication ID. |
-| `BEEHIIV_API_KEY` | beehiiv API key — server-side only. |
+| `NEXT_PUBLIC_BEEHIIV_AD_PUBLICATION_ID` | beehiiv publication for The Sunday Letter (the Android Dreams newsletter). |
+| `NEXT_PUBLIC_BEEHIIV_QF_PUBLICATION_ID` | beehiiv publication for The Dev Brief (the QFrontline newsletter). |
+| `BEEHIIV_API_KEY` | beehiiv API key — server-side only, shared by both publications. |
+| `NEXT_PUBLIC_QRC_DISCORD_URL` | QRC Discord invite. Unset = "request an invite" flow. |
+| `NEXT_PUBLIC_QRC_LINKEDIN_URL` | QRC LinkedIn page/group. Unset = "opening soon". |
 | `WP_CF7_DAVOS_FORM_ID` | Contact Form 7 form ID for the `/davos` invitation form. |
 | `WP_CF7_CONTACT_FORM_ID` | Contact Form 7 form ID for the `/contact` page. |
+| `WP_CF7_QRC_FORM_ID` | Contact Form 7 form ID for QRC invite requests (falls back to contact form). |
 
 ## Content model (WordPress)
 
@@ -56,8 +60,8 @@ Special **tags**: `featured` pins a post to the homepage hero;
 - `/` home · `/[format]` archives · `/[format]/[slug]` articles
 - `/qfrontline` developer vertical landing + `/qfrontline/[slug]`
 - `/authors/[slug]`, `/topics/[slug]`, `/search`
-- `/community`, `/summit`, `/davos` — sibling property landings
-- `/about`, `/newsletter`, `/contact`
+- `/community` (+ `/community/join`), `/summit`, `/davos` — sibling property landings
+- `/about`, `/contact` — `/newsletter` redirects to `/sunday-letter`, which is the newsletter
 - `/rss.xml` + per-format `/[format]/rss.xml`, `/sitemap.xml`, `/robots.txt`
 
 ## Deployment

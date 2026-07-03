@@ -4,24 +4,48 @@ import { FormEvent, useState } from "react";
 
 type Status = "idle" | "loading" | "success" | "error";
 
-const inputClass =
-  "w-full border border-gold/30 bg-ink/60 px-4 py-3 font-mono text-sm text-cream placeholder:text-dimmer focus:border-gold focus:outline-none";
+const VARIANTS = {
+  // Dark surfaces with gold accents (Davos, Contact)
+  gold: {
+    input:
+      "w-full border border-gold/30 bg-ink/60 px-4 py-3 font-mono text-sm text-cream placeholder:text-dimmer focus:border-gold focus:outline-none",
+    label: "mb-2 block font-mono text-[0.65rem] uppercase tracking-wide2 text-dim",
+    button:
+      "bg-gold px-8 py-3.5 font-mono text-xs uppercase tracking-wide2 text-ink transition-colors hover:bg-gold/85 disabled:opacity-60",
+    status: "font-mono",
+    error: "text-magenta",
+    ok: "text-dim",
+  },
+  // QRC light surface (white page, Void text, Signal accent)
+  qrc: {
+    input:
+      "w-full border border-qf-void/25 bg-white px-4 py-3 font-qf-mono text-sm text-qf-void placeholder:text-qf-void/40 focus:border-qf-signal focus:outline-none",
+    label:
+      "mb-2 block font-qf-mono text-[0.65rem] uppercase tracking-[0.2em] text-qf-void/60",
+    button:
+      "bg-qf-signal px-8 py-3.5 font-qf-mono text-xs uppercase tracking-[0.2em] text-qf-void transition-colors hover:bg-qf-ink disabled:opacity-60",
+    status: "font-qf-mono",
+    error: "text-qf-signal-deep",
+    ok: "text-qf-void/60",
+  },
+} as const;
 
 /**
- * Invitation/contact form. Posts to /api/inquire, which relays to the
- * WordPress Contact Form 7 endpoint configured via env vars.
+ * Inquiry form. Posts to /api/inquire, which relays to the WordPress
+ * Contact Form 7 endpoint configured per form via env vars.
  */
 export function InquiryForm({
   form = "davos",
   messageLabel = "What brings you to this page?",
   submitLabel = "Request an invitation",
 }: {
-  form?: "davos" | "contact";
+  form?: "davos" | "contact" | "qrc";
   messageLabel?: string;
   submitLabel?: string;
 }) {
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
+  const v = VARIANTS[form === "qrc" ? "qrc" : "gold"];
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -54,29 +78,20 @@ export function InquiryForm({
     <form onSubmit={onSubmit} className="space-y-5 text-left">
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
-          <label
-            htmlFor={`${form}-name`}
-            className="mb-2 block font-mono text-[0.65rem] uppercase tracking-wide2 text-dim"
-          >
+          <label htmlFor={`${form}-name`} className={v.label}>
             Name
           </label>
-          <input id={`${form}-name`} name="name" type="text" required autoComplete="name" className={inputClass} />
+          <input id={`${form}-name`} name="name" type="text" required autoComplete="name" className={v.input} />
         </div>
         <div>
-          <label
-            htmlFor={`${form}-email`}
-            className="mb-2 block font-mono text-[0.65rem] uppercase tracking-wide2 text-dim"
-          >
+          <label htmlFor={`${form}-email`} className={v.label}>
             Email
           </label>
-          <input id={`${form}-email`} name="email" type="email" required autoComplete="email" className={inputClass} />
+          <input id={`${form}-email`} name="email" type="email" required autoComplete="email" className={v.input} />
         </div>
       </div>
       <div>
-        <label
-          htmlFor={`${form}-organization`}
-          className="mb-2 block font-mono text-[0.65rem] uppercase tracking-wide2 text-dim"
-        >
+        <label htmlFor={`${form}-organization`} className={v.label}>
           Organization
         </label>
         <input
@@ -84,30 +99,23 @@ export function InquiryForm({
           name="organization"
           type="text"
           autoComplete="organization"
-          className={inputClass}
+          className={v.input}
         />
       </div>
       <div>
-        <label
-          htmlFor={`${form}-message`}
-          className="mb-2 block font-mono text-[0.65rem] uppercase tracking-wide2 text-dim"
-        >
+        <label htmlFor={`${form}-message`} className={v.label}>
           {messageLabel}
         </label>
-        <textarea id={`${form}-message`} name="message" rows={5} required className={inputClass} />
+        <textarea id={`${form}-message`} name="message" rows={5} required className={v.input} />
       </div>
-      <button
-        type="submit"
-        disabled={status === "loading"}
-        className="bg-gold px-8 py-3.5 font-mono text-xs uppercase tracking-wide2 text-ink transition-colors hover:bg-gold/85 disabled:opacity-60"
-      >
+      <button type="submit" disabled={status === "loading"} className={v.button}>
         {status === "loading" ? "Sending…" : submitLabel}
       </button>
       <p
         role="status"
         aria-live="polite"
-        className={`min-h-[1.25rem] font-mono text-xs tracking-wide ${
-          status === "error" ? "text-magenta" : "text-dim"
+        className={`min-h-[1.25rem] text-xs tracking-wide ${v.status} ${
+          status === "error" ? v.error : v.ok
         }`}
       >
         {message}

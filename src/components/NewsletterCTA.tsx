@@ -1,6 +1,7 @@
+import Link from "next/link";
 import { NewsletterForm } from "./NewsletterForm";
 
-/** Full-width newsletter band with the magenta radial glow. */
+/** Full-width Sunday Letter band with the magenta radial glow. */
 export function NewsletterCTA() {
   return (
     <section aria-labelledby="newsletter-cta" className="relative overflow-hidden border-y border-cream/10">
@@ -12,15 +13,21 @@ export function NewsletterCTA() {
             id="newsletter-cta"
             className="font-display text-5xl leading-none tracking-wide text-cream sm:text-6xl"
           >
-            Get the daily dispatch.
+            Get the Sunday Letter.
           </h2>
           <p className="mt-4 max-w-md text-lg italic leading-relaxed text-dim">
-            Transmissions, the Deep Read, and the Sunday Letter — direct to
-            your inbox.
+            One idea, held up to the light — every Sunday, direct to your
+            inbox. The newsletter of Android Dreams.
           </p>
         </div>
         <div className="lg:pl-10">
-          <NewsletterForm accent="orange" />
+          <NewsletterForm accent="orange" publication="ad" />
+          <p className="mt-1 font-mono text-[0.6rem] uppercase tracking-wide2 text-dimmer">
+            Free ·{" "}
+            <Link href="/sunday-letter" className="underline decoration-dimmer underline-offset-2 hover:text-cream">
+              Read past letters
+            </Link>
+          </p>
         </div>
       </div>
     </section>

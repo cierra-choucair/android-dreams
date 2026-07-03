@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { NewsletterForm } from "@/components/NewsletterForm";
 import type { Post } from "@/lib/types";
 import { formatDateStamp, stripHtml, truncate } from "@/lib/utils";
 import { getPosts, REVALIDATE } from "@/lib/wp";
@@ -149,6 +150,17 @@ export default async function QFrontlinePage() {
             )}
           </div>
         </div>
+
+        {/* Dev Brief subscribe — in context, in brand */}
+        <div className="mt-8 max-w-3xl">
+          <p className="font-qf-mono text-xs uppercase tracking-[0.2em] text-qf-void">
+            <span aria-hidden className="text-qf-signal">&gt; </span>
+            Get the Dev Brief in your inbox — every week
+          </p>
+          <div className="mt-4">
+            <NewsletterForm accent="qf" publication="qf" />
+          </div>
+        </div>
       </section>
 
       {/* ─────────────────── LATEST FROM QFRONTLINE ─────────────────── */}
@@ -229,8 +241,71 @@ export default async function QFrontlinePage() {
           ))}
         </div>
 
-        {/* Attribution */}
-        <p className="mt-16 border-t border-qf-void/10 pt-8 text-center font-qf-mono text-[0.65rem] uppercase tracking-[0.3em] text-qf-void/50">
+      </section>
+
+      {/* ───────── THE COMMUNITY — QFrontline is the entrance to QRC ───────── */}
+      <section aria-labelledby="qrc" className="relative overflow-hidden bg-qf-void">
+        <div aria-hidden className="h-[3px] w-full bg-qf-signal" />
+        <div className="pointer-events-none absolute inset-0 glow-signal-tl" />
+        <div className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6">
+          <p className="font-qf-mono text-[0.65rem] uppercase tracking-[0.3em] text-qf-dust">
+            Where the column becomes practice
+          </p>
+          <h2 id="qrc" className="mt-6 flex items-baseline gap-[0.18em] text-5xl sm:text-6xl">
+            <span aria-hidden className="font-qf-mono font-medium text-qf-signal">
+              &gt;
+            </span>
+            <span className="font-qf-sans font-bold lowercase tracking-[-0.035em] text-qf-ink">
+              qrc
+            </span>
+            <span
+              aria-hidden
+              className="inline-block h-[0.72em] w-[0.14em] translate-y-[0.04em] animate-cursor bg-qf-signal"
+            />
+          </h2>
+          <p className="mt-4 font-qf-sans text-2xl font-semibold tracking-tight text-qf-ink">
+            The Quantum Readiness Community
+          </p>
+          <p className="mt-4 max-w-2xl font-qf-sans text-lg font-light leading-relaxed text-qf-ink/85">
+            Every Dev Brief ends with a question worth building on. QRC is
+            where that happens — the community layer of QFrontline, where
+            editorial signal turns into working groups, portfolio artifacts,
+            and career visibility.
+          </p>
+          <ul className="mt-8 grid max-w-3xl gap-4 font-qf-mono text-[0.8rem] leading-relaxed text-qf-ink/80 sm:grid-cols-3">
+            <li>
+              <span aria-hidden className="text-qf-signal">&gt; </span>
+              Structured, sourced discussion — no hype, no vendors steering
+            </li>
+            <li>
+              <span aria-hidden className="text-qf-signal">&gt; </span>
+              Four-week workgroups that end in a repo, brief, or demo
+            </li>
+            <li>
+              <span aria-hidden className="text-qf-signal">&gt; </span>
+              Career visibility earned through contribution
+            </li>
+          </ul>
+          <div className="mt-10 flex flex-wrap gap-4">
+            <Link
+              href="/community"
+              className="bg-qf-signal px-6 py-3 font-qf-mono text-xs uppercase tracking-[0.2em] text-qf-void transition-colors hover:bg-qf-ink"
+            >
+              Explore the community
+            </Link>
+            <Link
+              href="/community/join"
+              className="border border-qf-ink/30 px-6 py-3 font-qf-mono text-xs uppercase tracking-[0.2em] text-qf-ink transition-colors hover:border-qf-signal hover:text-qf-signal"
+            >
+              Request an invite
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Attribution */}
+      <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
+        <p className="text-center font-qf-mono text-[0.65rem] uppercase tracking-[0.3em] text-qf-void/50">
           <span aria-hidden className="text-qf-signal-deep">&gt; </span>
           A section of{" "}
           <Link
