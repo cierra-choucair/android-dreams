@@ -5,6 +5,7 @@ const FORMAT_LINKS = [
   { href: "/deep-read", label: "The Deep Read" },
   { href: "/sci-fi-lens", label: "The Sci-Fi Lens" },
   { href: "/sunday-letter", label: "The Sunday Letter · Subscribe" },
+  { href: "/manifesto", label: "The Editorial Manifesto" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];

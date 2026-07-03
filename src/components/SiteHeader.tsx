@@ -3,30 +3,32 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { FormEvent, useCallback, useEffect, useRef, useState } from "react";
-import { Menu, Search, X } from "lucide-react";
+import { ChevronDown, Menu, Search, X } from "lucide-react";
 
-const FORMAT_LINKS = [
+const AD_MENU = [
   { href: "/transmissions", label: "Transmissions" },
   { href: "/deep-read", label: "The Deep Read" },
   { href: "/sci-fi-lens", label: "The Sci-Fi Lens" },
-  { href: "/qfrontline", label: "QFrontline" },
+  { href: "/manifesto", label: "The Editorial Manifesto" },
 ];
 
 const STUDIO_LINKS = [
   { href: "/", label: "Android Dreams" },
   { href: "/qfrontline", label: "QFrontline" },
-  { href: "/community", label: "Community" },
-  { href: "/summit", label: "Summit" },
-  { href: "/davos", label: "Davos" },
+  { href: "/community", label: "Quantum Readiness Community" },
+  { href: "/summit", label: "Quantum State Summit" },
+  { href: "/davos", label: "House of Quantum" },
 ];
 
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
   const searchInputRef = useRef<HTMLInputElement>(null);
+  const dropdownRef = useRef<HTMLLIElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 32);
@@ -39,22 +41,34 @@ export function SiteHeader() {
   useEffect(() => {
     setMenuOpen(false);
     setSearchOpen(false);
+    setDropdownOpen(false);
   }, [pathname]);
 
-  // Focus search input when the overlay opens; close on Escape
+  // Focus search input when the overlay opens
   useEffect(() => {
     if (searchOpen) searchInputRef.current?.focus();
   }, [searchOpen]);
 
+  // Escape closes everything; outside click closes the dropdown
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         setSearchOpen(false);
         setMenuOpen(false);
+        setDropdownOpen(false);
+      }
+    };
+    const onClick = (e: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setDropdownOpen(false);
       }
     };
     window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
+    window.addEventListener("mousedown", onClick);
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      window.removeEventListener("mousedown", onClick);
+    };
   }, []);
 
   const onSearchSubmit = useCallback(
@@ -69,6 +83,10 @@ export function SiteHeader() {
     [router],
   );
 
+  const adActive = AD_MENU.some(
+    (link) => pathname === link.href || pathname.startsWith(`${link.href}/`),
+  );
+
   return (
     <header className="fixed inset-x-0 top-0 z-50">
       {/* Studio bar — discoverability layer for the sibling properties */}
@@ -78,9 +96,9 @@ export function SiteHeader() {
         }`}
       >
         <nav aria-label="Android Dreams Media properties" className="overflow-x-auto">
-          <ul className="mx-auto flex w-max max-w-none items-center gap-5 whitespace-nowrap px-4 py-1.5 sm:w-auto sm:max-w-7xl sm:justify-center sm:gap-8">
+          <ul className="mx-auto flex w-max max-w-none items-center gap-5 whitespace-nowrap px-4 py-1.5 sm:w-auto sm:max-w-7xl sm:justify-center sm:gap-7">
             {STUDIO_LINKS.map((link, i) => (
-              <li key={link.label} className="flex items-center gap-5 sm:gap-8">
+              <li key={link.label} className="flex items-center gap-5 sm:gap-7">
                 {i > 0 && (
                   <span aria-hidden className="text-[0.55rem] text-dimmer">
                     ·
@@ -107,7 +125,7 @@ export function SiteHeader() {
         }`}
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 sm:px-6">
-          {/* Wordmark with the vertical orange divider motif */}
+          {/* Wordmark with the seam */}
           <Link
             href="/"
             className="group flex items-baseline gap-2 font-display text-xl font-bold leading-none tracking-[0.06em]"
@@ -120,24 +138,74 @@ export function SiteHeader() {
             <span className="text-cream">DREAMS</span>
           </Link>
 
-          <nav aria-label="Formats" className="hidden lg:block">
-            <ul className="flex items-center gap-6">
-              {FORMAT_LINKS.map((link) => {
-                const active =
-                  pathname === link.href || pathname.startsWith(`${link.href}/`);
-                return (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className={`font-mono text-[0.7rem] uppercase tracking-wide2 transition-colors ${
-                        active ? "text-orange" : "text-dim hover:text-cream"
-                      }`}
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                );
-              })}
+          <nav aria-label="Main" className="hidden lg:block">
+            <ul className="flex items-center gap-7">
+              {/* Android Dreams dropdown: the formats + the manifesto */}
+              <li ref={dropdownRef} className="relative">
+                <button
+                  type="button"
+                  aria-expanded={dropdownOpen}
+                  aria-haspopup="true"
+                  onClick={() => setDropdownOpen(true)}
+                  onMouseEnter={() => setDropdownOpen(true)}
+                  className={`flex items-center gap-1.5 font-mono text-[0.7rem] uppercase tracking-wide2 transition-colors ${
+                    adActive || dropdownOpen ? "text-orange" : "text-dim hover:text-cream"
+                  }`}
+                >
+                  Android Dreams
+                  <ChevronDown
+                    size={13}
+                    strokeWidth={1.5}
+                    aria-hidden
+                    className={`transition-transform ${dropdownOpen ? "rotate-180" : ""}`}
+                  />
+                </button>
+                {dropdownOpen && (
+                  <ul
+                    onMouseLeave={() => setDropdownOpen(false)}
+                    className="absolute left-1/2 top-full z-50 mt-3 w-56 -translate-x-1/2 border border-cream/15 bg-ink py-2 shadow-[0_16px_50px_rgba(0,0,0,0.6)]"
+                  >
+                    <span
+                      aria-hidden
+                      className="absolute -top-[2px] left-1/2 h-[2px] w-10 -translate-x-1/2 bg-orange"
+                    />
+                    {AD_MENU.map((link) => (
+                      <li key={link.href}>
+                        <Link
+                          href={link.href}
+                          className={`block px-5 py-2.5 font-mono text-[0.68rem] uppercase tracking-wide2 transition-colors ${
+                            pathname === link.href || pathname.startsWith(`${link.href}/`)
+                              ? "text-orange"
+                              : "text-dim hover:bg-cream/[0.04] hover:text-cream"
+                          }`}
+                        >
+                          {link.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </li>
+              <li>
+                <Link
+                  href="/qfrontline"
+                  className={`font-mono text-[0.7rem] uppercase tracking-wide2 transition-colors ${
+                    pathname.startsWith("/qfrontline") ? "text-orange" : "text-dim hover:text-cream"
+                  }`}
+                >
+                  QFrontline
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/about"
+                  className={`font-mono text-[0.7rem] uppercase tracking-wide2 transition-colors ${
+                    pathname === "/about" ? "text-orange" : "text-dim hover:text-cream"
+                  }`}
+                >
+                  About
+                </Link>
+              </li>
             </ul>
           </nav>
 
@@ -199,7 +267,7 @@ export function SiteHeader() {
                 type="search"
                 placeholder="Quantum, alignment, coherence…"
                 autoComplete="off"
-                className="w-full border-b-2 border-orange/60 bg-transparent pb-4 font-display text-4xl tracking-wide text-cream placeholder:text-dimmer focus:border-orange focus:outline-none sm:text-6xl"
+                className="w-full border-b-2 border-orange/60 bg-transparent pb-4 font-display text-4xl font-bold tracking-wide text-cream placeholder:text-dimmer focus:border-orange focus:outline-none sm:text-6xl"
               />
               <p className="mt-4 font-mono text-[0.65rem] uppercase tracking-wide2 text-dimmer">
                 Press Enter to search · Esc to close
@@ -227,18 +295,26 @@ export function SiteHeader() {
             <X size={24} strokeWidth={1.5} aria-hidden />
           </button>
           <div className="relative mx-auto max-w-3xl px-6 pb-16 pt-24">
-            <p className="eyebrow text-orange">Formats</p>
+            <p className="eyebrow text-orange">Android Dreams</p>
             <ul className="mt-6 space-y-4">
-              {FORMAT_LINKS.map((link) => (
+              {AD_MENU.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="font-display text-4xl tracking-wide text-cream transition-colors hover:text-orange"
+                    className="font-display text-3xl font-bold tracking-wide text-cream transition-colors hover:text-orange"
                   >
                     {link.label}
                   </Link>
                 </li>
               ))}
+              <li>
+                <Link
+                  href="/qfrontline"
+                  className="font-display text-3xl font-bold tracking-wide text-cream transition-colors hover:text-orange"
+                >
+                  QFrontline
+                </Link>
+              </li>
             </ul>
             <p className="eyebrow mt-12 text-magenta">The Studio</p>
             <ul className="mt-6 space-y-3">
@@ -246,7 +322,7 @@ export function SiteHeader() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="font-display text-2xl tracking-wide text-dim transition-colors hover:text-cream"
+                    className="font-display text-xl tracking-wide text-dim transition-colors hover:text-cream"
                   >
                     {link.label}
                   </Link>
@@ -256,7 +332,7 @@ export function SiteHeader() {
             <p className="eyebrow mt-12 text-gold">Elsewhere</p>
             <ul className="mt-6 space-y-3 font-mono text-sm">
               {[
-                { href: "/sunday-letter", label: "The Sunday Letter" },
+                { href: "/sunday-letter", label: "The Sunday Letter · Subscribe" },
                 { href: "/about", label: "About" },
                 { href: "/contact", label: "Contact" },
                 { href: "/search", label: "Search" },
