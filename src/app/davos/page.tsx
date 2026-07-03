@@ -31,8 +31,10 @@ export default function DavosPage() {
 
           <h1 className="mt-10 font-display leading-[0.88] tracking-wide">
             <span className="block text-[clamp(4rem,12vw,9rem)] text-cream">HOUSE</span>
-            <span className="text-stroke-white block text-[clamp(2.5rem,7vw,5rem)]">of</span>
-            <span className="text-stroke-gold block text-[clamp(4rem,12vw,9rem)]">QUANTUM</span>
+            <span className="block text-[clamp(2rem,5vw,3.5rem)] font-extralight lowercase tracking-[0.3em] text-dim">
+              of
+            </span>
+            <span className="block text-[clamp(4rem,12vw,9rem)] text-gold">QUANTUM</span>
           </h1>
 
           <p className="mt-10 font-mono text-xs uppercase tracking-wide4 text-magenta">

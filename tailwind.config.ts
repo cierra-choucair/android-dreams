@@ -5,15 +5,16 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        orange: "#FF6A00",
-        magenta: "#E8197D",
-        cyan: "#00D4FF",
-        gold: "#C9A84C",
-        ink: "#06050A",
-        cream: "#F5F0E8",
-        dim: "rgba(245,240,232,0.65)",
-        dimmer: "rgba(245,240,232,0.42)",
-        violet: "#8A4FFF",
+        // Android Dreams brand v1.0 — six colors, all pulled from the mark.
+        // Token names kept from the first iteration; values are the brand's.
+        orange: "#FF8A3D", // Warm · lens glow · interior light
+        magenta: "#FF1F3D", // right half · machine · 1
+        cyan: "#3A8FFF", // left half · human · 0
+        gold: "#A098B8", // Dust · credits · metadata
+        ink: "#050308", // Void · the letterbox · primary surface
+        cream: "#F6F3FF", // Bone · title type · primary ink
+        dim: "rgba(246,243,255,0.65)",
+        dimmer: "rgba(246,243,255,0.42)",
         // QFrontline brand v1.0 — see Android_Dreams_Suite brand book
         qf: {
           ink: "#F6F3FF", // primary text · wordmark default (dark surfaces)
@@ -24,9 +25,9 @@ const config: Config = {
         },
       },
       fontFamily: {
-        display: ["var(--font-bebas)", "Bebas Neue", "sans-serif"],
-        serif: ["var(--font-crimson)", "Crimson Pro", "Georgia", "serif"],
-        mono: ["var(--font-space-mono)", "Space Mono", "monospace"],
+        display: ["var(--font-outfit)", "Outfit", "sans-serif"],
+        serif: ["var(--font-outfit)", "Outfit", "sans-serif"],
+        mono: ["var(--font-jetbrains)", "JetBrains Mono", "monospace"],
         "qf-sans": ["var(--font-outfit)", "Outfit", "sans-serif"],
         "qf-mono": ["var(--font-jetbrains)", "JetBrains Mono", "monospace"],
       },

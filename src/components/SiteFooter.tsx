@@ -33,13 +33,13 @@ export function SiteFooter() {
           <div>
             <Link
               href="/"
-              className="flex items-baseline gap-2 font-display text-2xl leading-none tracking-wide"
+              className="flex items-baseline gap-2 font-display text-xl font-bold leading-none tracking-[0.06em]"
             >
               <span className="text-cream">ANDROID</span>
               <span aria-hidden className="inline-block h-5 w-[3px] translate-y-[2px] bg-orange" />
-              <span className="text-orange">DREAMS</span>
+              <span className="text-cream">DREAMS</span>
             </Link>
-            <p className="mt-2 font-mono text-[0.65rem] uppercase tracking-wide4 text-dimmer">
+            <p className="mt-2 font-serif text-[0.65rem] font-extralight uppercase tracking-[0.55em] text-gold">
               Imagine the future
             </p>
             <p className="mt-6 max-w-xs text-[0.95rem] italic leading-relaxed text-dim">
@@ -93,8 +93,8 @@ export function SiteFooter() {
             © {new Date().getFullYear()} Android Dreams Media
           </p>
           <p className="font-mono text-[0.65rem] tracking-wide2 text-dimmer">
-            Set in Bebas Neue, Crimson Pro, and Space Mono. Published from the
-            frontier.
+            Set in Outfit and JetBrains Mono. Presented in 2.39:1. Published
+            from the frontier.
           </p>
           <ul className="flex items-center gap-5">
             {SOCIAL_LINKS.map((link) => (

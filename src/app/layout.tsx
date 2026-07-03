@@ -1,29 +1,21 @@
 import type { Metadata } from "next";
-import { Bebas_Neue, Crimson_Pro, Space_Mono } from "next/font/google";
+import { JetBrains_Mono, Outfit } from "next/font/google";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SITE_URL } from "@/lib/utils";
 import "./globals.css";
 
-const bebas = Bebas_Neue({
-  weight: "400",
+// Brand v1.0 "cinema direction": Outfit for everything visual,
+// JetBrains Mono for credits and metadata.
+const outfit = Outfit({
   subsets: ["latin"],
-  variable: "--font-bebas",
+  variable: "--font-outfit",
   display: "swap",
 });
 
-const crimson = Crimson_Pro({
+const jetbrains = JetBrains_Mono({
   subsets: ["latin"],
-  style: ["normal", "italic"],
-  variable: "--font-crimson",
-  display: "swap",
-});
-
-const spaceMono = Space_Mono({
-  weight: ["400", "700"],
-  subsets: ["latin"],
-  style: ["normal", "italic"],
-  variable: "--font-space-mono",
+  variable: "--font-jetbrains",
   display: "swap",
 });
 
@@ -42,6 +34,7 @@ export const metadata: Metadata = {
     description:
       "Quantum technology, artificial intelligence, and the deep science building our sci-fi future.",
     url: SITE_URL,
+    images: [{ url: "/brand/ad-mark.jpg", width: 2351, height: 2351 }],
   },
   twitter: {
     card: "summary_large_image",
@@ -64,7 +57,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${bebas.variable} ${crimson.variable} ${spaceMono.variable}`}>
+    <html lang="en" className={`${outfit.variable} ${jetbrains.variable}`}>
       <body>
         <a
           href="#main"
