@@ -1,0 +1,294 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Base
+   ────────────────────────────────────────────────────────────────────────── */
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-ink text-cream font-serif antialiased;
+  }
+
+  ::selection {
+    background: rgba(255, 106, 0, 0.35);
+    color: #f5f0e8;
+  }
+
+  /* Orange focus states, site-wide */
+  :focus-visible {
+    outline: 2px solid #ff6a00;
+    outline-offset: 2px;
+  }
+
+  /* Balanced display headlines */
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Signature motifs
+   ────────────────────────────────────────────────────────────────────────── */
+
+@layer utilities {
+  /* Faint 60px grid texture */
+  .bg-grid {
+    background-image: linear-gradient(
+        rgba(245, 240, 232, 0.025) 1px,
+        transparent 1px
+      ),
+      linear-gradient(90deg, rgba(245, 240, 232, 0.025) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  /* Radial atmospheric glows for screen corners */
+  .glow-orange-tl {
+    background: radial-gradient(
+      ellipse 60% 50% at 0% 0%,
+      rgba(255, 106, 0, 0.13),
+      transparent 70%
+    );
+  }
+  .glow-magenta-br {
+    background: radial-gradient(
+      ellipse 60% 50% at 100% 100%,
+      rgba(232, 25, 125, 0.11),
+      transparent 70%
+    );
+  }
+  .glow-magenta-center {
+    background: radial-gradient(
+      ellipse 55% 70% at 50% 50%,
+      rgba(232, 25, 125, 0.16),
+      transparent 70%
+    );
+  }
+  .glow-cyan-tr {
+    background: radial-gradient(
+      ellipse 55% 45% at 100% 0%,
+      rgba(0, 212, 255, 0.09),
+      transparent 70%
+    );
+  }
+  .glow-gold-center {
+    background: radial-gradient(
+      ellipse 50% 55% at 50% 42%,
+      rgba(201, 168, 76, 0.12),
+      transparent 70%
+    );
+  }
+  .glow-matrix-tl {
+    background: radial-gradient(
+      ellipse 60% 50% at 0% 0%,
+      rgba(0, 255, 65, 0.07),
+      transparent 70%
+    );
+  }
+
+  /* Concentric circle rings behind hero content */
+  .rings {
+    background: repeating-radial-gradient(
+      circle at 50% 50%,
+      rgba(245, 240, 232, 0.05) 0,
+      rgba(245, 240, 232, 0.05) 1px,
+      transparent 1px,
+      transparent 110px
+    );
+  }
+  .rings-gold {
+    background: repeating-radial-gradient(
+      circle at 50% 50%,
+      rgba(201, 168, 76, 0.1) 0,
+      rgba(201, 168, 76, 0.1) 1px,
+      transparent 1px,
+      transparent 96px
+    );
+  }
+
+  /* Dramatic outlined display text */
+  .text-stroke-magenta {
+    color: transparent;
+    -webkit-text-stroke: 1.5px #e8197d;
+  }
+  .text-stroke-gold {
+    color: transparent;
+    -webkit-text-stroke: 1.5px #c9a84c;
+  }
+  .text-stroke-white {
+    color: transparent;
+    -webkit-text-stroke: 1.5px #f5f0e8;
+  }
+  .text-stroke-cream-thin {
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(245, 240, 232, 0.85);
+  }
+
+  /* QFrontline: faint green scanline shimmer, CSS only */
+  .scanlines {
+    background-image: repeating-linear-gradient(
+      to bottom,
+      rgba(0, 255, 65, 0.03) 0,
+      rgba(0, 255, 65, 0.03) 1px,
+      transparent 1px,
+      transparent 4px
+    );
+  }
+
+  /* Section eyebrow: mono, all-caps, wide tracking — color via text-* */
+  .eyebrow {
+    @apply font-mono text-[0.7rem] uppercase tracking-eyebrow;
+  }
+
+  /* Clearly-marked image slot placeholder (no stock photography) */
+  .image-slot {
+    background:
+      linear-gradient(
+        135deg,
+        rgba(255, 106, 0, 0.14) 0%,
+        rgba(232, 25, 125, 0.1) 55%,
+        rgba(0, 212, 255, 0.08) 100%
+      ),
+      #0a0910;
+  }
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Article body — styles WordPress content HTML to the magazine aesthetic
+   ────────────────────────────────────────────────────────────────────────── */
+
+.prose-ad {
+  @apply font-serif text-cream;
+  font-size: 1.15rem;
+  line-height: 1.75;
+}
+
+.prose-ad > * + * {
+  margin-top: 1.5em;
+}
+
+.prose-ad a {
+  @apply text-orange underline decoration-orange/40 underline-offset-4 transition-colors;
+}
+.prose-ad a:hover {
+  @apply decoration-orange;
+}
+
+.prose-ad h2,
+.prose-ad h3,
+.prose-ad h4 {
+  @apply font-display tracking-wide text-cream;
+  margin-top: 2.25em;
+}
+.prose-ad h2 {
+  font-size: 2rem;
+  line-height: 1.1;
+}
+.prose-ad h3 {
+  font-size: 1.6rem;
+  line-height: 1.15;
+}
+.prose-ad h4 {
+  font-size: 1.3rem;
+}
+
+.prose-ad strong {
+  @apply font-semibold text-cream;
+}
+
+.prose-ad em {
+  @apply italic;
+}
+
+/* Pull quotes: colored left border set per-format via --format-accent */
+.prose-ad blockquote {
+  border-left: 3px solid var(--format-accent, #ff6a00);
+  @apply my-10 py-1 pl-6 md:pl-8;
+}
+.prose-ad blockquote p {
+  @apply font-serif italic text-dim;
+  font-size: 1.45rem;
+  line-height: 1.5;
+}
+.prose-ad blockquote p + p {
+  margin-top: 1em;
+}
+
+.prose-ad ul,
+.prose-ad ol {
+  @apply pl-6;
+}
+.prose-ad ul {
+  list-style-type: square;
+}
+.prose-ad ol {
+  list-style-type: decimal;
+}
+.prose-ad li {
+  margin-top: 0.5em;
+}
+.prose-ad li::marker {
+  color: var(--format-accent, #ff6a00);
+}
+
+.prose-ad hr {
+  @apply mx-auto my-12 w-16 border-0;
+  height: 2px;
+  background: var(--format-accent, #ff6a00);
+}
+
+.prose-ad img {
+  @apply h-auto max-w-full border border-cream/10;
+}
+
+.prose-ad figure {
+  @apply my-10;
+}
+.prose-ad figcaption {
+  @apply mt-3 font-mono text-xs uppercase tracking-wide2 text-dimmer;
+}
+
+.prose-ad code {
+  @apply bg-cream/[0.07] px-1.5 py-0.5 font-mono text-[0.85em] text-cyan;
+}
+
+.prose-ad pre {
+  @apply overflow-x-auto border border-cream/10 bg-[#0A0910] p-5 font-mono text-sm leading-relaxed;
+}
+.prose-ad pre code {
+  @apply bg-transparent p-0 text-matrix;
+}
+
+.prose-ad table {
+  @apply w-full border-collapse font-mono text-sm;
+}
+.prose-ad th,
+.prose-ad td {
+  @apply border border-cream/10 px-3 py-2 text-left;
+}
+.prose-ad th {
+  @apply bg-cream/[0.05] font-normal uppercase tracking-wide2 text-dim;
+}
+
+.prose-ad iframe,
+.prose-ad video {
+  @apply max-w-full border border-cream/10;
+}
+
+/* QFrontline article accent adjustments */
+.prose-qf a {
+  @apply text-matrix decoration-matrix/40;
+}
+.prose-qf a:hover {
+  @apply decoration-matrix;
+}
+.prose-qf code {
+  @apply text-matrix;
+}
