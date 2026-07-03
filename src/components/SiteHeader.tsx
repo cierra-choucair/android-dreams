@@ -111,14 +111,14 @@ export function SiteHeader() {
           {/* Wordmark with the vertical orange divider motif */}
           <Link
             href="/"
-            className="group flex items-baseline gap-2 font-display text-2xl leading-none tracking-wide"
+            className="group flex items-baseline gap-2 font-display text-xl font-bold leading-none tracking-[0.06em]"
           >
             <span className="text-cream">ANDROID</span>
             <span
               aria-hidden
               className="inline-block h-5 w-[3px] translate-y-[2px] bg-orange transition-all group-hover:h-6"
             />
-            <span className="text-orange">DREAMS</span>
+            <span className="text-cream">DREAMS</span>
           </Link>
 
           <nav aria-label="Formats" className="hidden lg:block">
@@ -153,7 +153,7 @@ export function SiteHeader() {
             </button>
             <Link
               href="/newsletter"
-              className="hidden border border-gold px-4 py-1.5 font-mono text-[0.65rem] uppercase tracking-wide2 text-gold transition-colors hover:bg-gold hover:text-ink sm:inline-block"
+              className="hidden border border-orange px-4 py-1.5 font-mono text-[0.65rem] uppercase tracking-wide2 text-orange transition-colors hover:bg-orange hover:text-ink sm:inline-block"
             >
               Subscribe
             </Link>

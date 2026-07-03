@@ -42,10 +42,10 @@ formats:
 
 | Category slug | Format | Accent |
 | --- | --- | --- |
-| `transmissions` | Daily dispatches | Orange `#FF6A00` |
-| `deep-read` | Long-form journalism | Cyan `#00D4FF` |
-| `sci-fi-lens` | Science fiction as framework | Magenta `#E8197D` |
-| `sunday-letter` | The founder's weekly letter | Gold `#C9A84C` |
+| `transmissions` | Daily dispatches | Warm `#FF8A3D` |
+| `deep-read` | Long-form journalism | Cyan `#3A8FFF` |
+| `sci-fi-lens` | Science fiction as framework | Magenta `#FF1F3D` |
+| `sunday-letter` | The founder's weekly letter | Dust `#A098B8` |
 | `qfrontline` | Developer vertical | Signal Magenta `#FF2B5E` |
 
 Special **tags**: `featured` pins a post to the homepage hero;

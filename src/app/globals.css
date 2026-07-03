@@ -12,17 +12,26 @@
   }
 
   body {
-    @apply bg-ink text-cream font-serif antialiased;
+    @apply bg-ink text-cream font-serif font-light antialiased;
+  }
+
+  /* Outfit weight semantics per brand: display/title 600–700, body 300.
+     Base layer, so font-weight utilities on elements still win. */
+  .font-display {
+    font-weight: 600;
+  }
+  .font-mono {
+    font-weight: 400;
   }
 
   ::selection {
-    background: rgba(255, 106, 0, 0.35);
-    color: #f5f0e8;
+    background: rgba(255, 138, 61, 0.35);
+    color: #F6F3FF;
   }
 
   /* Orange focus states, site-wide */
   :focus-visible {
-    outline: 2px solid #ff6a00;
+    outline: 2px solid #FF8A3D;
     outline-offset: 2px;
   }
 
@@ -42,10 +51,10 @@
   /* Faint 60px grid texture */
   .bg-grid {
     background-image: linear-gradient(
-        rgba(245, 240, 232, 0.025) 1px,
+        rgba(246, 243, 255, 0.025) 1px,
         transparent 1px
       ),
-      linear-gradient(90deg, rgba(245, 240, 232, 0.025) 1px, transparent 1px);
+      linear-gradient(90deg, rgba(246, 243, 255, 0.025) 1px, transparent 1px);
     background-size: 60px 60px;
   }
 
@@ -53,35 +62,50 @@
   .glow-orange-tl {
     background: radial-gradient(
       ellipse 60% 50% at 0% 0%,
-      rgba(255, 106, 0, 0.13),
+      rgba(255, 138, 61, 0.13),
       transparent 70%
     );
   }
   .glow-magenta-br {
     background: radial-gradient(
       ellipse 60% 50% at 100% 100%,
-      rgba(232, 25, 125, 0.11),
+      rgba(255, 31, 61, 0.11),
       transparent 70%
     );
   }
   .glow-magenta-center {
     background: radial-gradient(
       ellipse 55% 70% at 50% 50%,
-      rgba(232, 25, 125, 0.16),
+      rgba(255, 31, 61, 0.16),
       transparent 70%
     );
   }
   .glow-cyan-tr {
     background: radial-gradient(
       ellipse 55% 45% at 100% 0%,
-      rgba(0, 212, 255, 0.09),
+      rgba(58, 143, 255, 0.09),
       transparent 70%
     );
   }
   .glow-gold-center {
     background: radial-gradient(
       ellipse 50% 55% at 50% 42%,
-      rgba(201, 168, 76, 0.12),
+      rgba(160, 152, 184, 0.12),
+      transparent 70%
+    );
+  }
+  /* The duality: human cyan on the left, machine magenta on the right */
+  .glow-cyan-left {
+    background: radial-gradient(
+      ellipse 45% 70% at 0% 50%,
+      rgba(58, 143, 255, 0.1),
+      transparent 70%
+    );
+  }
+  .glow-magenta-right {
+    background: radial-gradient(
+      ellipse 45% 70% at 100% 50%,
+      rgba(255, 31, 61, 0.1),
       transparent 70%
     );
   }
@@ -97,8 +121,8 @@
   .rings {
     background: repeating-radial-gradient(
       circle at 50% 50%,
-      rgba(245, 240, 232, 0.05) 0,
-      rgba(245, 240, 232, 0.05) 1px,
+      rgba(246, 243, 255, 0.05) 0,
+      rgba(246, 243, 255, 0.05) 1px,
       transparent 1px,
       transparent 110px
     );
@@ -106,8 +130,8 @@
   .rings-gold {
     background: repeating-radial-gradient(
       circle at 50% 50%,
-      rgba(201, 168, 76, 0.1) 0,
-      rgba(201, 168, 76, 0.1) 1px,
+      rgba(160, 152, 184, 0.1) 0,
+      rgba(160, 152, 184, 0.1) 1px,
       transparent 1px,
       transparent 96px
     );
@@ -116,19 +140,19 @@
   /* Dramatic outlined display text */
   .text-stroke-magenta {
     color: transparent;
-    -webkit-text-stroke: 1.5px #e8197d;
+    -webkit-text-stroke: 1.5px #FF1F3D;
   }
   .text-stroke-gold {
     color: transparent;
-    -webkit-text-stroke: 1.5px #c9a84c;
+    -webkit-text-stroke: 1.5px #A098B8;
   }
   .text-stroke-white {
     color: transparent;
-    -webkit-text-stroke: 1.5px #f5f0e8;
+    -webkit-text-stroke: 1.5px #F6F3FF;
   }
   .text-stroke-cream-thin {
     color: transparent;
-    -webkit-text-stroke: 1px rgba(245, 240, 232, 0.85);
+    -webkit-text-stroke: 1px rgba(246, 243, 255, 0.85);
   }
 
   /* Section eyebrow: mono, all-caps, wide tracking — color via text-* */
@@ -141,9 +165,9 @@
     background:
       linear-gradient(
         135deg,
-        rgba(255, 106, 0, 0.14) 0%,
-        rgba(232, 25, 125, 0.1) 55%,
-        rgba(0, 212, 255, 0.08) 100%
+        rgba(255, 138, 61, 0.14) 0%,
+        rgba(255, 31, 61, 0.1) 55%,
+        rgba(58, 143, 255, 0.08) 100%
       ),
       #0a0910;
   }
@@ -198,7 +222,7 @@
 
 /* Pull quotes: colored left border set per-format via --format-accent */
 .prose-ad blockquote {
-  border-left: 3px solid var(--format-accent, #ff6a00);
+  border-left: 3px solid var(--format-accent, #FF8A3D);
   @apply my-10 py-1 pl-6 md:pl-8;
 }
 .prose-ad blockquote p {
@@ -224,13 +248,13 @@
   margin-top: 0.5em;
 }
 .prose-ad li::marker {
-  color: var(--format-accent, #ff6a00);
+  color: var(--format-accent, #FF8A3D);
 }
 
 .prose-ad hr {
   @apply mx-auto my-12 w-16 border-0;
   height: 2px;
-  background: var(--format-accent, #ff6a00);
+  background: var(--format-accent, #FF8A3D);
 }
 
 .prose-ad img {

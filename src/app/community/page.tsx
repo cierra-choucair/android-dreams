@@ -92,11 +92,11 @@ export default function CommunityPage() {
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse 55% 60% at 30% 20%, rgba(232,25,125,0.14), transparent 70%), radial-gradient(ellipse 55% 60% at 80% 90%, rgba(138,79,255,0.12), transparent 70%)",
+              "radial-gradient(ellipse 55% 60% at 30% 20%, rgba(255,31,61,0.13), transparent 70%), radial-gradient(ellipse 55% 60% at 80% 90%, rgba(58,143,255,0.12), transparent 70%)",
           }}
         />
         <div className="relative mx-auto max-w-5xl px-4 py-24 text-center sm:px-6 lg:py-32">
-          <p className="eyebrow text-violet">Android Dreams Media</p>
+          <p className="eyebrow text-cyan">Android Dreams Media</p>
           <h1 className="mt-6 font-display text-6xl leading-[0.95] tracking-wide sm:text-7xl lg:text-8xl">
             <span className="text-cream">Quantum Readiness</span>{" "}
             <span className="text-magenta">Community</span>
@@ -146,7 +146,7 @@ export default function CommunityPage() {
                 key={tier.name}
                 className={`relative flex flex-col border p-8 ${
                   tier.highlight
-                    ? "border-magenta/60 bg-magenta/[0.04] shadow-[0_0_50px_rgba(232,25,125,0.15)]"
+                    ? "border-magenta/60 bg-magenta/[0.04] shadow-[0_0_50px_rgba(255,31,61,0.15)]"
                     : "border-cream/10 bg-ink"
                 }`}
               >
@@ -193,13 +193,13 @@ export default function CommunityPage() {
 
       {/* ─────────────────────────── WHY NOW ─────────────────────────── */}
       <section aria-labelledby="why-now" className="mx-auto max-w-7xl px-4 py-20 sm:px-6">
-        <h2 id="why-now" className="eyebrow text-violet">
+        <h2 id="why-now" className="eyebrow text-cyan">
           Why now
         </h2>
         <div className="mt-8 grid gap-5 md:grid-cols-3">
           {REASONS.map((r) => (
             <div key={r.number} className="border border-cream/10 bg-cream/[0.02] p-6">
-              <p className="font-mono text-xs tracking-wide2 text-violet">{r.number}</p>
+              <p className="font-mono text-xs tracking-wide2 text-cyan">{r.number}</p>
               <h3 className="mt-3 font-display text-2xl tracking-wide text-cream">{r.title}</h3>
               <p className="mt-3 text-[0.95rem] leading-relaxed text-dim">{r.body}</p>
             </div>

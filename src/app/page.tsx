@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArticleCard, FeatureCard, postHref } from "@/components/ArticleCard";
 import { NewsletterCTA } from "@/components/NewsletterCTA";
@@ -36,61 +37,73 @@ export default async function HomePage() {
 
   return (
     <>
-      {/* ─────────────────────────── HERO ─────────────────────────── */}
+      {/* ────────────── HERO — the illustration is the brand ────────────── */}
       <section
         aria-label="Android Dreams"
         className="relative overflow-hidden border-b border-cream/10"
       >
         <div className="pointer-events-none absolute inset-0 bg-grid" />
-        <div className="pointer-events-none absolute inset-0 glow-orange-tl" />
-        <div className="pointer-events-none absolute inset-0 glow-magenta-br" />
-        <div className="relative mx-auto grid min-h-[calc(100vh-6.25rem)] max-w-7xl items-stretch px-4 py-16 sm:px-6 lg:grid-cols-[1fr_auto_1fr] lg:gap-12 lg:py-0">
-          {/* Left: the masthead */}
-          <div className="flex flex-col justify-center py-8 lg:py-24">
-            <h1 className="font-display leading-[0.85] tracking-wide">
-              <span className="block text-[clamp(4.5rem,13vw,10rem)] text-cream">
+        <div className="pointer-events-none absolute inset-0 glow-cyan-left" />
+        <div className="pointer-events-none absolute inset-0 glow-magenta-right" />
+        <div className="relative mx-auto grid max-w-7xl items-stretch px-4 py-14 sm:px-6 lg:min-h-[80vh] lg:grid-cols-[1fr_auto_1.05fr] lg:gap-14 lg:py-0">
+          {/* Left: the masthead — title-card wordmark */}
+          <div className="flex flex-col justify-center py-8 lg:py-20">
+            <h1 className="font-display font-bold leading-[0.95] tracking-[0.06em]">
+              <span className="block text-[clamp(3.25rem,8.5vw,6.5rem)] text-cream">
                 ANDROID
               </span>
-              <span className="block text-[clamp(4.5rem,13vw,10rem)] text-orange">
+              <span className="block text-[clamp(3.25rem,8.5vw,6.5rem)] text-cream">
                 DREAMS
               </span>
             </h1>
-            <p className="mt-8 font-mono text-xs uppercase tracking-wide4 text-dim sm:text-sm">
+            <p className="mt-8 font-serif text-sm font-extralight uppercase tracking-[0.55em] text-gold sm:text-base">
               Imagine the future
+            </p>
+            <p className="mt-10 font-mono text-[0.65rem] uppercase tracking-wide2 text-dimmer">
+              · Vol 01 · {new Date().getUTCFullYear()} · Presented in 2.39:1 ·
             </p>
           </div>
 
-          {/* The vertical orange divider motif */}
+          {/* The seam — the threshold every layout honors */}
           <div aria-hidden className="hidden w-[3px] self-stretch bg-orange lg:block" />
           <div aria-hidden className="h-[3px] w-24 bg-orange lg:hidden" />
 
-          {/* Right: the current featured piece as a magazine cover */}
-          <div className="flex flex-col justify-center py-10 lg:py-24">
+          {/* Right: the mark — uncropped, no type on the face */}
+          <div className="relative flex items-center justify-center py-10 lg:py-14">
+            <Image
+              src="/brand/ad-mark.jpg"
+              alt="The Android Dreams mark: a portrait split at a glowing seam — half human face in cool blue light, half machine in deep crimson."
+              width={2351}
+              height={2351}
+              priority
+              sizes="(min-width: 1024px) 45vw, 90vw"
+              className="max-h-[70vh] w-auto"
+            />
+          </div>
+        </div>
+
+        {/* NOW SHOWING — the featured piece on a letterbox plate */}
+        <div className="relative border-t border-cream/10 bg-[#030207]/80">
+          <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6">
             {featured ? (
-              <article className="group relative">
-                <p className="eyebrow text-cyan">
-                  {formatFromCategories(featured.categorySlugs).name} · Featured
+              <article className="group flex flex-col gap-3 lg:flex-row lg:items-baseline lg:gap-10">
+                <p className="shrink-0 font-mono text-[0.65rem] uppercase tracking-wide4 text-orange">
+                  · Now Showing ·
                 </p>
-                <h2 className="mt-5 font-display text-4xl leading-[1.02] tracking-wide text-cream sm:text-5xl">
+                <h2 className="font-display text-2xl leading-snug text-cream sm:text-3xl">
                   <Link href={postHref(featured)} className="transition-colors group-hover:text-cyan">
                     {featured.title}
                   </Link>
                 </h2>
-                <p className="mt-5 max-w-lg text-lg italic leading-relaxed text-dim">
-                  {featured.excerpt}
-                </p>
-                <p className="mt-6 font-mono text-[0.65rem] uppercase tracking-wide2 text-dimmer">
-                  {formatDateStamp(featured.date)} · {featured.author.name} ·{" "}
-                  {featured.readingMinutes} min read
+                <p className="shrink-0 font-mono text-[0.65rem] uppercase tracking-wide2 text-gold lg:ml-auto">
+                  · {formatFromCategories(featured.categorySlugs).name} ·{" "}
+                  {formatDateStamp(featured.date)} · {featured.readingMinutes} min ·
                 </p>
               </article>
             ) : (
-              <div className="border border-cream/10 bg-cream/[0.02] p-8">
-                <p className="eyebrow text-orange">Transmission pending</p>
-                <p className="mt-4 italic text-dim">
-                  The first feature is on its way from the frontier.
-                </p>
-              </div>
+              <p className="font-mono text-[0.65rem] uppercase tracking-wide4 text-dimmer">
+                · Now Showing · The first feature is on its way from the frontier ·
+              </p>
             )}
           </div>
         </div>

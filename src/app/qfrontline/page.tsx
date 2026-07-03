@@ -1,25 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { JetBrains_Mono, Outfit } from "next/font/google";
 import type { Post } from "@/lib/types";
 import { formatDateStamp, stripHtml, truncate } from "@/lib/utils";
 import { getPosts, REVALIDATE } from "@/lib/wp";
 
 export const revalidate = 300;
-
-// QFrontline brand v1.0 typography: Outfit for everything visual,
-// JetBrains Mono for prompts, code, and metadata. Scoped to this page.
-const outfit = Outfit({
-  subsets: ["latin"],
-  variable: "--font-outfit",
-  display: "swap",
-});
-
-const jetbrains = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-jetbrains",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: "QFrontline — Quantum Technology for Builders",
@@ -97,7 +82,7 @@ export default async function QFrontlinePage() {
   const brief = devBrief.posts[0];
 
   return (
-    <div className={`${outfit.variable} ${jetbrains.variable} bg-white text-qf-void`}>
+    <div className="bg-white text-qf-void">
       {/* ───────────── HERO — Void surface, per brand: masthead/hero ───────────── */}
       <section aria-label="QFrontline" className="relative overflow-hidden bg-qf-void">
         <div className="pointer-events-none absolute inset-0 glow-signal-tl" />

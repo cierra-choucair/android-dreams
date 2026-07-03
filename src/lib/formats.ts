@@ -29,7 +29,7 @@ export const FORMATS: Record<FormatSlug, Format> = {
     text: "text-orange",
     border: "border-orange",
     bg: "bg-orange",
-    hex: "#FF6A00",
+    hex: "#FF8A3D",
     description:
       "Daily dispatches from the frontier — what happened, why it matters, and what it says about the world being built.",
     cadence: "MON–FRI",
@@ -40,7 +40,7 @@ export const FORMATS: Record<FormatSlug, Format> = {
     text: "text-cyan",
     border: "border-cyan",
     bg: "bg-cyan",
-    hex: "#00D4FF",
+    hex: "#3A8FFF",
     description:
       "Long-form journalism from the deep end of science and technology. Reported, considered, and built to last.",
     cadence: "LONG-FORM",
@@ -51,7 +51,7 @@ export const FORMATS: Record<FormatSlug, Format> = {
     text: "text-magenta",
     border: "border-magenta",
     bg: "bg-magenta",
-    hex: "#E8197D",
+    hex: "#FF1F3D",
     description:
       "Science fiction as a framework for the present. What imagined worlds tell us about the decisions in front of us.",
     cadence: "ESSAYS",
@@ -62,7 +62,7 @@ export const FORMATS: Record<FormatSlug, Format> = {
     text: "text-gold",
     border: "border-gold",
     bg: "bg-gold",
-    hex: "#C9A84C",
+    hex: "#A098B8",
     description:
       "The founder's weekly letter. One idea, held up to the light, every Sunday.",
     cadence: "SUNDAYS",
