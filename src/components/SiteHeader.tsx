@@ -78,8 +78,8 @@ export function SiteHeader() {
           scrolled ? "max-h-0 border-b-0" : "max-h-10"
         }`}
       >
-        <nav aria-label="Android Dreams Media properties">
-          <ul className="mx-auto flex max-w-7xl items-center justify-center gap-5 px-4 py-1.5 sm:gap-8">
+        <nav aria-label="Android Dreams Media properties" className="overflow-x-auto">
+          <ul className="mx-auto flex w-max max-w-none items-center gap-5 whitespace-nowrap px-4 py-1.5 sm:w-auto sm:max-w-7xl sm:justify-center sm:gap-8">
             {STUDIO_LINKS.map((link, i) => (
               <li key={link.label} className="flex items-center gap-5 sm:gap-8">
                 {i > 0 && (
@@ -175,7 +175,7 @@ export function SiteHeader() {
           role="dialog"
           aria-modal="true"
           aria-label="Search Android Dreams"
-          className="fixed inset-0 z-[60] bg-ink/97 bg-grid"
+          className="fixed inset-0 z-[60] bg-ink/[0.97] bg-grid"
         >
           <div className="pointer-events-none absolute inset-0 glow-orange-tl" />
           <div className="pointer-events-none absolute inset-0 glow-magenta-br" />
@@ -216,7 +216,7 @@ export function SiteHeader() {
           role="dialog"
           aria-modal="true"
           aria-label="Site menu"
-          className="fixed inset-0 z-[60] overflow-y-auto bg-ink/97 bg-grid lg:hidden"
+          className="fixed inset-0 z-[60] overflow-y-auto bg-ink/[0.97] bg-grid lg:hidden"
         >
           <div className="pointer-events-none absolute inset-0 glow-orange-tl" />
           <button
