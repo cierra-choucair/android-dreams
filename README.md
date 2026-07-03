@@ -38,6 +38,7 @@ npm run dev
 | `WP_CF7_DAVOS_FORM_ID` | Contact Form 7 form ID for the `/davos` invitation form. |
 | `WP_CF7_CONTACT_FORM_ID` | Contact Form 7 form ID for the `/contact` page. |
 | `WP_CF7_QRC_FORM_ID` | Contact Form 7 form ID for QRC invite requests (falls back to contact form). |
+| `REVALIDATE_SECRET` | Shared secret for on-demand revalidation — see "Instant publishing" below. |
 
 ## Content model (WordPress)
 
@@ -63,6 +64,26 @@ Special **tags**: `featured` pins a post to the homepage hero;
 - `/community` (+ `/community/join`), `/summit`, `/davos` — sibling property landings
 - `/about`, `/contact` — `/newsletter` redirects to `/sunday-letter`, which is the newsletter
 - `/rss.xml` + per-format `/[format]/rss.xml`, `/sitemap.xml`, `/robots.txt`
+
+## Instant publishing (on-demand revalidation)
+
+ISR keeps pages fresh on a schedule (homepage 1 min, archives 5 min,
+articles 15 min). For instant updates when a post is published or edited,
+wire WordPress to ping the site:
+
+1. Set `REVALIDATE_SECRET` in Vercel (any long random string).
+2. Copy `wordpress/ad-revalidate.php` into the WordPress install at
+   `wp-content/mu-plugins/ad-revalidate.php` (create the folder if needed).
+3. Add to `wp-config.php`:
+
+   ```php
+   define('AD_REVALIDATE_URL',    'https://www.androiddreamsmedia.com/api/revalidate');
+   define('AD_REVALIDATE_SECRET', 'the-same-value-as-REVALIDATE_SECRET');
+   ```
+
+Publishing, updating, or unpublishing a post then regenerates the post
+page, its archive, the feeds, and the homepage immediately. The scheduled
+ISR windows remain as a backstop.
 
 ## Deployment
 
