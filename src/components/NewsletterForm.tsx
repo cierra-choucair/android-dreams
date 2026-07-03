@@ -14,11 +14,6 @@ const ACCENTS = {
     button: "bg-gold text-ink hover:bg-gold/85 focus-visible:outline-gold",
     border: "border-gold/40 focus:border-gold",
   },
-  matrix: {
-    button:
-      "bg-matrix text-ink hover:bg-matrix/85 focus-visible:outline-matrix",
-    border: "border-matrix/40 focus:border-matrix",
-  },
 } as const;
 
 export function NewsletterForm({

@@ -46,7 +46,7 @@ formats:
 | `deep-read` | Long-form journalism | Cyan `#00D4FF` |
 | `sci-fi-lens` | Science fiction as framework | Magenta `#E8197D` |
 | `sunday-letter` | The founder's weekly letter | Gold `#C9A84C` |
-| `qfrontline` | Developer vertical | Matrix green `#00FF41` |
+| `qfrontline` | Developer vertical | Signal Magenta `#FF2B5E` |
 
 Special **tags**: `featured` pins a post to the homepage hero;
 `dev-brief` feeds the QFrontline terminal mockup.
