@@ -17,8 +17,8 @@ const PROPERTIES = [
     href: "/",
     accent: "text-orange",
     border: "border-orange/40",
-    role: "The flagship",
-    body: "A digital magazine covering quantum technology, artificial intelligence, and the deep science reshaping civilization — daily Transmissions, long-form Deep Reads, the Sci-Fi Lens, and the Sunday Letter.",
+    role: "The anchor publication",
+    body: "The correspondent at the frontier. Most coverage of frontier technology hypes, regurgitates, or sterilizes — Android Dreams makes science feel alive while remaining rigorous, across daily Transmissions, the Deep Read, the Sci-Fi Lens, and the Sunday Letter.",
   },
   {
     name: "QFrontline",
@@ -26,7 +26,7 @@ const PROPERTIES = [
     accent: "text-magenta",
     border: "border-magenta/40",
     role: "The developer vertical",
-    body: "Quantum technology for builders. Technical depth, working code, and the weekly Dev Brief that keeps quantum developers at the frontier.",
+    body: "Most quantum coverage talks about quantum. QFrontline talks to the people building it — technical depth, working code, and the weekly Dev Brief.",
   },
   {
     name: "Quantum Readiness Community",
@@ -34,7 +34,7 @@ const PROPERTIES = [
     accent: "text-magenta",
     border: "border-magenta/40",
     role: "The community layer",
-    body: "A developer-first community where editorial signal becomes working groups, portfolio artifacts, and career visibility — free, and gated by contribution rather than price.",
+    body: "Where editorial signal becomes practice: working groups, portfolio artifacts, and career visibility for the developers and builders learning to make quantum come alive.",
   },
   {
     name: "Quantum State Summit",
@@ -42,7 +42,7 @@ const PROPERTIES = [
     accent: "text-cyan",
     border: "border-cyan/40",
     role: "The annual summit",
-    body: "An immersive annual event built to give quantum a frame of reference: three hands-on tracks, the Superposition Room, and a provider marketplace.",
+    body: "Every other quantum event is a conference. Quantum State is an experience — immersive installations, hands-on tracks, and a provider marketplace that make quantum felt rather than explained.",
   },
   {
     name: "House of Quantum",
@@ -50,7 +50,7 @@ const PROPERTIES = [
     accent: "text-gold",
     border: "border-gold/40",
     role: "Coming 2028",
-    body: "Quantum is arriving faster than the rooms set up to discuss it. We are building one of those rooms. By invitation.",
+    body: "At Davos, AI has multiple stages and climate has permanent infrastructure. Quantum has nothing comparable — yet. We are building the room where quantum enters the global conversation at the level it demands.",
   },
 ];
 
@@ -59,19 +59,19 @@ const FOUNDERS = [
     name: "Cierra Lunde Choucair",
     title: "Executive Director & Editor-in-Chief",
     image: "cierra.jpg",
-    bio: "Cierra founded Android Dreams to follow the oldest human question — what is all of this, and what are we inside of it? — with journalistic rigor and an unembarrassed sense of wonder. She leads editorial across the studio, wrote its manifesto, and writes The Sunday Letter every week.",
+    bio: "Cierra founded Android Dreams to follow the oldest human question — what is all of this, and what are we inside of it? — with journalistic rigor and an unembarrassed sense of wonder. She leads editorial across the studio's publications, curates the programming of the Quantum State Summit and House of Quantum, wrote the manifesto, and writes The Sunday Letter every week.",
   },
   {
     name: "Sandro Bilobrk",
     title: "Co-Founder & Creative Director",
     image: "sandro.jpg",
-    bio: "Sandro leads video strategy across the studio and is building Android Dreams' cinematic presence on screen — the moving-image counterpart to the magazine's voice. He also lends that eye to the writing room, where the visual and editorial languages are designed as one.",
+    bio: "Sandro leads video strategy and the studio's presence on screen — the moving-image counterpart to the magazine's voice — and runs the operational infrastructure that keeps four properties publishing as one house. He also lends that eye to the writing room, where the visual and editorial languages are designed together.",
   },
   {
     name: "Christina Wu",
     title: "President & Head of Partnerships",
     image: "christina.jpg",
-    bio: "Christina runs the business of the studio: operations, growth, and the partnerships that carry Android Dreams into the world — from the Quantum State Summit's founding partners to the rooms being built for House of Quantum.",
+    bio: "Christina leads the partnerships that carry Android Dreams Media into the world — from the Summit's founding partners to the rooms being built for House of Quantum — alongside the community's flagship products and the studio's bridge to Chinese-language audiences.",
   },
 ];
 
@@ -119,15 +119,17 @@ export default function AboutPage() {
             Android Dreams Media
           </h1>
           <p className="mt-8 text-xl italic leading-relaxed text-dim">
-            A media studio at the intersection of rigorous journalism and
-            visionary storytelling — covering quantum technology, artificial
-            intelligence, and the deep science building our sci-fi future.
+            We are building media infrastructure for the quantum and AI era —
+            rigorous journalism and visionary storytelling about the deep
+            science building our sci-fi future.
           </p>
           <p className="mt-6 max-w-2xl text-[1.15rem] leading-[1.75] text-cream/85">
             The future is being built quietly, quickly, and often without
             context. Android Dreams Media exists to document it, interpret
             it, and remind everyone who reads, watches, or gathers with us
-            that it is still something we can shape.
+            that it is still something we can shape. The studio operates five
+            properties — each with its own front door, all living in the same
+            house.
           </p>
         </header>
 
@@ -163,6 +165,10 @@ export default function AboutPage() {
               </Link>
             ))}
           </div>
+          <p className="mt-10 text-center font-mono text-[0.65rem] uppercase tracking-wide2 text-dimmer">
+            · The magazine seeds the community · the community fills the
+            summit · the summit earns Davos ·
+          </p>
         </section>
 
         {/* ─────────────────────── The founders ─────────────────────── */}
