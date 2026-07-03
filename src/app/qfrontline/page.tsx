@@ -118,7 +118,7 @@ export default async function QFrontlinePage() {
       {/* ─────────────── HERO — the masthead, full screen ─────────────── */}
       <section
         aria-label="QFrontline"
-        className="relative flex min-h-[calc(100vh-6.25rem)] flex-col overflow-hidden bg-qf-void"
+        className="relative flex min-h-[calc(100vh-4rem)] flex-col overflow-hidden bg-qf-void"
       >
         <div className="pointer-events-none absolute inset-0 glow-signal-tl" />
         {/* Oversized ghost prompt, watermark of the mark */}

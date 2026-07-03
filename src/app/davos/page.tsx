@@ -20,7 +20,7 @@ export default function DavosPage() {
       {/* ─────────────────── STEALTH HERO — single screen ─────────────────── */}
       <section
         aria-label="House of Quantum"
-        className="relative flex min-h-[calc(100vh-6.25rem)] flex-col overflow-hidden border-b border-gold/20"
+        className="relative flex min-h-[calc(100vh-4rem)] flex-col overflow-hidden border-b border-gold/20"
       >
         <div className="pointer-events-none absolute inset-0 bg-grid" />
         <div className="pointer-events-none absolute inset-0 rings-gold" />

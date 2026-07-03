@@ -66,8 +66,8 @@ export default function RootLayout({
           Skip to content
         </a>
         <SiteHeader />
-        {/* Offset for the fixed header (studio bar + nav) */}
-        <main id="main" className="pt-[6.25rem]">
+        {/* Offset for the fixed single-line header */}
+        <main id="main" className="pt-16">
           {children}
         </main>
         <SiteFooter />
