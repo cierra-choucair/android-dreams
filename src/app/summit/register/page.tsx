@@ -23,7 +23,7 @@ export default function SummitRegisterPage() {
         </p>
         <div className="mt-10 flex flex-wrap justify-center gap-4">
           <Link
-            href="/newsletter"
+            href="/sunday-letter"
             className="bg-magenta px-6 py-3 font-mono text-xs uppercase tracking-wide2 text-ink transition-colors hover:bg-magenta/85"
           >
             Get the early bird window

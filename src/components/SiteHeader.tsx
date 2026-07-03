@@ -9,7 +9,6 @@ const FORMAT_LINKS = [
   { href: "/transmissions", label: "Transmissions" },
   { href: "/deep-read", label: "The Deep Read" },
   { href: "/sci-fi-lens", label: "The Sci-Fi Lens" },
-  { href: "/sunday-letter", label: "Sunday Letter" },
   { href: "/qfrontline", label: "QFrontline" },
 ];
 
@@ -152,7 +151,7 @@ export function SiteHeader() {
               <Search size={18} strokeWidth={1.5} aria-hidden />
             </button>
             <Link
-              href="/newsletter"
+              href="/sunday-letter"
               className="hidden border border-orange px-4 py-1.5 font-mono text-[0.65rem] uppercase tracking-wide2 text-orange transition-colors hover:bg-orange hover:text-ink sm:inline-block"
             >
               Subscribe
@@ -257,8 +256,8 @@ export function SiteHeader() {
             <p className="eyebrow mt-12 text-gold">Elsewhere</p>
             <ul className="mt-6 space-y-3 font-mono text-sm">
               {[
+                { href: "/sunday-letter", label: "The Sunday Letter" },
                 { href: "/about", label: "About" },
-                { href: "/newsletter", label: "Newsletter" },
                 { href: "/contact", label: "Contact" },
                 { href: "/search", label: "Search" },
               ].map((link) => (

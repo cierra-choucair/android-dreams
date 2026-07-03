@@ -3,11 +3,30 @@ import { NextResponse } from "next/server";
 /**
  * Newsletter subscribe endpoint. Relays to the beehiiv API server-side so
  * the API key never reaches the client.
+ *
+ * Two publications:
+ *  - "ad" — Android Dreams / The Sunday Letter
+ *  - "qf" — QFrontline / The Dev Brief
  */
+function publicationId(publication: unknown): string | undefined {
+  if (publication === "qf") {
+    return process.env.NEXT_PUBLIC_BEEHIIV_QF_PUBLICATION_ID;
+  }
+  // Default: Android Dreams (legacy env var kept as fallback)
+  return (
+    process.env.NEXT_PUBLIC_BEEHIIV_AD_PUBLICATION_ID ||
+    process.env.NEXT_PUBLIC_BEEHIIV_PUBLICATION_ID
+  );
+}
+
 export async function POST(request: Request) {
   let email: unknown;
+  let publication: unknown;
   try {
-    ({ email } = (await request.json()) as { email?: unknown });
+    ({ email, publication } = (await request.json()) as {
+      email?: unknown;
+      publication?: unknown;
+    });
   } catch {
     return NextResponse.json({ error: "Invalid request." }, { status: 400 });
   }
@@ -19,10 +38,10 @@ export async function POST(request: Request) {
     );
   }
 
-  const publicationId = process.env.NEXT_PUBLIC_BEEHIIV_PUBLICATION_ID;
+  const pubId = publicationId(publication);
   const apiKey = process.env.BEEHIIV_API_KEY;
 
-  if (!publicationId || !apiKey) {
+  if (!pubId || !apiKey) {
     return NextResponse.json(
       { error: "Subscriptions open soon — the newsletter backend isn't connected yet." },
       { status: 503 },
@@ -31,7 +50,7 @@ export async function POST(request: Request) {
 
   try {
     const res = await fetch(
-      `https://api.beehiiv.com/v2/publications/${publicationId}/subscriptions`,
+      `https://api.beehiiv.com/v2/publications/${pubId}/subscriptions`,
       {
         method: "POST",
         headers: {
@@ -42,7 +61,7 @@ export async function POST(request: Request) {
           email,
           reactivate_existing: true,
           send_welcome_email: true,
-          utm_source: "androiddreams.com",
+          utm_source: "androiddreamsmedia.com",
         }),
       },
     );

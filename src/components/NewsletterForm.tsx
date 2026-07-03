@@ -6,22 +6,35 @@ type Status = "idle" | "loading" | "success" | "error";
 
 const ACCENTS = {
   orange: {
+    input:
+      "border-orange/40 bg-ink/60 text-cream placeholder:text-dimmer focus:border-orange font-mono",
     button:
       "bg-orange text-ink hover:bg-orange/85 focus-visible:outline-orange",
-    border: "border-orange/40 focus:border-orange",
+    note: "text-dim",
   },
   gold: {
+    input:
+      "border-gold/40 bg-ink/60 text-cream placeholder:text-dimmer focus:border-gold font-mono",
     button: "bg-gold text-ink hover:bg-gold/85 focus-visible:outline-gold",
-    border: "border-gold/40 focus:border-gold",
+    note: "text-dim",
+  },
+  // QFrontline light surface — white page, Void text, Signal accent
+  qf: {
+    input:
+      "border-qf-void/25 bg-white text-qf-void placeholder:text-qf-void/40 focus:border-qf-signal font-qf-mono",
+    button:
+      "bg-qf-signal text-qf-void font-medium hover:bg-qf-signal-deep hover:text-white focus-visible:outline-qf-signal font-qf-mono",
+    note: "text-qf-void/60",
   },
 } as const;
 
 export function NewsletterForm({
   accent = "orange",
-  compact = false,
+  publication = "ad",
 }: {
   accent?: keyof typeof ACCENTS;
-  compact?: boolean;
+  /** Which beehiiv publication to subscribe to: Android Dreams or QFrontline. */
+  publication?: "ad" | "qf";
 }) {
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
@@ -38,7 +51,7 @@ export function NewsletterForm({
       const res = await fetch("/api/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, publication }),
       });
       const data = (await res.json().catch(() => ({}))) as { error?: string };
       if (res.ok) {
@@ -57,26 +70,25 @@ export function NewsletterForm({
 
   return (
     <div>
-      <form
-        onSubmit={onSubmit}
-        className={`flex w-full flex-col gap-3 sm:flex-row ${compact ? "" : "sm:items-stretch"}`}
-      >
-        <label htmlFor={`newsletter-email-${accent}`} className="sr-only">
+      <form onSubmit={onSubmit} className="flex w-full flex-col gap-3 sm:flex-row">
+        <label htmlFor={`newsletter-email-${publication}-${accent}`} className="sr-only">
           Email address
         </label>
         <input
-          id={`newsletter-email-${accent}`}
+          id={`newsletter-email-${publication}-${accent}`}
           name="email"
           type="email"
           required
           placeholder="you@thefuture.com"
           autoComplete="email"
-          className={`min-w-0 flex-1 border bg-ink/60 px-4 py-3 font-mono text-sm text-cream placeholder:text-dimmer focus:outline-none ${colors.border}`}
+          className={`min-w-0 flex-1 border px-4 py-3 text-sm focus:outline-none ${colors.input}`}
         />
         <button
           type="submit"
           disabled={status === "loading"}
-          className={`px-6 py-3 font-mono text-xs uppercase tracking-wide2 transition-colors disabled:opacity-60 ${colors.button}`}
+          className={`px-6 py-3 text-xs uppercase tracking-wide2 transition-colors disabled:opacity-60 ${
+            accent === "qf" ? "" : "font-mono"
+          } ${colors.button}`}
         >
           {status === "loading" ? "Transmitting…" : "Subscribe"}
         </button>
@@ -84,9 +96,9 @@ export function NewsletterForm({
       <p
         role="status"
         aria-live="polite"
-        className={`mt-3 min-h-[1.25rem] font-mono text-xs tracking-wide ${
-          status === "error" ? "text-magenta" : "text-dim"
-        }`}
+        className={`mt-3 min-h-[1.25rem] text-xs tracking-wide ${
+          accent === "qf" ? "font-qf-mono" : "font-mono"
+        } ${status === "error" ? "text-magenta" : colors.note}`}
       >
         {message}
       </p>

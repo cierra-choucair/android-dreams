@@ -39,7 +39,9 @@ export async function POST(request: Request) {
   const formId =
     form === "contact"
       ? process.env.WP_CF7_CONTACT_FORM_ID
-      : process.env.WP_CF7_DAVOS_FORM_ID;
+      : form === "qrc"
+        ? process.env.WP_CF7_QRC_FORM_ID || process.env.WP_CF7_CONTACT_FORM_ID
+        : process.env.WP_CF7_DAVOS_FORM_ID;
 
   if (!wpBase || !formId) {
     return NextResponse.json(

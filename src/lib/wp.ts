@@ -236,6 +236,7 @@ export async function getAuthorById(id: number): Promise<Author | null> {
 export interface GetPostsOptions {
   category?: string; // category slug
   tag?: string; // tag slug
+  excludeTag?: string; // tag slug to exclude
   authorSlug?: string;
   search?: string;
   page?: number;
@@ -260,6 +261,9 @@ function samplePosts(opts: GetPostsOptions): PostList {
   if (order === "asc") posts.reverse();
   if (category) posts = posts.filter((p) => p.categorySlugs.includes(category));
   if (tag) posts = posts.filter((p) => p.tags.some((t) => t.slug === tag));
+  if (opts.excludeTag) {
+    posts = posts.filter((p) => !p.tags.some((t) => t.slug === opts.excludeTag));
+  }
   if (authorSlug) posts = posts.filter((p) => p.author.slug === authorSlug);
   if (exclude.length) posts = posts.filter((p) => !exclude.includes(p.id));
   if (search) {
@@ -311,6 +315,10 @@ export async function getPosts(opts: GetPostsOptions = {}): Promise<PostList> {
     const t = await getTagBySlug(tag);
     if (!t) return { posts: [], total: 0, totalPages: 1 };
     params.set("tags", String(t.id));
+  }
+  if (opts.excludeTag) {
+    const t = await getTagBySlug(opts.excludeTag);
+    if (t) params.set("tags_exclude", String(t.id));
   }
   if (authorSlug) {
     const a = await getAuthorBySlug(authorSlug);
