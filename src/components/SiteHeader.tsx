@@ -12,23 +12,101 @@ const AD_MENU = [
   { href: "/manifesto", label: "The Editorial Manifesto" },
 ];
 
-const STUDIO_LINKS = [
-  { href: "/", label: "Android Dreams" },
-  { href: "/qfrontline", label: "QFrontline" },
+const STUDIO_MENU = [
   { href: "/community", label: "Quantum Readiness Community" },
   { href: "/summit", label: "Quantum State Summit" },
   { href: "/davos", label: "House of Quantum" },
 ];
 
+type DropdownId = "ad" | "studio";
+
+function NavDropdown({
+  id,
+  label,
+  items,
+  open,
+  setOpen,
+  pathname,
+}: {
+  id: DropdownId;
+  label: string;
+  items: { href: string; label: string }[];
+  open: DropdownId | null;
+  setOpen: (id: DropdownId | null) => void;
+  pathname: string;
+}) {
+  const ref = useRef<HTMLLIElement>(null);
+  const isOpen = open === id;
+  const active = items.some(
+    (link) => pathname === link.href || pathname.startsWith(`${link.href}/`),
+  );
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const onClick = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(null);
+    };
+    window.addEventListener("mousedown", onClick);
+    return () => window.removeEventListener("mousedown", onClick);
+  }, [isOpen, setOpen]);
+
+  return (
+    <li ref={ref} className="relative">
+      <button
+        type="button"
+        aria-expanded={isOpen}
+        aria-haspopup="true"
+        onClick={() => setOpen(isOpen ? null : id)}
+        onMouseEnter={() => setOpen(id)}
+        className={`flex items-center gap-1.5 font-mono text-[0.7rem] uppercase tracking-wide2 transition-colors ${
+          active || isOpen ? "text-orange" : "text-dim hover:text-cream"
+        }`}
+      >
+        {label}
+        <ChevronDown
+          size={13}
+          strokeWidth={1.5}
+          aria-hidden
+          className={`transition-transform ${isOpen ? "rotate-180" : ""}`}
+        />
+      </button>
+      {isOpen && (
+        <ul
+          onMouseLeave={() => setOpen(null)}
+          className="absolute left-1/2 top-full z-50 mt-3 w-64 -translate-x-1/2 border border-cream/15 bg-ink py-2 shadow-[0_16px_50px_rgba(0,0,0,0.6)]"
+        >
+          <span
+            aria-hidden
+            className="absolute -top-[2px] left-1/2 h-[2px] w-10 -translate-x-1/2 bg-orange"
+          />
+          {items.map((link) => (
+            <li key={link.href}>
+              <Link
+                href={link.href}
+                className={`block px-5 py-2.5 font-mono text-[0.68rem] uppercase tracking-wide2 transition-colors ${
+                  pathname === link.href || pathname.startsWith(`${link.href}/`)
+                    ? "text-orange"
+                    : "text-dim hover:bg-cream/[0.04] hover:text-cream"
+                }`}
+              >
+                {link.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      )}
+    </li>
+  );
+}
+
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<DropdownId | null>(null);
   const pathname = usePathname();
   const router = useRouter();
   const searchInputRef = useRef<HTMLInputElement>(null);
-  const dropdownRef = useRef<HTMLLIElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 32);
@@ -41,7 +119,7 @@ export function SiteHeader() {
   useEffect(() => {
     setMenuOpen(false);
     setSearchOpen(false);
-    setDropdownOpen(false);
+    setOpenDropdown(null);
   }, [pathname]);
 
   // Focus search input when the overlay opens
@@ -49,26 +127,16 @@ export function SiteHeader() {
     if (searchOpen) searchInputRef.current?.focus();
   }, [searchOpen]);
 
-  // Escape closes everything; outside click closes the dropdown
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         setSearchOpen(false);
         setMenuOpen(false);
-        setDropdownOpen(false);
-      }
-    };
-    const onClick = (e: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
-        setDropdownOpen(false);
+        setOpenDropdown(null);
       }
     };
     window.addEventListener("keydown", onKey);
-    window.addEventListener("mousedown", onClick);
-    return () => {
-      window.removeEventListener("keydown", onKey);
-      window.removeEventListener("mousedown", onClick);
-    };
+    return () => window.removeEventListener("keydown", onKey);
   }, []);
 
   const onSearchSubmit = useCallback(
@@ -83,42 +151,9 @@ export function SiteHeader() {
     [router],
   );
 
-  const adActive = AD_MENU.some(
-    (link) => pathname === link.href || pathname.startsWith(`${link.href}/`),
-  );
-
   return (
     <header className="fixed inset-x-0 top-0 z-50">
-      {/* Studio bar — discoverability layer for the sibling properties */}
-      <div
-        className={`overflow-hidden border-b border-cream/[0.06] bg-[#030207]/95 backdrop-blur transition-all duration-300 ${
-          scrolled ? "max-h-0 border-b-0" : "max-h-10"
-        }`}
-      >
-        <nav aria-label="Android Dreams Media properties" className="overflow-x-auto">
-          <ul className="mx-auto flex w-max max-w-none items-center gap-5 whitespace-nowrap px-4 py-1.5 sm:w-auto sm:max-w-7xl sm:justify-center sm:gap-7">
-            {STUDIO_LINKS.map((link, i) => (
-              <li key={link.label} className="flex items-center gap-5 sm:gap-7">
-                {i > 0 && (
-                  <span aria-hidden className="text-[0.55rem] text-dimmer">
-                    ·
-                  </span>
-                )}
-                <Link
-                  href={link.href}
-                  className={`font-mono text-[0.6rem] uppercase tracking-wide2 transition-colors sm:text-[0.65rem] ${
-                    i === 0 ? "text-dim hover:text-orange" : "text-dimmer hover:text-cream"
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </div>
-
-      {/* Main nav */}
+      {/* One line: wordmark · dropdowns · flat links · search · subscribe */}
       <div
         className={`border-b border-cream/10 bg-ink/90 backdrop-blur transition-all duration-300 ${
           scrolled ? "py-2" : "py-3.5"
@@ -140,52 +175,14 @@ export function SiteHeader() {
 
           <nav aria-label="Main" className="hidden lg:block">
             <ul className="flex items-center gap-7">
-              {/* Android Dreams dropdown: the formats + the manifesto */}
-              <li ref={dropdownRef} className="relative">
-                <button
-                  type="button"
-                  aria-expanded={dropdownOpen}
-                  aria-haspopup="true"
-                  onClick={() => setDropdownOpen(true)}
-                  onMouseEnter={() => setDropdownOpen(true)}
-                  className={`flex items-center gap-1.5 font-mono text-[0.7rem] uppercase tracking-wide2 transition-colors ${
-                    adActive || dropdownOpen ? "text-orange" : "text-dim hover:text-cream"
-                  }`}
-                >
-                  Android Dreams
-                  <ChevronDown
-                    size={13}
-                    strokeWidth={1.5}
-                    aria-hidden
-                    className={`transition-transform ${dropdownOpen ? "rotate-180" : ""}`}
-                  />
-                </button>
-                {dropdownOpen && (
-                  <ul
-                    onMouseLeave={() => setDropdownOpen(false)}
-                    className="absolute left-1/2 top-full z-50 mt-3 w-56 -translate-x-1/2 border border-cream/15 bg-ink py-2 shadow-[0_16px_50px_rgba(0,0,0,0.6)]"
-                  >
-                    <span
-                      aria-hidden
-                      className="absolute -top-[2px] left-1/2 h-[2px] w-10 -translate-x-1/2 bg-orange"
-                    />
-                    {AD_MENU.map((link) => (
-                      <li key={link.href}>
-                        <Link
-                          href={link.href}
-                          className={`block px-5 py-2.5 font-mono text-[0.68rem] uppercase tracking-wide2 transition-colors ${
-                            pathname === link.href || pathname.startsWith(`${link.href}/`)
-                              ? "text-orange"
-                              : "text-dim hover:bg-cream/[0.04] hover:text-cream"
-                          }`}
-                        >
-                          {link.label}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </li>
+              <NavDropdown
+                id="ad"
+                label="Android Dreams"
+                items={AD_MENU}
+                open={openDropdown}
+                setOpen={setOpenDropdown}
+                pathname={pathname}
+              />
               <li>
                 <Link
                   href="/qfrontline"
@@ -196,6 +193,14 @@ export function SiteHeader() {
                   QFrontline
                 </Link>
               </li>
+              <NavDropdown
+                id="studio"
+                label="The Studio"
+                items={STUDIO_MENU}
+                open={openDropdown}
+                setOpen={setOpenDropdown}
+                pathname={pathname}
+              />
               <li>
                 <Link
                   href="/about"
@@ -318,7 +323,7 @@ export function SiteHeader() {
             </ul>
             <p className="eyebrow mt-12 text-magenta">The Studio</p>
             <ul className="mt-6 space-y-3">
-              {STUDIO_LINKS.slice(1).map((link) => (
+              {STUDIO_MENU.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
