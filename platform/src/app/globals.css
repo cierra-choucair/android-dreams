@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  @apply bg-void text-ink antialiased;
+  background-image:
+    radial-gradient(60rem 40rem at 15% -10%, rgba(169, 180, 255, 0.06), transparent 60%),
+    radial-gradient(50rem 40rem at 100% 0%, rgba(139, 127, 232, 0.05), transparent 55%);
+  background-attachment: fixed;
+}
+
+@layer components {
+  .card {
+    @apply rounded-xl border border-line bg-surface/70 backdrop-blur-sm;
+  }
+  .card-hover {
+    @apply transition-colors hover:border-brand-dim/70 hover:bg-surface-2/70;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-medium;
+  }
+  .kbd {
+    @apply font-mono text-[0.7rem] text-ink-faint;
+  }
+  .prose-excerpt {
+    @apply text-sm leading-relaxed text-ink-dim;
+  }
+  .link-underline {
+    @apply underline decoration-line-soft decoration-1 underline-offset-2 hover:decoration-brand;
+  }
+  .eyebrow {
+    @apply text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-ink-faint;
+  }
+}
+
+/* Focus ring consistent with the brand accent */
+* :focus-visible {
+  outline: 2px solid theme("colors.brand");
+  outline-offset: 2px;
+  border-radius: 4px;
+}

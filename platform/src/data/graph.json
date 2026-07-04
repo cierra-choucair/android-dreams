@@ -1,0 +1,2378 @@
+{
+  "meta": {
+    "source": "540938bb-UL_Dataset_Labeling_updated_may_1.xlsx",
+    "note": "Edges derived from workbook foreign keys; Relationships tab is a stub and is not used.",
+    "counts": {
+      "papers": 20,
+      "papers_labeled": 6,
+      "discoverables": 17,
+      "tools": 18,
+      "patterns": 11,
+      "edges": 115
+    }
+  },
+  "domains": [
+    {
+      "id": "chaotic-dynamics",
+      "name": "Chaotic Dynamics & Forecasting",
+      "color": "#5EC8E5"
+    },
+    {
+      "id": "quantum-chemistry",
+      "name": "Quantum Chemistry",
+      "color": "#8B7FE8"
+    },
+    {
+      "id": "optimization",
+      "name": "Combinatorial Optimization",
+      "color": "#E8A24A"
+    },
+    {
+      "id": "machine-learning",
+      "name": "Machine Learning",
+      "color": "#4AD6A0"
+    },
+    {
+      "id": "sensing-metrology",
+      "name": "Quantum Sensing & Metrology",
+      "color": "#E86A8E"
+    },
+    {
+      "id": "hardware-qec",
+      "name": "Hardware & Error Correction",
+      "color": "#B0B8C4"
+    }
+  ],
+  "papers": [
+    {
+      "id": "c14bba2d",
+      "type": "paper",
+      "title": "Prediction of chaotic dynamics and extreme events: A recurrence-free quantum reservoir computing approach",
+      "authors": "Ahmed, O. et al.",
+      "year": 2024,
+      "venue": "Physical Review Research",
+      "abstract": "In chaotic dynamical systems, extreme events manifest in time series as unpredictable large-amplitude peaks. Although deterministic, extreme events appear seemingly randomly, which makes their forecasting difficult. By learning the dynamics from observables (data), reservoir computers can time accurately predict extreme events and chaotic dynamics, but they may require many degrees of freedom (large reservoirs). In this paper, by exploiting quantum-computer ansätze and entanglement, we design reservoir computers with compact reservoirs and accurate prediction capabilities. First, we propose the recurrence-free quantum reservoir computer (RF-QRC) architecture. By developing ad hoc quantum feature maps and removing recurrent connections, the RF-QRC has quantum circuits with smaller depths. This allows the RF-QRC to scale well with higher-dimensional chaotic systems, which makes it suitable for hardware implementation. Second, we forecast the temporal chaotic dynamics and their long-term statistics of low- and higher-dimensional dynamical systems. We find that RF-QRC requires smaller reservoirs than classical reservoir computers for higher-dimensional systems and the same predictability. Third, we apply the RF-QRC to the time prediction of extreme events in a model of a turbulent shear flow with turbulent bursts. We find that the RF-QRC has longer predictability than the classical reservoir computer for extreme events forecasting. The results and analyses indicate that quantum-computer ansätze offers nonlinear expressivity and computational scalability, which are useful for forecasting chaotic dynamics and extreme events. This work opens new opportunities for using quantum machine learning on near-term quantum computers.",
+      "license": "CC-BY",
+      "source_url": "https://doi.org/10.1103/PhysRevResearch.6.043082",
+      "published_id": "10.1103/PhysRevResearch.6.043082",
+      "preprint_id": "arXiv:2405.03390v2",
+      "domain": "chaotic-dynamics",
+      "labeled": true
+    },
+    {
+      "id": "672ea550",
+      "type": "paper",
+      "title": "Hybrid quantum-classical reservoir computing for simulating chaotic systems",
+      "authors": "Wudarski, F. et al.",
+      "year": 2024,
+      "venue": "arXiv",
+      "abstract": "Forecasting chaotic systems is a notably complex task, which in recent years has been approached with reasonable success using reservoir computing (RC), a recurrent network with fixed random weights (the reservoir) used to extract the spatio-temporal information of the system. This work presents a hybrid quantum reservoir-computing (HQRC) framework, which replaces the reservoir in RC with a quantum circuit. The modular structure and measurement feedback in the circuit are used to encode the complex system dynamics in the reservoir states, from which classical learning is performed to predict future dynamics. The noiseless simulations of HQRC demonstrate valid prediction times comparable to state-of-the-art classical RC models for both the Lorenz63 and double-scroll chaotic paradigmatic systems and adhere to the attractor dynamics long after the forecasts have deviated from the ground truth.",
+      "license": "CC0",
+      "source_url": "https://doi.org/10.48550/arXiv.2311.14105",
+      "published_id": "",
+      "preprint_id": "arXiv:2311.14105v2",
+      "domain": "chaotic-dynamics",
+      "labeled": true
+    },
+    {
+      "id": "1fcd1304",
+      "type": "paper",
+      "title": "Quantum reservoir computing for predicting and characterizing chaotic maps",
+      "authors": "Li, Q. et al.",
+      "year": 2026,
+      "venue": "Physical Review Research",
+      "abstract": "Quantum reservoir computing has emerged as a promising paradigm for harnessing quantum systems to process temporal data efficiently by bypassing the costly training of gradient-based learning methods. Here, we demonstrate the capability of this approach to predict and characterize chaotic dynamics in discrete nonlinear maps, exemplified through the logistic and Hénon maps. While achieving excellent predictive accuracy, we also demonstrate the optimization of training hyperparameters of the quantum reservoir based on the properties of the underlying map, thus paving the way for efficient forecasting with other discrete and continuous time-series data. Using closed-loop prediction of distant future steps, our protocol discriminates between chaotic and nonchaotic phases without prior knowledge of the underlying map or the nature of the time series. Furthermore, the framework exhibits robustness against decoherence when trained in situ and shows insensitivity to reservoir Hamiltonian variations as well as robustness to finite-sampling error. These results highlight quantum reservoir computing as a scalable and noise-resilient tool for modeling complex dynamical systems, with immediate applicability in near-term quantum hardware.",
+      "license": "CC-BY",
+      "source_url": "https://doi.org/10.1103/qwvv-xqfq",
+      "published_id": "10.1103/qwvv-xqfq",
+      "preprint_id": "arXiv:2509.12071v2",
+      "domain": "chaotic-dynamics",
+      "labeled": false
+    },
+    {
+      "id": "a519ef69",
+      "type": "paper",
+      "title": "Robust quantum reservoir computers for forecasting chaotic dynamics: generalized synchronization and stability",
+      "authors": "Ahmed, O. et al.",
+      "year": 2025,
+      "venue": "Proceedings of the Royal Society A",
+      "abstract": "We show that recurrent quantum reservoir computers (QRCs) and their recurrence-free architectures (RF-QRCs) are robust tools for learning and forecasting chaotic dynamics from time-series data. First, we formulate and interpret QRCs as coupled dynamical systems, where the reservoir acts as a response system driven by training data; in other words, QRCs are generalized-synchronization (GS) systems. Second, we show that QRCs can learn chaotic dynamics and their invariant properties, such as Lyapunov spectra, attractor dimensions and geometric properties such as the covariant Lyapunov vectors (CLVs). This analysis is enabled by deriving the Jacobian of the quantum reservoir update. Third, by leveraging tools from GS, we provide a method for designing robust QRCs. We propose the criterion GS = ESP. GS implies the echo state property (ESP) and vice versa. We analytically show that RF-QRCs, by design, fulfill GS = ESP⁠. Finally, we analyze the effect of simulated noise. We find that dissipation from noise enhances the robustness of QRCs. Numerical verifications on systems of different dimensions support our conclusions. This work opens opportunities for designing robust quantum machines for chaotic time-series forecasting on near-term quantum hardware.",
+      "license": "CC-BY",
+      "source_url": "https://doi.org/10.1098/rspa.2025.0550",
+      "published_id": "10.1098/rspa.2025.0550",
+      "preprint_id": "arXiv:2506.22335v1",
+      "domain": "chaotic-dynamics",
+      "labeled": false
+    },
+    {
+      "id": "9de305b9",
+      "type": "paper",
+      "title": "Demonstration of a variational quantum eigensolver with a solid-state spin system under ambient conditions",
+      "authors": "Du, X. et al.",
+      "year": 2024,
+      "venue": "Physical Review Applied",
+      "abstract": "Quantum simulators offer the potential to utilize the quantum nature of a physical system to study another physical system. In contrast to conventional simulation, which experiences an exponential increase in computational complexity, quantum simulation cost increases only linearly with increasing size of the problem, rendering it a promising tool for applications in quantum chemistry. The variational-quantum-eigensolver algorithm is a particularly promising application for investigating molecular electronic structures. For its experimental implementation, spin-based solid-state qubits have the advantage of long decoherence time and high-fidelity quantum gates, which can lead to high accuracy in the ground-state finding. This study uses the nitrogen-vacancy-center system in diamond to implement the variational-quantum-eigensolver algorithm and successfully finds the eigenvalue of a specific Hamiltonian without the need for error-mitigation techniques. With a fidelity of 98.9% between the converged state and the ideal eigenstate, the demonstration provides an important step toward realizing a scalable quantum simulator in solid-state spin systems.",
+      "license": "Paywalled — TDM rights available",
+      "source_url": "https://doi.org/10.1103/PhysRevApplied.22.014055",
+      "published_id": "10.1103/PhysRevApplied.22.014055",
+      "preprint_id": "arXiv:2407.16321v1",
+      "domain": "quantum-chemistry",
+      "labeled": false
+    },
+    {
+      "id": "d74fa952",
+      "type": "paper",
+      "title": "Progress toward larger molecular simulation on a quantum computer: Simulating a system with up to 28 qubits accelerated by point-group symmetry",
+      "authors": "Cao, C. et al.",
+      "year": 2022,
+      "venue": "Physical Review A",
+      "abstract": "The exact evaluation of the molecular ground state in quantum chemistry requires an exponentially increasing computational cost. Quantum computation is a promising way to overcome the exponential problem using polynomial-time quantum algorithms. A quantum-classical hybrid optimization scheme known as the variational quantum eigensolver is preferred for noisy intermediate-scale quantum devices. However, the circuit depth becomes one of the bottlenecks of its application to large molecules of more than 20 qubits. In this work, we employ point-group symmetry to reduce the number of operators in constructing ansatz so as to achieve a more compact quantum circuit. We illustrate this methodology with a series of molecules ranging from LiH (12 qubits) to C2⁢H4 (28 qubits). A significant reduction of up to 82% of the operator numbers is reached on C2⁢H4. This also sheds light onto further work in this direction to construct even shallower ansatz with enough expressive power and simulate even larger scale systems.",
+      "license": "Paywalled — TDM rights available",
+      "source_url": "https://doi.org/10.1103/PhysRevA.105.062452",
+      "published_id": "10.1103/PhysRevA.105.062452",
+      "preprint_id": "arXiv:2109.02110v2",
+      "domain": "quantum-chemistry",
+      "labeled": true
+    },
+    {
+      "id": "014b3e0d",
+      "type": "paper",
+      "title": "Scalable Quantum Simulation of Molecular Energies",
+      "authors": "O'Malley, P.J.J. et al.",
+      "year": 2016,
+      "venue": "Physical Review X",
+      "abstract": "We report the first electronic structure calculation performed on a quantum computer without exponentially costly precompilation. We use a programmable array of superconducting qubits to compute the energy surface of molecular hydrogen using two distinct quantum algorithms. First, we experimentally execute the unitary coupled cluster method using the variational quantum eigensolver. Our efficient implementation predicts the correct dissociation energy to within chemical accuracy of the numerically exact result. Second, we experimentally demonstrate the canonical quantum algorithm for chemistry, which consists of Trotterization and quantum phase estimation. We compare the experimental performance of these approaches to show clear evidence that the variational quantum eigensolver is robust to certain errors. This error tolerance inspires hope that variational quantum simulations of classically intractable molecules may be viable in the near future.",
+      "license": "CC-BY",
+      "source_url": "https://doi.org/10.1103/PhysRevX.6.031007",
+      "published_id": "10.1103/PhysRevX.6.031007",
+      "preprint_id": "arXiv:1512.06860v2",
+      "domain": "quantum-chemistry",
+      "labeled": true
+    },
+    {
+      "id": "e670f00d",
+      "type": "paper",
+      "title": "Experimental Demonstration of Fermionic QAOA with One-Dimensional Cyclic Driver Hamiltonian",
+      "authors": "Yoshioka, T. et al.",
+      "year": 2023,
+      "venue": "2023 IEEE International Conference on Quantum Computing and Engineering (QCE)",
+      "abstract": "Quantum approximate optimization algorithm (QAOA) has attracted much attention as an algorithm that has the potential to efficiently solve combinatorial optimization problems. Among them, a fermionic QAOA (FQAOA) for solving constrained optimization problems has been developed [Yoshioka, Sasada, Nakano, and Fujii, Phys. Rev. Research vol. 5, 023071, 2023]. In this algorithm, the constraints are essentially imposed as fermion number conservation at arbitrary approximation level. We take the portfolio optimization problem as an application example and propose a new driver Hamiltonian on an one-dimensional cyclic lattice. Our FQAOA with the new driver Hamiltonian reduce the number of gate operations in quantum circuits. Experiments on a trapped-ion quantum computer using 16 qubits on Amazon Braket demonstrates that the proposed driver Hamiltonian effectively suppresses noise effects compared to the previous FQAOA.",
+      "license": "Paywalled — university TDM agreement",
+      "source_url": "https://doi.org/10.1109/QCE57702.2023.00041",
+      "published_id": "10.1109/QCE57702.2023.00041",
+      "preprint_id": "arXiv:2312.04710v1",
+      "domain": "optimization",
+      "labeled": true
+    },
+    {
+      "id": "ddfa6d2e",
+      "type": "paper",
+      "title": "Quantum Approaches to Urban Logistics: From Core QAOA to Clustered Scalability",
+      "authors": "Picariello, F. et al.",
+      "year": 2025,
+      "venue": "arXiv",
+      "abstract": "The Traveling Salesman Problem (TSP) is a fundamental challenge in combinatorial optimization, widely applied in logistics and transportation. As the size of TSP instances grows, traditional algorithms often struggle to produce high-quality solutions within reasonable timeframes. This study investigates the potential of the Quantum Approximate Optimization Algorithm (QAOA), a hybrid quantum-classical method, to solve TSP under realistic constraints. We adopt a QUBO-based formulation of TSP that integrates real-world logistical constraints reflecting operational conditions, such as vehicle capacity, road accessibility, and time windows, while ensuring compatibility with the limitations of current quantum hardware. Our experiments are conducted in a simulated environment using high-performance computing (HPC) resources to assess QAOA's performance across different problem sizes and quantum circuit depths. In order to improve scalability, we propose clustering QAOA (Cl-QAOA), a hybrid approach combining classical machine learning with QAOA. This method decomposes large TSP instances into smaller sub-problems, making quantum optimization feasible even on devices with a limited number of qubits. The results offer a comprehensive evaluation of QAOA's strengths and limitations in solving constrained TSP scenarios. This study advances quantum optimization and lays groundwork for future large-scale applications.",
+      "license": "arXiv — non-exclusive distribution only",
+      "source_url": "https://doi.org/10.48550/arXiv.2512.10813",
+      "published_id": "",
+      "preprint_id": "arXiv:2512.10813v1",
+      "domain": "optimization",
+      "labeled": false
+    },
+    {
+      "id": "950e8481",
+      "type": "paper",
+      "title": "Toward a linear-ramp QAOA protocol: evidence of a scaling advantage in solving some combinatorial optimization problems",
+      "authors": "Montañez-Barrera, J. A. et al.",
+      "year": 2025,
+      "venue": "NPJ Quantum Information",
+      "abstract": "The quantum approximate optimization algorithm (QAOA) is a promising algorithm for solving combinatorial optimization problems (COPs), with performance governed by variational parameters {gamma_i, beta_i}, p - 1, i = 0. While most prior work has focused on classically optimizing these parameters, we demonstrate that fixed linear ramp schedules, linear ramp QAOA (LR-QAOA), can efficiently approximate optimal solutions across diverse COPs. Simulations with up to Nq = 42 qubits and p = 400 layers suggest that the success probability scales as 2^(-eta(p)*N_q + C) , where eta(p) decreases with increasing p. For example, in Weighted Maxcut instances, eta(10) = 0.22 improves to eta(100) = 0.05. Comparisons with classical algorithms, including simulated annealing, Tabu Search, and branch-and-bound, show a scaling advantage for LR-QAOA. We show results of LR-QAOA on multiple QPUs (IonQ, Quantinuum, IBM) with up to Nq = 109 qubits, p = 100, and circuits requiring 21,200 CNOT gates. Finally, we present a noise model based on two-qubit gate counts that accurately reproduces the experimental behavior of LR-QAOA.",
+      "license": "CC-BY",
+      "source_url": "https://doi.org/10.1038/s41534-025-01082-1",
+      "published_id": "10.1038/s41534-025-01082-1",
+      "preprint_id": "arXiv:2405.09169v1",
+      "domain": "optimization",
+      "labeled": false
+    },
+    {
+      "id": "4219f3e8",
+      "type": "paper",
+      "title": "Application of quantum machine learning using quantum kernel algorithms on multiclass neuron M-type classification",
+      "authors": "Vasques, X. et al.",
+      "year": 2023,
+      "venue": "Nature Scientific Reports",
+      "abstract": "The functional characterization of different neuronal types has been a longstanding and crucial challenge. With the advent of physical quantum computers, it has become possible to apply quantum machine learning algorithms to translate theoretical research into practical solutions. Previous studies have shown the advantages of quantum algorithms on artificially generated datasets, and initial experiments with small binary classification problems have yielded comparable outcomes to classical algorithms. However, it is essential to investigate the potential quantum advantage using real-world data. To the best of our knowledge, this study is the first to propose the utilization of quantum systems to classify neuron morphologies, thereby enhancing our understanding of the performance of automatic multiclass neuron classification using quantum kernel methods. We examined the influence of feature engineering on classification accuracy and found that quantum kernel methods achieved similar performance to classical methods, with certain advantages observed in various configurations.",
+      "license": "CC-BY",
+      "source_url": "https://doi.org/10.1038/s41598-023-38558-z",
+      "published_id": "10.1038/s41598-023-38558-z",
+      "preprint_id": "arXiv:2502.06281v1",
+      "domain": "machine-learning",
+      "labeled": true
+    },
+    {
+      "id": "28f80db5",
+      "type": "paper",
+      "title": "Supervised learning with quantum-enhanced feature spaces",
+      "authors": "Havlíček, V. et al.",
+      "year": 2019,
+      "venue": "Nature",
+      "abstract": "Machine learning and quantum computing are two technologies that each have the potential to alter how computation is performed to address previously untenable problems. Kernel methods for machine learning are ubiquitous in pattern recognition, with support vector machines (SVMs) being the best known method for classification problems. However, there are limitations to the successful solution to such classification problems when the feature space becomes large, and the kernel functions become computationally expensive to estimate. A core element in the computational speed-ups enabled by quantum algorithms is the exploitation of an exponentially large quantum state space through controllable entanglement and interference. Here we propose and experimentally implement two quantum algorithms on a superconducting processor. A key component in both methods is the use of the quantum state space as feature space. The use of a quantum-enhanced feature space that is only efficiently accessible on a quantum computer provides a possible path to quantum advantage. The algorithms solve a problem of supervised learning: the construction of a classifier. One method, the quantum variational classifier, uses a variational quantum circuit to classify the data in a way similar to the method of conventional SVMs. The other method, a quantum kernel estimator, estimates the kernel function on the quantum computer and optimizes a classical SVM. The two methods provide tools for exploring the applications of noisy intermediate-scale quantum computers to machine learning.",
+      "license": "Paywalled — TDM rights available",
+      "source_url": "https://doi.org/10.1038/s41586-019-0980-2",
+      "published_id": "10.1038/s41586-019-0980-2",
+      "preprint_id": "arXiv:1804.11326v2",
+      "domain": "machine-learning",
+      "labeled": false
+    },
+    {
+      "id": "d42e9a51",
+      "type": "paper",
+      "title": "Shot-frugal and Robust quantum kernel classifiers",
+      "authors": "Shastry, A. et al.",
+      "year": 2023,
+      "venue": "arXiv",
+      "abstract": "Quantum kernel methods are a candidate for quantum speed-ups in supervised machine learning. The number of quantum measurements N required for a reasonable kernel estimate is a critical resource, both from complexity considerations and because of the constraints of near-term quantum hardware. We emphasize that for classification tasks, the aim is reliable classification and not precise kernel evaluation, and demonstrate that the former is far more resource efficient. Furthermore, it is shown that the accuracy of classification is not a suitable performance metric in the presence of noise and we motivate a new metric that characterizes the reliability of classification. We then obtain a bound for N which ensures, with high probability, that classification errors over a dataset are bounded by the margin errors of an idealized quantum kernel classifier. Using chance constraint programming and the subgaussian bounds of quantum kernel distributions, we derive several Shot-frugal and Robust (ShofaR) programs starting from the primal formulation of the Support Vector Machine. This significantly reduces the number of quantum measurements needed and is robust to noise by construction. Our strategy is applicable to uncertainty in quantum kernels arising from any source of unbiased noise.",
+      "license": "CC-BY",
+      "source_url": "https://doi.org/10.48550/arXiv.2210.06971",
+      "published_id": "",
+      "preprint_id": "arXiv:2210.06971v3",
+      "domain": "machine-learning",
+      "labeled": false
+    },
+    {
+      "id": "92c535f6",
+      "type": "paper",
+      "title": "Entanglement-Enhanced Atomic Gravimeter",
+      "authors": "Cassens, C. et al.",
+      "year": 2025,
+      "venue": "Physical Review X",
+      "abstract": "Interferometers based on ultracold atoms enable an absolute measurement of inertial forces with unprecedented precision. However, their resolution is fundamentally restricted by quantum fluctuations. Improved resolutions with entangled or squeezed atoms were demonstrated in internal-state measurements for thermal and quantum-degenerate atoms and, recently, for momentum-state interferometers with laser-cooled atoms. Here, we present a gravimeter based on Bose-Einstein condensates with a sensitivity of −1.7+0.4 −0.5 dB beyond the standard quantum limit. Interferometry with Bose-Einstein condensates combined with delta-kick collimation minimizes atom loss in and improves scalability of the interferometer to very-long-baseline atom interferometers.",
+      "license": "CC-BY",
+      "source_url": "https://doi.org/10.1103/PhysRevX.15.011029",
+      "published_id": "10.1103/PhysRevX.15.011029",
+      "preprint_id": "arXiv:2404.18668v2",
+      "domain": "sensing-metrology",
+      "labeled": false
+    },
+    {
+      "id": "0e7fb12d",
+      "type": "paper",
+      "title": "Sequential Measurements for Quantum-Enhanced Magnetometry in Spin Chain Probes",
+      "authors": "Montenegro, V. et al.",
+      "year": 2022,
+      "venue": "Physical Review Letters",
+      "abstract": "Quantum sensors outperform their classical counterparts in their estimation precision, given the same amount of resources. So far, quantum-enhanced sensitivity has been achieved by exploiting the superposition principle. This enhancement has been obtained for particular forms of entangled states, adaptive measurement basis change, critical many-body systems, and steady state of periodically driven systems. Here, we introduce a different approach to obtain quantum-enhanced sensitivity in a many-body probe through utilizing the nature of quantum measurement and its subsequent wave function collapse without demanding prior entanglement. Our protocol consists of a sequence of local measurements, without reinitialization, performed regularly during the evolution of a many-body probe. As the number of sequences increases, the sensing precision is enhanced beyond the standard limit, reaching the Heisenberg bound asymptotically. The benefits of the protocol are multifold as it uses a product initial state and avoids complex initialization (e.g., prior entangled states or critical ground states) and allows for remote quantum sensing.",
+      "license": "Paywalled — TDM rights available",
+      "source_url": "https://doi.org/10.1103/PhysRevLett.129.120503",
+      "published_id": "10.1103/PhysRevLett.129.120503",
+      "preprint_id": "arXiv:2202.00114v3",
+      "domain": "sensing-metrology",
+      "labeled": false
+    },
+    {
+      "id": "8b1f02f1",
+      "type": "paper",
+      "title": "Entanglement-Enhanced Magnetic Induction Tomography",
+      "authors": "Zheng, W. et al.",
+      "year": 2023,
+      "venue": "Physical Review Letters",
+      "abstract": "Magnetic induction tomography (MIT) is a sensing protocol exploring conductive objects via their response to radio-frequency magnetic fields. MIT is used in nondestructive testing ranging from geophysics to medical applications. Atomic magnetometers, employed as MIT sensors, allow for significant improvement of the MIT sensitivity and for exploring its quantum limits. Here, we propose and verify a quantum-enhanced version of the atomic MIT by combining it with conditional spin squeezing and stroboscopic backaction evasion. We use this quantum enhancement to demonstrate sensitivity beyond the standard quantum limits of one-dimensional quantum MIT detecting a conductive sample.",
+      "license": "Paywalled — TDM rights available",
+      "source_url": "https://doi.org/10.1103/PhysRevLett.130.203602",
+      "published_id": "10.1103/PhysRevLett.130.203602",
+      "preprint_id": "arXiv:2209.01920v2",
+      "domain": "sensing-metrology",
+      "labeled": false
+    },
+    {
+      "id": "a808d33d",
+      "type": "paper",
+      "title": "Entanglement-enhanced quantum metrology: From standard quantum limit to Heisenberg limit",
+      "authors": "Huang, J. et al.",
+      "year": 2024,
+      "venue": "Applied Physics Reviews",
+      "abstract": "Entanglement-enhanced quantum metrology explores the utilization of quantum entanglement to enhance measurement precision. When particles in a probe are prepared into a suitable quantum entangled state, they may collectively accumulate information about the physical quantity to be measured, leading to an improvement in measurement precision beyond the standard quantum limit and approaching the Heisenberg limit. The rapid advancement of techniques for quantum manipulation and detection has enabled the generation, manipulation, and detection of multi-particle entangled states in synthetic quantum systems such as cold atoms and trapped ions. This article aims to review and illustrate the fundamental principles and experimental progresses that demonstrate multi-particle entanglement for quantum metrology, as well as discuss the potential applications of entanglement-enhanced quantum sensors.",
+      "license": "CC-BY",
+      "source_url": "https://doi.org/10.1063/5.0204102",
+      "published_id": "10.1063/5.0204102",
+      "preprint_id": "arXiv:2402.03572v3",
+      "domain": "sensing-metrology",
+      "labeled": false
+    },
+    {
+      "id": "2ee6a916",
+      "type": "paper",
+      "title": "Evidence for the utility of quantum computing before fault tolerance",
+      "authors": "Kim, Y. et al.",
+      "year": 2023,
+      "venue": "Nature",
+      "abstract": "Quantum computing promises to offer substantial speed-ups over its classical counterpart for certain problems. However, the greatest impediment to realizing its full potential is noise that is inherent to these systems. The widely accepted solution to this challenge is the implementation of fault-tolerant quantum circuits, which is out of reach for current processors. Here we report experiments on a noisy 127-qubit processor and demonstrate the measurement of accurate expectation values for circuit volumes at a scale beyond brute-force classical computation. We argue that this represents evidence for the utility of quantum computing in a pre-fault-tolerant era. These experimental results are enabled by advances in the coherence and calibration of a superconducting processor at this scale and the ability to characterize and controllably manipulate noise across such a large device. We establish the accuracy of the measured expectation values by comparing them with the output of exactly verifiable circuits. In the regime of strong entanglement, the quantum computer provides correct results for which leading classical approximations such as pure-state-based 1D (matrix product states, MPS) and 2D (isometric tensor network states, isoTNS) tensor network methods break down. These experiments demonstrate a foundational tool for the realization of near-term quantum applications.",
+      "license": "CC-BY",
+      "source_url": "https://doi.org/10.1038/s41586-023-06096-3",
+      "published_id": "10.1038/s41586-023-06096-3",
+      "preprint_id": "",
+      "domain": "hardware-qec",
+      "labeled": false
+    },
+    {
+      "id": "1b7d1b81",
+      "type": "paper",
+      "title": "Hybrid Quantum-Classical Algorithms and Quantum Error Mitigation",
+      "authors": "Endo, S. et al.",
+      "year": 2021,
+      "venue": "Journal of the Physical Society of Japan",
+      "abstract": "Quantum computers can exploit a Hilbert space whose dimension increases exponentially with the number of qubits. In experiment, quantum supremacy has recently been achieved by the Google team by using a noisy intermediate-scale quantum (NISQ) device with over 50 qubits. However, the question of what can be implemented on NISQ devices is still not fully explored, and discovering useful tasks for such devices is a topic of considerable interest. Hybrid quantum-classical algorithms are regarded as well-suited for execution on NISQ devices by combining quantum computers with classical computers, and are expected to be the first useful applications for quantum computing. Meanwhile, mitigation of errors on quantum processors is also crucial to obtain reliable results. In this article, we review the basic results for hybrid quantum-classical algorithms and quantum error mitigation techniques. Since quantum computing with NISQ devices is an actively developing field, we expect this review to be a useful basis for future studies.",
+      "license": "Paywalled — TDM rights available",
+      "source_url": "https://doi.org/10.7566/JPSJ.90.032001",
+      "published_id": "10.7566/JPSJ.90.032001",
+      "preprint_id": "arXiv:2011.01382v1",
+      "domain": "hardware-qec",
+      "labeled": false
+    },
+    {
+      "id": "0b29da69",
+      "type": "paper",
+      "title": "Realization of an Error-Correcting Surface Code with Superconducting Qubits",
+      "authors": "Zhao, Y. et al.",
+      "year": 2022,
+      "venue": "Physical Review Letters",
+      "abstract": "Quantum error correction is a critical technique for transitioning from noisy intermediate-scale quantum devices to fully fledged quantum computers. The surface code, which has a high threshold error rate, is the leading quantum error correction code for two-dimensional grid architecture. So far, the repeated error correction capability of the surface code has not been realized experimentally. Here, we experimentally implement an error-correcting surface code, the distance-three surface code which consists of 17 qubits, on the Zuchongzhi 2.1 superconducting quantum processor. By executing several consecutive error correction cycles, the logical error can be significantly reduced after applying corrections, achieving the repeated error correction of surface code for the first time. This experiment represents a fully functional instance of an error-correcting surface code, providing a key step on the path towards scalable fault-tolerant quantum computing.",
+      "license": "Paywalled — TDM rights available",
+      "source_url": "https://doi.org/10.1103/PhysRevLett.129.030501",
+      "published_id": "10.1103/PhysRevLett.129.030501",
+      "preprint_id": "arXiv:2112.13505v2",
+      "domain": "hardware-qec",
+      "labeled": false
+    }
+  ],
+  "discoverables": [
+    {
+      "id": "UL-DIS-e03341de",
+      "type": "discoverable",
+      "statement": "How can we accurately forecast extreme events and chaotic dynamics in high-dimensional nonlinear dynamical systems?",
+      "status": "Partially Solved",
+      "papers": [
+        "c14bba2d"
+      ],
+      "domains": [
+        "chaotic-dynamics"
+      ]
+    },
+    {
+      "id": "UL-DIS-896a1c1d",
+      "type": "discoverable",
+      "statement": "How can reservoir computing scale to higher-dimensional chaotic systems without proportional growth in reservoir size and computational cost?",
+      "status": "Partially Solved",
+      "papers": [
+        "c14bba2d",
+        "672ea550"
+      ],
+      "domains": [
+        "chaotic-dynamics"
+      ]
+    },
+    {
+      "id": "UL-DIS-c014c904",
+      "type": "discoverable",
+      "statement": "How can quantum reservoir computers be implemented on near-term NISQ hardware given circuit depth and noise constraints?",
+      "status": "Partially Solved",
+      "papers": [
+        "c14bba2d"
+      ],
+      "domains": [
+        "chaotic-dynamics"
+      ]
+    },
+    {
+      "id": "UL-DIS-4c2afcbc",
+      "type": "discoverable",
+      "statement": "How can we accurately forecast chaotic systems?",
+      "status": "Partially Solved",
+      "papers": [
+        "672ea550"
+      ],
+      "domains": [
+        "chaotic-dynamics"
+      ]
+    },
+    {
+      "id": "UL-DIS-105aad9a",
+      "type": "discoverable",
+      "statement": "How can reservoir-computing models remain stable and reliable despite sensitivity to hyperparameter choices?",
+      "status": "Partially Solved",
+      "papers": [
+        "672ea550"
+      ],
+      "domains": [
+        "chaotic-dynamics"
+      ]
+    },
+    {
+      "id": "UL-DIS-afc2517d",
+      "type": "discoverable",
+      "statement": "How can learning systems preserve the long-term attractor structure of chaotic systems after trajectory-level forecasts diverge?",
+      "status": "Partially Solved",
+      "papers": [
+        "672ea550"
+      ],
+      "domains": [
+        "chaotic-dynamics"
+      ]
+    },
+    {
+      "id": "UL-DIS-9c998877",
+      "type": "discoverable",
+      "statement": "How can molecular ground-state evaluation in quantum chemistry scale beyond the exponential computational cost of classical exact methods?",
+      "status": "Partially Solved",
+      "papers": [
+        "d74fa952"
+      ],
+      "domains": [
+        "quantum-chemistry"
+      ]
+    },
+    {
+      "id": "UL-DIS-0ce5487a",
+      "type": "discoverable",
+      "statement": "How can VQE be scaled to evaluate larger molecular ground states on near-term quantum devices despite circuit-depth limitations?",
+      "status": "Partially Solved",
+      "papers": [
+        "d74fa952"
+      ],
+      "domains": [
+        "quantum-chemistry"
+      ]
+    },
+    {
+      "id": "UL-DIS-e7f4034e",
+      "type": "discoverable",
+      "statement": "How can quantum optimization algorithms solve constrained combinatorial optimization problems while strictly preserving hard constraints?",
+      "status": "Partially Solved",
+      "papers": [
+        "e670f00d"
+      ],
+      "domains": [
+        "optimization"
+      ]
+    },
+    {
+      "id": "UL-DIS-f8db2fd1",
+      "type": "discoverable",
+      "statement": "How can fermionic QAOA be implemented with fewer quantum gate operations while retaining performance on constrained optimization problems?",
+      "status": "Partially Solved",
+      "papers": [
+        "e670f00d"
+      ],
+      "domains": [
+        "optimization"
+      ]
+    },
+    {
+      "id": "UL-DIS-c260c390",
+      "type": "discoverable",
+      "statement": "How can QAOA-style algorithms reduce noise-induced errors while preserving feasible solutions on quantum processing units?",
+      "status": "Partially Solved",
+      "papers": [
+        "e670f00d"
+      ],
+      "domains": [
+        "optimization"
+      ]
+    },
+    {
+      "id": "UL-DIS-fd80cc4a",
+      "type": "discoverable",
+      "statement": "How can we accurately characterize and classify neuronal cell types from morphology data?",
+      "status": "Partially Solved",
+      "papers": [
+        "4219f3e8"
+      ],
+      "domains": [
+        "machine-learning"
+      ]
+    },
+    {
+      "id": "UL-DIS-f584bacf",
+      "type": "discoverable",
+      "statement": "How can quantum kernel methods be evaluated for classification advantages on high-dimensional biological data?",
+      "status": "Partially Solved",
+      "papers": [
+        "4219f3e8"
+      ],
+      "domains": [
+        "machine-learning"
+      ]
+    },
+    {
+      "id": "UL-DIS-24a46063",
+      "type": "discoverable",
+      "statement": "How can quantum machine learning methods be evaluated on real-world biological datasets rather than synthetic or small binary datasets?",
+      "status": "Partially Solved",
+      "papers": [
+        "4219f3e8"
+      ],
+      "domains": [
+        "machine-learning"
+      ]
+    },
+    {
+      "id": "UL-DIS-2839272a",
+      "type": "discoverable",
+      "statement": "How can molecular energies be simulated accurately on quantum computers in a scalable way?",
+      "status": "Partially Solved",
+      "papers": [
+        "014b3e0d"
+      ],
+      "domains": [
+        "quantum-chemistry"
+      ]
+    },
+    {
+      "id": "UL-DIS-a3f70fa2",
+      "type": "discoverable",
+      "statement": "How can VQE estimate molecular energies to chemical accuracy on near-term quantum hardware without full error correction?",
+      "status": "Partially Solved",
+      "papers": [
+        "014b3e0d"
+      ],
+      "domains": [
+        "quantum-chemistry"
+      ]
+    },
+    {
+      "id": "UL-DIS-e6df0e58",
+      "type": "discoverable",
+      "statement": "How can quantum chemistry simulations avoid exponentially costly classical precompilation?",
+      "status": "Partially Solved",
+      "papers": [
+        "014b3e0d"
+      ],
+      "domains": [
+        "quantum-chemistry"
+      ]
+    }
+  ],
+  "tools": [
+    {
+      "id": "UL-TOL-fffa9230",
+      "type": "tool",
+      "name": "Recurrence-Free Quantum Reservoir Computing (RF-QRC)",
+      "papers": [
+        "c14bba2d"
+      ],
+      "roles": [
+        {
+          "paper": "c14bba2d",
+          "role": "Introduced"
+        }
+      ],
+      "domains": [
+        "chaotic-dynamics"
+      ],
+      "notes": [
+        "Variant of Quantum Reservoir Computing (QRC); primary contribution of the paper."
+      ]
+    },
+    {
+      "id": "UL-TOL-bcad4e8e",
+      "type": "tool",
+      "name": "Quantum Reservoir Computing (QRC)",
+      "papers": [
+        "c14bba2d"
+      ],
+      "roles": [
+        {
+          "paper": "c14bba2d",
+          "role": "Applied"
+        }
+      ],
+      "domains": [
+        "chaotic-dynamics"
+      ],
+      "notes": [
+        "Parent paradigm for RF-QRC; paper introduces a recurrence-free variant."
+      ]
+    },
+    {
+      "id": "UL-TOL-26b5ae7e",
+      "type": "tool",
+      "name": "Hybrid Quantum-Classical Reservoir Computing (HQRC)",
+      "papers": [
+        "672ea550"
+      ],
+      "roles": [
+        {
+          "paper": "672ea550",
+          "role": "Introduced"
+        }
+      ],
+      "domains": [
+        "chaotic-dynamics"
+      ],
+      "notes": [
+        "Variant of Reservoir Computing using a quantum circuit as the reservoir."
+      ]
+    },
+    {
+      "id": "UL-TOL-b877d9c3",
+      "type": "tool",
+      "name": "Reservoir Computing",
+      "papers": [
+        "672ea550"
+      ],
+      "roles": [
+        {
+          "paper": "672ea550",
+          "role": "Applied"
+        }
+      ],
+      "domains": [
+        "chaotic-dynamics"
+      ],
+      "notes": [
+        "Existing parent method replaced by HQRC in this paper."
+      ]
+    },
+    {
+      "id": "UL-TOL-c15a71ae",
+      "type": "tool",
+      "name": "Point-Group Symmetry Reduction",
+      "papers": [
+        "d74fa952"
+      ],
+      "roles": [
+        {
+          "paper": "d74fa952",
+          "role": "Introduced"
+        }
+      ],
+      "domains": [
+        "quantum-chemistry"
+      ],
+      "notes": [
+        "Technique applied to VQE/UCC ansatz construction; portable to other molecular simulation problems."
+      ]
+    },
+    {
+      "id": "UL-TOL-abd80b80",
+      "type": "tool",
+      "name": "Symmetry-Reduced Unitary Coupled-Cluster Singles and Doubles (SymUCCSD) Ansatz",
+      "papers": [
+        "d74fa952"
+      ],
+      "roles": [
+        {
+          "paper": "d74fa952",
+          "role": "Introduced"
+        }
+      ],
+      "domains": [
+        "quantum-chemistry"
+      ],
+      "notes": [
+        "Variant of the UCCSD ansatz using point-group symmetry reduction."
+      ]
+    },
+    {
+      "id": "UL-TOL-493c9490",
+      "type": "tool",
+      "name": "Variational Quantum Eigensolver",
+      "papers": [
+        "d74fa952",
+        "014b3e0d"
+      ],
+      "roles": [
+        {
+          "paper": "d74fa952",
+          "role": "Applied"
+        },
+        {
+          "paper": "014b3e0d",
+          "role": "Applied"
+        }
+      ],
+      "domains": [
+        "quantum-chemistry"
+      ],
+      "notes": [
+        "Same Tool_ID reused from Cao et al. paper."
+      ]
+    },
+    {
+      "id": "UL-TOL-69e72b4b",
+      "type": "tool",
+      "name": "Unitary Coupled Cluster Method",
+      "papers": [
+        "014b3e0d"
+      ],
+      "roles": [
+        {
+          "paper": "014b3e0d",
+          "role": "Applied"
+        }
+      ],
+      "domains": [
+        "quantum-chemistry"
+      ],
+      "notes": [
+        "Used as the ansatz/method within VQE."
+      ]
+    },
+    {
+      "id": "UL-TOL-6049c810",
+      "type": "tool",
+      "name": "Trotterization",
+      "papers": [
+        "014b3e0d"
+      ],
+      "roles": [
+        {
+          "paper": "014b3e0d",
+          "role": "Applied"
+        }
+      ],
+      "domains": [
+        "quantum-chemistry"
+      ],
+      "notes": []
+    },
+    {
+      "id": "UL-TOL-aaf1948a",
+      "type": "tool",
+      "name": "Quantum Phase Estimation",
+      "papers": [
+        "014b3e0d"
+      ],
+      "roles": [
+        {
+          "paper": "014b3e0d",
+          "role": "Applied"
+        }
+      ],
+      "domains": [
+        "quantum-chemistry"
+      ],
+      "notes": []
+    },
+    {
+      "id": "UL-TOL-447ede9a",
+      "type": "tool",
+      "name": "Bravyi-Kitaev Transformation",
+      "papers": [
+        "014b3e0d"
+      ],
+      "roles": [
+        {
+          "paper": "014b3e0d",
+          "role": "Applied"
+        }
+      ],
+      "domains": [
+        "quantum-chemistry"
+      ],
+      "notes": [
+        "Full-text excerpt used because the abstract does not name the transformation."
+      ]
+    },
+    {
+      "id": "UL-TOL-f7a3d4e1",
+      "type": "tool",
+      "name": "One-Dimensional Cyclic Driver Hamiltonian",
+      "papers": [
+        "e670f00d"
+      ],
+      "roles": [
+        {
+          "paper": "e670f00d",
+          "role": "Introduced"
+        }
+      ],
+      "domains": [
+        "optimization"
+      ],
+      "notes": [
+        "New driver-Hamiltonian variant within FQAOA."
+      ]
+    },
+    {
+      "id": "UL-TOL-1ff50753",
+      "type": "tool",
+      "name": "Fermionic Quantum Approximate Optimization Algorithm (FQAOA)",
+      "papers": [
+        "e670f00d"
+      ],
+      "roles": [
+        {
+          "paper": "e670f00d",
+          "role": "Applied"
+        }
+      ],
+      "domains": [
+        "optimization"
+      ],
+      "notes": [
+        "Variant of Quantum Approximate Optimization Algorithm (QAOA)."
+      ]
+    },
+    {
+      "id": "UL-TOL-98b2ee23",
+      "type": "tool",
+      "name": "Quantum Approximate Optimization Algorithm (QAOA)",
+      "papers": [
+        "e670f00d"
+      ],
+      "roles": [
+        {
+          "paper": "e670f00d",
+          "role": "Applied"
+        }
+      ],
+      "domains": [
+        "optimization"
+      ],
+      "notes": [
+        "Parent algorithm for FQAOA."
+      ]
+    },
+    {
+      "id": "UL-TOL-94b002f7",
+      "type": "tool",
+      "name": "Quantum Kernel Methods",
+      "papers": [
+        "4219f3e8"
+      ],
+      "roles": [
+        {
+          "paper": "4219f3e8",
+          "role": "Applied"
+        }
+      ],
+      "domains": [
+        "machine-learning"
+      ],
+      "notes": []
+    },
+    {
+      "id": "UL-TOL-7a5857e9",
+      "type": "tool",
+      "name": "ZZFeatureMap",
+      "papers": [
+        "4219f3e8"
+      ],
+      "roles": [
+        {
+          "paper": "4219f3e8",
+          "role": "Applied"
+        }
+      ],
+      "domains": [
+        "machine-learning"
+      ],
+      "notes": [
+        "Specific quantum feature map used in the best-performing quantum kernel configuration."
+      ]
+    },
+    {
+      "id": "UL-TOL-3cebdf8f",
+      "type": "tool",
+      "name": "Quantum Kernel Alignment (QKA)",
+      "papers": [
+        "4219f3e8"
+      ],
+      "roles": [
+        {
+          "paper": "4219f3e8",
+          "role": "Applied"
+        }
+      ],
+      "domains": [
+        "machine-learning"
+      ],
+      "notes": [
+        "Used for the trained quantum kernel configuration."
+      ]
+    },
+    {
+      "id": "UL-TOL-583ae4e0",
+      "type": "tool",
+      "name": "Support Vector Machine (SVM)",
+      "papers": [
+        "4219f3e8"
+      ],
+      "roles": [
+        {
+          "paper": "4219f3e8",
+          "role": "Applied"
+        }
+      ],
+      "domains": [
+        "machine-learning"
+      ],
+      "notes": [
+        "Classical baseline and kernel-method framework."
+      ]
+    }
+  ],
+  "patterns": [
+    {
+      "id": "UL-PAT-46f9e1ab",
+      "type": "pattern",
+      "label": "Chaotic forecasting via high-dimensional state expansion",
+      "domains": [
+        "chaotic-dynamics"
+      ],
+      "observations": [
+        {
+          "paper": "c14bba2d",
+          "discoverable": "UL-DIS-e03341de",
+          "tool": "UL-TOL-fffa9230",
+          "text": "The target problem is a deterministic but chaotic temporal process where rare, large-amplitude events appear unpredictable because nearby trajectories separate rapidly in nonlinear state space. This makes forecasting difficult for standard models because short observational histories may not reveal the full attractor geometry or the precursors of rare events. A reservoir-based quantum architecture is well matched because it expands observed time-series signals into a high-dimensional nonlinear representation while the recurrence-free design reduces the circuit depth needed to implement that representation.",
+          "source": "In chaotic dynamical systems, extreme events manifest in time series as unpredictable large-amplitude peaks. Although deterministic, extreme events appear seemingly randomly, which makes their forecasting difficult.",
+          "confidence": null,
+          "notes": ""
+        },
+        {
+          "paper": "672ea550",
+          "discoverable": "UL-DIS-4c2afcbc",
+          "tool": "UL-TOL-26b5ae7e",
+          "text": "The target system evolves through nonlinear chaotic dynamics where small errors grow over time and make direct trajectory prediction unstable. This challenges standard forecasting because the model must capture spatio-temporal structure rather than only local pointwise trends. A hybrid quantum-classical reservoir is well matched because the quantum circuit can encode complex dynamics into reservoir states while classical learning extracts the predictive readout.",
+          "source": "Forecasting chaotic systems is a notably complex task, which in recent years has been approached with reasonable success using reservoir computing (RC), a recurrent network with fixed random weights (the reservoir) used to extract the spatio-temporal information of the system. This work presents a hybrid quantum reservoir-computing (HQRC) framework, which replaces the reservoir in RC with a quantum circuit.",
+          "confidence": null,
+          "notes": ""
+        },
+        {
+          "paper": "672ea550",
+          "discoverable": "UL-DIS-4c2afcbc",
+          "tool": "UL-TOL-b877d9c3",
+          "text": "The problem has nonlinear temporal structure that must be represented in a state space rich enough to preserve information about previous inputs. Standard linear predictors struggle because chaotic trajectories are not captured by simple extrapolation. Reservoir computing is well matched because the fixed recurrent reservoir transforms time-series inputs into a spatio-temporal representation from which a trained readout can forecast dynamics.",
+          "source": "Forecasting chaotic systems is a notably complex task, which in recent years has been approached with reasonable success using reservoir computing (RC), a recurrent network with fixed random weights (the reservoir) used to extract the spatio-temporal information of the system.",
+          "confidence": null,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "id": "UL-PAT-7d635a1f",
+      "type": "pattern",
+      "label": "High-dimensional dynamics create a reservoir-scaling bottleneck",
+      "domains": [
+        "chaotic-dynamics"
+      ],
+      "observations": [
+        {
+          "paper": "c14bba2d",
+          "discoverable": "UL-DIS-896a1c1d",
+          "tool": "UL-TOL-fffa9230",
+          "text": "The problem requires representing high-dimensional nonlinear dynamics from limited observables, and classical reservoirs may need many internal degrees of freedom to preserve enough dynamical information. This creates a scaling bottleneck because reservoir size grows with the dimensionality and complexity of the target system. Compact quantum reservoirs are well matched because quantum feature maps and entanglement can provide a large representational space without requiring a proportionally large classical reservoir.",
+          "source": "By learning the dynamics from observables (data), reservoir computers can time accurately predict extreme events and chaotic dynamics, but they may require many degrees of freedom (large reservoirs).",
+          "confidence": null,
+          "notes": ""
+        },
+        {
+          "paper": "c14bba2d",
+          "discoverable": "UL-DIS-896a1c1d",
+          "tool": "UL-TOL-b877d9c3",
+          "text": "The structural issue is that the observed dynamics must be lifted into a reservoir state large enough to encode nonlinear temporal dependencies. Classical reservoirs address this by expanding the input into many fixed internal degrees of freedom, but that expansion can become costly as the target dynamics grow in dimension. Reservoir computing fits the pattern because its core mechanism is to transform temporal inputs into a higher-dimensional dynamical state from which a simple readout can learn predictions.",
+          "source": "By learning the dynamics from observables (data), reservoir computers can time accurately predict extreme events and chaotic dynamics, but they may require many degrees of freedom (large reservoirs).",
+          "confidence": null,
+          "notes": ""
+        },
+        {
+          "paper": "672ea550",
+          "discoverable": "UL-DIS-105aad9a",
+          "tool": "UL-TOL-26b5ae7e",
+          "text": "Reservoir forecasting quality depends on the relation between reservoir architecture, training length, and the nonlinear dynamics being represented. This creates sensitivity because changing hyperparameters can alter whether the reservoir captures the stable solution or diverges from it. A quantum-circuit reservoir is well matched when its measurement feedback and modular layers provide enough nonlinear expressive capacity to represent the dynamics while remaining within stable forecasting regimes.",
+          "source": "In particular, the standard RC approach is sensitive to various hyperparameters (reservoir size, training length, etc.). As the proposed method has multiple hyperparameters to select (number and type of layers, type of feature maps, measurement correlators, etc.), we observe a hyperparameter sensitivity as well, however even thought the variations between performance can fluctuate, the forecasts rarely diverge from the stable solution, whic is not always the case for the classical RC.",
+          "confidence": null,
+          "notes": ""
+        },
+        {
+          "paper": "672ea550",
+          "discoverable": "UL-DIS-896a1c1d",
+          "tool": "UL-TOL-26b5ae7e",
+          "text": "The target dynamics require a reservoir state large enough to encode nonlinear temporal information, but larger reservoirs increase the resource cost of training and execution. This becomes difficult as chaotic systems grow in dimensionality because classical reservoir sizes often scale with system complexity. A quantum reservoir is well matched because even a small circuit can generate a high-dimensional nonlinear feature representation for the classical readout.",
+          "source": "Despite the small size, for the best hyperparameters, we obtain VPT of 10.68, which is better than the state-of-the-art classical approaches with comparable reservoir sizes…",
+          "confidence": null,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "id": "UL-PAT-2b8db201",
+      "type": "pattern",
+      "label": "Expressive power constrained by near-term hardware cost",
+      "domains": [
+        "chaotic-dynamics",
+        "optimization",
+        "quantum-chemistry"
+      ],
+      "observations": [
+        {
+          "paper": "c14bba2d",
+          "discoverable": "UL-DIS-c014c904",
+          "tool": "UL-TOL-fffa9230",
+          "text": "The implementation problem is shaped by noise accumulation in quantum circuits, where deeper circuits expose the computation to more decoherence and gate errors. This makes otherwise useful quantum reservoir methods difficult to execute on near-term devices. A recurrence-free architecture is well matched because removing recurrent connections and using compact feature maps reduces circuit depth while preserving a nonlinear quantum embedding.",
+          "source": "By developing ad hoc quantum feature maps and removing recurrent connections, the RF-QRC has quantum circuits with smaller depths. This allows the RF-QRC to scale well with higher-dimensional chaotic systems, which makes it suitable for hardware implementation.",
+          "confidence": null,
+          "notes": ""
+        },
+        {
+          "paper": "d74fa952",
+          "discoverable": "UL-DIS-0ce5487a",
+          "tool": "UL-TOL-493c9490",
+          "text": "The problem is constrained by near-term hardware limits: molecular simulations require circuits deep enough to express correlated electronic states, but deeper circuits accumulate noise and become difficult to run on NISQ devices. This bottleneck prevents direct scaling of otherwise suitable variational methods to larger molecules. VQE is well matched because it uses a hybrid loop and relatively shallow state-preparation circuits, but it still requires ansatz designs that keep depth manageable.",
+          "source": "A quantum-classical hybrid optimization scheme known as the variational quantum eigensolver is preferred for noisy intermediate-scale quantum devices. However, the circuit depth becomes one of the bottlenecks of its application to large molecules of more than 20 qubits.",
+          "confidence": null,
+          "notes": ""
+        },
+        {
+          "paper": "014b3e0d",
+          "discoverable": "UL-DIS-a3f70fa2",
+          "tool": "UL-TOL-493c9490",
+          "text": "Near-term molecular simulation is limited by hardware errors, so useful algorithms must extract chemically meaningful energies from short and imperfect circuits. Long coherent sequences amplify control errors, decoherence, and calibration drift before fault-tolerant error correction is available. VQE is well matched because its adaptive classical outer loop can absorb some systematic errors while using shorter state-preparation and measurement sequences.",
+          "source": "Because VQE only requires short state preparation and measurement sequences, it has been suggested that classically intractable computations might be possible using VQE without the overhead of error correction. Our experiments substantiate this notion; the robustness of the VQE to systematic device errors allows the experiment to achieve chemical accuracy.",
+          "confidence": null,
+          "notes": ""
+        },
+        {
+          "paper": "e670f00d",
+          "discoverable": "UL-DIS-f8db2fd1",
+          "tool": "UL-TOL-f7a3d4e1",
+          "text": "The implementation challenge is that deeper quantum circuits accumulate more gate errors, making an algorithm that performs well in noiseless simulation less reliable on real hardware. For constrained optimization, excess gates can reduce the probability of obtaining low-cost feasible solutions. A lower-connectivity driver Hamiltonian is well matched because it reduces the number of required gate operations while preserving the mixing role needed by FQAOA.",
+          "source": "Therefore, it is important to design a driver Hamiltonian that minimizes the influence of noise when using an actual quantum processing unit (QPU).",
+          "confidence": null,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "id": "UL-PAT-6be17195",
+      "type": "pattern",
+      "label": "Preserve attractor geometry beyond the forecast horizon",
+      "domains": [
+        "chaotic-dynamics"
+      ],
+      "observations": [
+        {
+          "paper": "672ea550",
+          "discoverable": "UL-DIS-afc2517d",
+          "tool": "UL-TOL-26b5ae7e",
+          "text": "The problem contains a distinction between exact trajectory prediction and preservation of the underlying attractor geometry. Classical and quantum forecasts may diverge from the ground-truth trajectory, but a useful model should still remain on the stable manifold of the system rather than drifting into unphysical behavior. Quantum reservoir dynamics are well matched because the reservoir state can learn qualitative dynamical structure, not only short-horizon point estimates.",
+          "source": "The noiseless simulations of HQRC demonstrate valid prediction times comparable to state-of-the-art classical RC models for both the Lorenz63 and double-scroll chaotic paradigmatic systems and adhere to the attractor dynamics long after the forecasts have deviated from the ground truth.",
+          "confidence": null,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "id": "UL-PAT-82738aea",
+      "type": "pattern",
+      "label": "Exponential state space favors direct quantum representation",
+      "domains": [
+        "quantum-chemistry"
+      ],
+      "observations": [
+        {
+          "paper": "d74fa952",
+          "discoverable": "UL-DIS-9c998877",
+          "tool": "UL-TOL-493c9490",
+          "text": "Molecular ground-state calculation requires searching an electronic Hilbert space whose exact classical representation grows exponentially with system size. Classical exact methods become impractical because they must account for many possible electron configurations and correlations. A variational quantum algorithm is well matched because quantum states can represent this electronic structure directly while a classical optimizer searches for a low-energy parameterized state.",
+          "source": "The exact evaluation of the molecular ground state in quantum chemistry requires an exponentially increasing computational cost. Quantum computation is a promising way to overcome the exponential problem using polynomial-time quantum algorithms.",
+          "confidence": null,
+          "notes": ""
+        },
+        {
+          "paper": "014b3e0d",
+          "discoverable": "UL-DIS-2839272a",
+          "tool": "UL-TOL-493c9490",
+          "text": "Molecular energy estimation requires representing correlated electronic states that can occupy an exponentially large quantum state space. Classical methods face scaling limits because exact representation and evolution of these states becomes intractable for chemically interesting systems. VQE is well matched because a quantum processor can prepare parameterized molecular states directly while the variational principle turns the ground-state search into an experimentally measurable optimization problem.",
+          "source": "Universal and efficient simulation of physical systems is among the most compelling applications of quantum computing. In particular, quantum simulation of molecular energies, which enables numerically exact prediction of chemical reaction rates, promises significant advances in our understanding of chemistry and could enable in silico design of new catalysts, pharmaceuticals, and materials.",
+          "confidence": null,
+          "notes": ""
+        },
+        {
+          "paper": "014b3e0d",
+          "discoverable": "UL-DIS-2839272a",
+          "tool": "UL-TOL-aaf1948a",
+          "text": "The structure of the problem is spectral: molecular energies are eigenvalues of a quantum Hamiltonian defined over an electronic state space that grows rapidly with system size. Classical exact diagonalization becomes infeasible because storing and exponentiating the full Hamiltonian scales poorly. Quantum phase estimation is well matched because it estimates Hamiltonian eigenphases directly from controlled time evolution of a quantum state with overlap on the eigenstate.",
+          "source": "Second, we experimentally demonstrate the canonical quantum algorithm for chemistry, which consists of Trotterization and quantum phase estimation.",
+          "confidence": null,
+          "notes": ""
+        },
+        {
+          "paper": "014b3e0d",
+          "discoverable": "UL-DIS-2839272a",
+          "tool": "UL-TOL-69e72b4b",
+          "text": "The electronic ground state can require correlated many-body wavefunctions that are difficult to represent with simple product states. Classical ansatz restrictions can miss important electron correlation because they cannot efficiently span all relevant configurations. A unitary coupled-cluster ansatz is well matched because it parameterizes correlated molecular states in a form that can be prepared as a quantum circuit and optimized variationally.",
+          "source": "First, we experimentally execute the unitary coupled cluster method using the variational quantum eigensolver. Our efficient implementation predicts the correct dissociation energy to within chemical accuracy of the numerically exact result.",
+          "confidence": null,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "id": "UL-PAT-e864e7f7",
+      "type": "pattern",
+      "label": "Symmetry removes redundant operators and circuit depth",
+      "domains": [
+        "quantum-chemistry"
+      ],
+      "observations": [
+        {
+          "paper": "d74fa952",
+          "discoverable": "UL-DIS-0ce5487a",
+          "tool": "UL-TOL-c15a71ae",
+          "text": "Molecular electronic structure contains symmetry constraints that make many excitation operators redundant or forbidden because they do not preserve the symmetry sector of the target wavefunction. Standard ansatz construction can include these unnecessary operators, increasing circuit depth without adding expressive value. Symmetry-based reduction is well matched because it uses the molecule’s intrinsic point-group structure to remove operators that cannot contribute to the desired state.",
+          "source": "The geometric property of molecules described by the point-group symmetry will also provide great convenience for quantum chemical simulation, for which the power has already been demonstrated in conventional ab initio chemical calculations in classical computers. However, the power of point-group symmetry is rarely explored in the quantum computing regime.",
+          "confidence": null,
+          "notes": ""
+        },
+        {
+          "paper": "d74fa952",
+          "discoverable": "UL-DIS-0ce5487a",
+          "tool": "UL-TOL-abd80b80",
+          "text": "The relevant molecular state belongs to a symmetry sector, so excitation operators that move the ansatz outside that sector are structurally unnecessary. Including those operators increases parameter count and circuit depth, which is especially costly on near-term devices. A symmetry-reduced coupled-cluster ansatz is well matched because it keeps only excitation operators consistent with the molecule’s symmetry while preserving the expressive structure needed for ground-state simulation.",
+          "source": "In this work, we use point-group symmetry to directly reduce the operator numbers in the UCC ansatz so that the depth of the quantum circuit is significantly decreased without damage to the accuracy or expensive auxiliary calculations. We present a series of numerical cases with the symmetry-reduced unitary coupled-cluster singles and doubles (SymUCCSD) ansatz by the MindQuantum simulator, including LiH, HF, H2O, BeH2, CH4, and NH3 with its flipping potential energy surface.",
+          "confidence": null,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "id": "UL-PAT-d1a15afb",
+      "type": "pattern",
+      "label": "Scalable simulation needs local qubit-operator decomposition",
+      "domains": [
+        "quantum-chemistry"
+      ],
+      "observations": [
+        {
+          "paper": "014b3e0d",
+          "discoverable": "UL-DIS-e6df0e58",
+          "tool": "UL-TOL-447ede9a",
+          "text": "For a quantum chemistry simulation to scale, the molecular Hamiltonian must be represented as a sum of local qubit operators rather than as an exponentially large classically precomputed matrix. Nonlocal or configuration-basis representations hide exponential preprocessing in the workflow and fail to generalize to larger molecules. Fermion-to-qubit mappings are well matched because they convert second-quantized electronic structure into qubit operators that can be measured or simulated by scalable quantum circuits.",
+          "source": "All prior experiments focused on either molecular hydrogen or helium hydride, but none of these prior experiments employed a scalable qubit representation such as second quantization. Instead, all five prior experiments represent the Hamiltonian in a configuration basis that cannot be efficiently decomposed as a sum of local Hamiltonians, and then exponentiate this exponentially large matrix as a classical preprocessing step.",
+          "confidence": null,
+          "notes": ""
+        },
+        {
+          "paper": "014b3e0d",
+          "discoverable": "UL-DIS-e6df0e58",
+          "tool": "UL-TOL-6049c810",
+          "text": "The problem requires simulating time evolution under a molecular Hamiltonian without explicitly exponentiating an exponentially large matrix classically. Direct classical exponentiation is not scalable because the Hamiltonian dimension grows with the electronic configuration space. Trotterized simulation is well matched because it decomposes the Hamiltonian evolution into a sequence of local quantum operations that can be implemented gate by gate.",
+          "source": "Instead, all five prior experiments represent the Hamiltonian in a configuration basis that cannot be efficiently decomposed as a sum of local Hamiltonians, and then exponentiate this exponentially large matrix as a classical preprocessing step.",
+          "confidence": null,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "id": "UL-PAT-42c8b058",
+      "type": "pattern",
+      "label": "Hard constraints define a feasible subspace",
+      "domains": [
+        "optimization"
+      ],
+      "observations": [
+        {
+          "paper": "e670f00d",
+          "discoverable": "UL-DIS-e7f4034e",
+          "tool": "UL-TOL-1ff50753",
+          "text": "The problem’s valid solutions occupy a constrained feasible subspace rather than the full binary search space. Penalty-based encodings can distort the objective or introduce accuracy issues because they convert hard constraints into soft energetic terms. Fermionic QAOA is well matched because it encodes feasibility as particle-number conservation, keeping the algorithm inside the constrained subspace at each approximation level in the ideal setting.",
+          "source": "Among them, a fermionic QAOA (FQAOA) for solving constrained optimization problems has been developed [Yoshioka, Sasada, Nakano, and Fujii, Phys. Rev. Research vol. 5, 023071, 2023]. In this algorithm, the constraints are essentially imposed as fermion number conservation at arbitrary approximation level.",
+          "confidence": null,
+          "notes": ""
+        },
+        {
+          "paper": "e670f00d",
+          "discoverable": "UL-DIS-e7f4034e",
+          "tool": "UL-TOL-98b2ee23",
+          "text": "The optimization landscape is combinatorial, with candidate solutions represented as bit strings and objective values encoded in a problem Hamiltonian. Standard unconstrained formulations can be insufficient when feasibility restrictions define the valid search space. QAOA-style methods are well matched because alternating problem and mixing operators allow the search process to be shaped around both the objective and, in constrained variants, the feasible subspace.",
+          "source": "Quantum approximate optimization algorithm (QAOA) has attracted much attention as an algorithm that has the potential to efficiently solve combinatorial optimization problems.",
+          "confidence": null,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "id": "UL-PAT-cf253e4a",
+      "type": "pattern",
+      "label": "Constraint-as-conservation-law is fragile under noise",
+      "domains": [
+        "optimization"
+      ],
+      "observations": [
+        {
+          "paper": "e670f00d",
+          "discoverable": "UL-DIS-c260c390",
+          "tool": "UL-TOL-1ff50753",
+          "text": "The hard constraint is structurally represented as a conservation law, which is exact in noiseless evolution but fragile under hardware errors. Noise can push the measured state outside the feasible particle-number sector, turning an algorithmically enforced constraint into an experimental failure mode. Constraint-preserving QAOA variants are well matched because their ideal dynamics are designed around conserved quantities, even though additional hardware-aware strategies are needed to maintain that structure on QPUs.",
+          "source": "In an ideal noiseless environment, the conservation law for the fermion number M expressed in Eq. (14) is strictly satisfied. However, in experiments with actual QPUs, this conservation law may be violated.",
+          "confidence": null,
+          "notes": ""
+        },
+        {
+          "paper": "e670f00d",
+          "discoverable": "UL-DIS-c260c390",
+          "tool": "UL-TOL-f7a3d4e1",
+          "text": "The problem is not only finding good solutions but keeping sampled states inside a feasible sector when physical noise can violate the conservation law that encodes the constraint. Circuits with many gates increase exposure to errors that break feasibility. A cyclic driver is well matched because its reduced gate count lowers noise exposure while retaining the driver structure needed to explore feasible configurations.",
+          "source": "Compared to the lad-FQAOA, the cyc-FQAOA takes a relatively large value of PM=4 = 0.17. This difference is due to the fact that the cyclic lattice reduces the number of gate operations, thereby reducing the effect of noise.",
+          "confidence": null,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "id": "UL-PAT-1bedff02",
+      "type": "pattern",
+      "label": "Nonlinear embedding separates high-dimensional classes",
+      "domains": [
+        "machine-learning"
+      ],
+      "observations": [
+        {
+          "paper": "4219f3e8",
+          "discoverable": "UL-DIS-fd80cc4a",
+          "tool": "UL-TOL-94b002f7",
+          "text": "The classification problem involves many biological features whose relevant structure may not be captured by a single simple criterion. This makes neuronal type identification difficult because morphology, function, and class labels are high-dimensional and not governed by an easily updated taxonomy. Quantum kernel methods are well matched because they map classical features into a high-dimensional Hilbert space where nonlinear class boundaries can be evaluated through kernel entries.",
+          "source": "Despite the fact that research on cortical circuits has been conducted for over a century, determining how many classes of cortical neurons exist remains an ongoing and uncompleted task. Moreover, the continuous development of techniques and the availability of an increasing number of phenotype datasets have not led to the maintenance of a unique classification system that is easy to update and can consider the different defining features of neurons specific to a given type.",
+          "confidence": null,
+          "notes": ""
+        },
+        {
+          "paper": "4219f3e8",
+          "discoverable": "UL-DIS-24a46063",
+          "tool": "UL-TOL-94b002f7",
+          "text": "The data have a high-dimensional feature structure in which class-relevant patterns may become separable only after nonlinear embedding. Classical kernels already exploit this by mapping data into higher-dimensional feature spaces, but choosing an effective representation is difficult for complex biological data. Quantum kernel methods are well matched because quantum feature maps encode datapoints into Hilbert-space amplitudes or inner products that can act as rich nonlinear representations.",
+          "source": "Using kernel methods, quantum algorithms can be adopted through quantum kernel functions to exploit high-dimensional non-classical feature space where quantum feature maps are used to encode the datapoints into inner products or amplitudes in the Hilbert space.",
+          "confidence": null,
+          "notes": ""
+        },
+        {
+          "paper": "4219f3e8",
+          "discoverable": "UL-DIS-24a46063",
+          "tool": "UL-TOL-7a5857e9",
+          "text": "The problem requires a feature map that turns morphological measurements into a representation where multiclass boundaries are easier to separate. Poor feature maps or preprocessing choices can leave the classes overlapping even when the raw data contain useful structure. A ZZ-style feature map is well matched because it introduces nonlinear feature interactions and entanglement structure into the kernel representation.",
+          "source": "We named the first one q_kernel_zz, which applies a ZZFeatureMap and an encoding function described by Havlíček et al., who defined a feature map on n-qubits generated by the unitary.",
+          "confidence": null,
+          "notes": ""
+        },
+        {
+          "paper": "4219f3e8",
+          "discoverable": "UL-DIS-24a46063",
+          "tool": "UL-TOL-3cebdf8f",
+          "text": "The classification structure depends strongly on how the kernel aligns with the dataset, so a fixed feature map may not expose the best separating geometry. This is difficult because high-dimensional biological features can contain task-specific correlations that generic kernels miss. Quantum kernel alignment is well matched because it adapts the kernel parameters toward a representation that improves the SVM margin for the given data.",
+          "source": "The last quantum algorithm (q_kernel_training) trains a quantum kernel with quantum kernel alignment (QKA), which iteratively adapts a parametrized quantum kernel to the dataset and simultaneously converges to the maximum SVM margin.",
+          "confidence": null,
+          "notes": ""
+        },
+        {
+          "paper": "4219f3e8",
+          "discoverable": "UL-DIS-fd80cc4a",
+          "tool": "UL-TOL-583ae4e0",
+          "text": "The classes are not expected to be separable by a simple linear boundary in the original morphology-feature space. This makes classification difficult because the model must find a separating geometry that may only appear after nonlinear transformation. Support vector machines are well matched because kernel functions map data into higher-dimensional feature spaces and search for a maximum-margin boundary between classes.",
+          "source": "In classical ML, kernel methods provide a way to perform a linear classification on a highly complex data set in the framework of a support vector machine (SVM).",
+          "confidence": null,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "id": "UL-PAT-daae8340",
+      "type": "pattern",
+      "label": "Real-world data validation gap vs. synthetic benchmarks",
+      "domains": [
+        "machine-learning"
+      ],
+      "observations": [
+        {
+          "paper": "4219f3e8",
+          "discoverable": "UL-DIS-f584bacf",
+          "tool": "UL-TOL-94b002f7",
+          "text": "The structural issue is a gap between carefully constructed benchmark data and noisy, heterogeneous real-world biological data. Synthetic or small binary tasks may not reveal whether a quantum model captures useful structure in realistic multiclass settings. Quantum kernel methods are well matched for testing this gap because their value depends on whether quantum feature spaces expose class-separating structure that classical kernels may not capture.",
+          "source": "Previous studies have shown the advantages of quantum algorithms on artificially generated datasets, and initial experiments with small binary classification problems have yielded comparable outcomes to classical algorithms. However, it is essential to investigate the potential quantum advantage using real-world data.",
+          "confidence": null,
+          "notes": ""
+        }
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "rel": "solves",
+      "from": "c14bba2d",
+      "from_type": "paper",
+      "to": "UL-DIS-e03341de",
+      "to_type": "discoverable",
+      "confidence": 3,
+      "source": "In chaotic dynamical systems, extreme events manifest in time series as unpredictable large-amplitude peaks. Although deterministic, extreme events appear seemingly randomly, which makes their forecasting difficult."
+    },
+    {
+      "rel": "solves",
+      "from": "c14bba2d",
+      "from_type": "paper",
+      "to": "UL-DIS-896a1c1d",
+      "to_type": "discoverable",
+      "confidence": 2,
+      "source": "By learning the dynamics from observables (data), reservoir computers can time accurately predict extreme events and chaotic dynamics, but they may require many degrees of freedom (large reservoirs)."
+    },
+    {
+      "rel": "solves",
+      "from": "c14bba2d",
+      "from_type": "paper",
+      "to": "UL-DIS-c014c904",
+      "to_type": "discoverable",
+      "confidence": 3,
+      "source": "By developing ad hoc quantum feature maps and removing recurrent connections, the RF-QRC has quantum circuits with smaller depths. This allows the RF-QRC to scale well with higher-dimensional chaotic systems, which makes it suitable for hardware implementation."
+    },
+    {
+      "rel": "solves",
+      "from": "672ea550",
+      "from_type": "paper",
+      "to": "UL-DIS-4c2afcbc",
+      "to_type": "discoverable",
+      "confidence": 3,
+      "source": "Forecasting chaotic systems is a notably complex task, which in recent years has been approached with reasonable success using reservoir computing (RC), a recurrent network with fixed random weights (the reservoir) used to extract the spatio-temporal information of the system."
+    },
+    {
+      "rel": "solves",
+      "from": "672ea550",
+      "from_type": "paper",
+      "to": "UL-DIS-105aad9a",
+      "to_type": "discoverable",
+      "confidence": 3,
+      "source": "The presentend results provide the preliminary evidence to support that the HQRC approach is a viable quantum alternative to RC approaches. In particular, the standard RC approach is sensitive to various hyperparameters (reservoir size, training length, etc.). As the proposed method has multiple hyperparameters to select (number and type of layers, type of feature maps, measurement correlators, etc.), we observe a hyperparameter sensitivity as well, however even thought the variations between performance can fluctuate, the forecasts rarely diverge from the stable solution, whic is not always the case for the classical RC."
+    },
+    {
+      "rel": "solves",
+      "from": "672ea550",
+      "from_type": "paper",
+      "to": "UL-DIS-afc2517d",
+      "to_type": "discoverable",
+      "confidence": 3,
+      "source": "The noiseless simulations of HQRC demonstrate valid prediction times comparable to state-of-the-art classical RC models for both the Lorenz63 and double-scroll chaotic paradigmatic systems and adhere to the attractor dynamics long after the forecasts have deviated from the ground truth."
+    },
+    {
+      "rel": "solves",
+      "from": "672ea550",
+      "from_type": "paper",
+      "to": "UL-DIS-896a1c1d",
+      "to_type": "discoverable",
+      "confidence": 2,
+      "source": "Despite the small size, for the best hyperparameters, we obtain VPT of 10.68, which is better than the state-of-the-art classical approaches with comparable reservoir sizes…"
+    },
+    {
+      "rel": "solves",
+      "from": "d74fa952",
+      "from_type": "paper",
+      "to": "UL-DIS-9c998877",
+      "to_type": "discoverable",
+      "confidence": 3,
+      "source": "The exact evaluation of the molecular ground state in quantum chemistry requires an exponentially increasing computational cost. Quantum computation is a promising way to overcome the exponential problem using polynomial-time quantum algorithms."
+    },
+    {
+      "rel": "solves",
+      "from": "d74fa952",
+      "from_type": "paper",
+      "to": "UL-DIS-0ce5487a",
+      "to_type": "discoverable",
+      "confidence": 3,
+      "source": "A quantum-classical hybrid optimization scheme known as the variational quantum eigensolver is preferred for noisy intermediate-scale quantum devices. However, the circuit depth becomes one of the bottlenecks of its application to large molecules of more than 20 qubits."
+    },
+    {
+      "rel": "solves",
+      "from": "e670f00d",
+      "from_type": "paper",
+      "to": "UL-DIS-e7f4034e",
+      "to_type": "discoverable",
+      "confidence": 3,
+      "source": "Quantum annealing based on adiabatic theorems is the standard quantum approach used to solve the optimization problems, however, it is limited to quadratic, unconstrained binary optimization (QUBO) problems. In particular, it is known that converting constrained combinatorial optimization problems to the QUBO form can lead to problems in computational accuracy. On the other hand, quantum approximate optimization algorithm (QAOA), has been proposed as a hybrid quantum classical algorithm for solving complex combinatorial optimization problems using a universal quantum computer."
+    },
+    {
+      "rel": "solves",
+      "from": "e670f00d",
+      "from_type": "paper",
+      "to": "UL-DIS-f8db2fd1",
+      "to_type": "discoverable",
+      "confidence": 3,
+      "source": "The conditions I and II restrict the candidates for Hˆd. Although the previous study have employed tight-binding models on D-leg ladder lattice, Hˆd satisfying the condition is not limited to this. Therefore, it is important to design a driver Hamiltonian that minimizes the influence of noise when using an actual quantum processing unit (QPU)."
+    },
+    {
+      "rel": "solves",
+      "from": "e670f00d",
+      "from_type": "paper",
+      "to": "UL-DIS-c260c390",
+      "to_type": "discoverable",
+      "confidence": 2,
+      "source": "In an ideal noiseless environment, the conservation law for the fermion number M expressed in Eq. (14) is strictly satisfied. However, in experiments with actual QPUs, this conservation law may be violated."
+    },
+    {
+      "rel": "solves",
+      "from": "4219f3e8",
+      "from_type": "paper",
+      "to": "UL-DIS-fd80cc4a",
+      "to_type": "discoverable",
+      "confidence": 3,
+      "source": "Despite the fact that research on cortical circuits has been conducted for over a century, determining how many classes of cortical neurons exist remains an ongoing and uncompleted task. Moreover, the continuous development of techniques and the availability of an increasing number of phenotype datasets have not led to the maintenance of a unique classification system that is easy to update and can consider the different defining features of neurons specific to a given type."
+    },
+    {
+      "rel": "solves",
+      "from": "4219f3e8",
+      "from_type": "paper",
+      "to": "UL-DIS-f584bacf",
+      "to_type": "discoverable",
+      "confidence": 3,
+      "source": "Previous studies have shown the advantages of quantum algorithms on artificially generated datasets, and initial experiments with small binary classification problems have yielded comparable outcomes to classical algorithms. However, it is essential to investigate the potential quantum advantage using real-world data."
+    },
+    {
+      "rel": "solves",
+      "from": "4219f3e8",
+      "from_type": "paper",
+      "to": "UL-DIS-24a46063",
+      "to_type": "discoverable",
+      "confidence": 2,
+      "source": "Using kernel methods, quantum algorithms can be adopted through quantum kernel functions to exploit high-dimensional non-classical feature space where quantum feature maps are used to encode the datapoints into inner products or amplitudes in the Hilbert space."
+    },
+    {
+      "rel": "solves",
+      "from": "014b3e0d",
+      "from_type": "paper",
+      "to": "UL-DIS-2839272a",
+      "to_type": "discoverable",
+      "confidence": 3,
+      "source": "Universal and efficient simulation of physical systems is among the most compelling applications of quantum computing. In particular, quantum simulation of molecular energies, which enables numerically exact prediction of chemical reaction rates, promises significant advances in our understanding of chemistry and could enable in silico design of new catalysts, pharmaceuticals, and materials."
+    },
+    {
+      "rel": "solves",
+      "from": "014b3e0d",
+      "from_type": "paper",
+      "to": "UL-DIS-a3f70fa2",
+      "to_type": "discoverable",
+      "confidence": 3,
+      "source": "We report the first electronic structure calculation performed on a quantum computer without exponentially costly precompilation."
+    },
+    {
+      "rel": "solves",
+      "from": "014b3e0d",
+      "from_type": "paper",
+      "to": "UL-DIS-e6df0e58",
+      "to_type": "discoverable",
+      "confidence": 2,
+      "source": "Because VQE only requires short state preparation and measurement sequences, it has been suggested that classically intractable computations might be possible using VQE without the overhead of error correction. Our experiments substantiate this notion; the robustness of the VQE to systematic device errors allows the experiment to achieve chemical accuracy."
+    },
+    {
+      "rel": "uses",
+      "from": "c14bba2d",
+      "from_type": "paper",
+      "to": "UL-TOL-fffa9230",
+      "to_type": "tool",
+      "confidence": 3,
+      "role": "Introduced",
+      "source": "First, we propose the recurrence-free quantum reservoir computer (RF-QRC) architecture. By developing ad hoc quantum feature maps and removing recurrent connections, the RF-QRC has quantum circuits with smaller depths. This allows the RF-QRC to scale well with higher-dimensional chaotic systems, which makes it suitable for hardware implementation."
+    },
+    {
+      "rel": "uses",
+      "from": "c14bba2d",
+      "from_type": "paper",
+      "to": "UL-TOL-bcad4e8e",
+      "to_type": "tool",
+      "confidence": 2,
+      "role": "Applied",
+      "source": "In this paper, by exploiting quantum-computer ansätze and entanglement, we design reservoir computers with compact reservoirs and accurate prediction capabilities. First, we propose the recurrence-free quantum reservoir computer (RF-QRC) architecture."
+    },
+    {
+      "rel": "uses",
+      "from": "672ea550",
+      "from_type": "paper",
+      "to": "UL-TOL-26b5ae7e",
+      "to_type": "tool",
+      "confidence": 3,
+      "role": "Introduced",
+      "source": "This work presents a hybrid quantum reservoir-computing (HQRC) framework, which replaces the reservoir in RC with a quantum circuit. The modular structure and measurement feedback in the circuit are used to encode the complex system dynamics in the reservoir states, from which classical learning is performed to predict future dynamics."
+    },
+    {
+      "rel": "uses",
+      "from": "672ea550",
+      "from_type": "paper",
+      "to": "UL-TOL-b877d9c3",
+      "to_type": "tool",
+      "confidence": 3,
+      "role": "Applied",
+      "source": "Forecasting chaotic systems is a notably complex task, which in recent years has been approached with reasonable success using reservoir computing (RC), a recurrent network with fixed random weights (the reservoir) used to extract the spatio-temporal information of the system."
+    },
+    {
+      "rel": "uses",
+      "from": "d74fa952",
+      "from_type": "paper",
+      "to": "UL-TOL-c15a71ae",
+      "to_type": "tool",
+      "confidence": 3,
+      "role": "Introduced",
+      "source": "In this work, we employ point-group symmetry to reduce the number of operators in constructing ansatz so as to achieve a more compact quantum circuit. A significant reduction of up to 82% of the operator numbers is reached on C2H4."
+    },
+    {
+      "rel": "uses",
+      "from": "d74fa952",
+      "from_type": "paper",
+      "to": "UL-TOL-abd80b80",
+      "to_type": "tool",
+      "confidence": 3,
+      "role": "Introduced",
+      "source": "In this work, we use point-group symmetry to directly reduce the operator numbers in the UCC ansatz so that the depth of the quantum circuit is significantly decreased without damage to the accuracy or expensive auxiliary calculations. We present a series of numerical cases with the symmetry-reduced unitary coupled-cluster singles and doubles (SymUCCSD) ansatz by the MindQuantum simulator, including LiH, HF, H2O, BeH2, CH4, and NH3 with its flipping potential energy surface."
+    },
+    {
+      "rel": "uses",
+      "from": "d74fa952",
+      "from_type": "paper",
+      "to": "UL-TOL-493c9490",
+      "to_type": "tool",
+      "confidence": 3,
+      "role": "Applied",
+      "source": "A quantum-classical hybrid optimization scheme known as the variational quantum eigensolver is preferred for noisy intermediate-scale quantum devices. However, the circuit depth becomes one of the bottlenecks of its application to large molecules of more than 20 qubits."
+    },
+    {
+      "rel": "uses",
+      "from": "014b3e0d",
+      "from_type": "paper",
+      "to": "UL-TOL-493c9490",
+      "to_type": "tool",
+      "confidence": 3,
+      "role": "Applied",
+      "source": "First, we experimentally execute the unitary coupled cluster method using the variational quantum eigensolver. Our efficient implementation predicts the correct dissociation energy to within chemical accuracy of the numerically exact result."
+    },
+    {
+      "rel": "uses",
+      "from": "014b3e0d",
+      "from_type": "paper",
+      "to": "UL-TOL-69e72b4b",
+      "to_type": "tool",
+      "confidence": 3,
+      "role": "Applied",
+      "source": "First, we experimentally execute the unitary coupled cluster method using the variational quantum eigensolver. Our efficient implementation predicts the correct dissociation energy to within chemical accuracy of the numerically exact result."
+    },
+    {
+      "rel": "uses",
+      "from": "014b3e0d",
+      "from_type": "paper",
+      "to": "UL-TOL-6049c810",
+      "to_type": "tool",
+      "confidence": 3,
+      "role": "Applied",
+      "source": "Second, we experimentally demonstrate the canonical quantum algorithm for chemistry, which consists of Trotterization and quantum phase estimation."
+    },
+    {
+      "rel": "uses",
+      "from": "014b3e0d",
+      "from_type": "paper",
+      "to": "UL-TOL-aaf1948a",
+      "to_type": "tool",
+      "confidence": 3,
+      "role": "Applied",
+      "source": "Second, we experimentally demonstrate the canonical quantum algorithm for chemistry, which consists of Trotterization and quantum phase estimation."
+    },
+    {
+      "rel": "uses",
+      "from": "014b3e0d",
+      "from_type": "paper",
+      "to": "UL-TOL-447ede9a",
+      "to_type": "tool",
+      "confidence": 3,
+      "role": "Applied",
+      "source": "In both experiments presented here, we simulate the dissociation of molecular hydrogen in the minimal basis of Hartree-Fock orbitals, represented using the Bravyi-Kitaev transformation of the second quantized molecular Hamiltonian [17]."
+    },
+    {
+      "rel": "uses",
+      "from": "e670f00d",
+      "from_type": "paper",
+      "to": "UL-TOL-f7a3d4e1",
+      "to_type": "tool",
+      "confidence": 3,
+      "role": "Introduced",
+      "source": "We take the portfolio optimization problem as an application example and propose a new driver Hamiltonian on an one-dimensional cyclic lattice. Our FQAOA with the new driver Hamiltonian reduce the number of gate operations in quantum circuits."
+    },
+    {
+      "rel": "uses",
+      "from": "e670f00d",
+      "from_type": "paper",
+      "to": "UL-TOL-1ff50753",
+      "to_type": "tool",
+      "confidence": 3,
+      "role": "Applied",
+      "source": "Among them, a fermionic QAOA (FQAOA) for solving constrained optimization problems has been developed [Yoshioka, Sasada, Nakano, and Fujii, Phys. Rev. Research vol. 5, 023071, 2023]. In this algorithm, the constraints are essentially imposed as fermion number conservation at arbitrary approximation level."
+    },
+    {
+      "rel": "uses",
+      "from": "e670f00d",
+      "from_type": "paper",
+      "to": "UL-TOL-98b2ee23",
+      "to_type": "tool",
+      "confidence": 3,
+      "role": "Applied",
+      "source": "Quantum approximate optimization algorithm (QAOA) has attracted much attention as an algorithm that has the potential to efficiently solve combinatorial optimization problems."
+    },
+    {
+      "rel": "uses",
+      "from": "4219f3e8",
+      "from_type": "paper",
+      "to": "UL-TOL-94b002f7",
+      "to_type": "tool",
+      "confidence": 3,
+      "role": "Applied",
+      "source": "To the best of our knowledge, this study is the first to propose the utilization of quantum systems to classify neuron morphologies, thereby enhancing our understanding of the performance of automatic multiclass neuron classification using quantum kernel methods. We examined the influence of feature engineering on classification accuracy and found that quantum kernel methods achieved similar performance to classical methods, with certain advantages observed in various configurations."
+    },
+    {
+      "rel": "uses",
+      "from": "4219f3e8",
+      "from_type": "paper",
+      "to": "UL-TOL-7a5857e9",
+      "to_type": "tool",
+      "confidence": 3,
+      "role": "Applied",
+      "source": "We named the first one q_kernel_zz, which applies a ZZFeatureMap and an encoding function described by Havlíček et al., who defined a feature map on n-qubits generated by the unitary."
+    },
+    {
+      "rel": "uses",
+      "from": "4219f3e8",
+      "from_type": "paper",
+      "to": "UL-TOL-3cebdf8f",
+      "to_type": "tool",
+      "confidence": 3,
+      "role": "Applied",
+      "source": "The last quantum algorithm (q_kernel_training) trains a quantum kernel with quantum kernel alignment (QKA), which iteratively adapts a parametrized quantum kernel to the dataset and simultaneously converges to the maximum SVM margin."
+    },
+    {
+      "rel": "uses",
+      "from": "4219f3e8",
+      "from_type": "paper",
+      "to": "UL-TOL-583ae4e0",
+      "to_type": "tool",
+      "confidence": 3,
+      "role": "Applied",
+      "source": "We also considered four popular kernels to benchmark the performance of the classical SVM method (RBF, Linear, polynomial and sigmoid)."
+    },
+    {
+      "rel": "exhibits",
+      "from": "UL-DIS-e03341de",
+      "from_type": "discoverable",
+      "to": "UL-PAT-46f9e1ab",
+      "to_type": "pattern",
+      "confidence": null,
+      "source": "In chaotic dynamical systems, extreme events manifest in time series as unpredictable large-amplitude peaks. Although deterministic, extreme events appear seemingly randomly, which makes their forecasting difficult."
+    },
+    {
+      "rel": "exhibits",
+      "from": "UL-DIS-896a1c1d",
+      "from_type": "discoverable",
+      "to": "UL-PAT-7d635a1f",
+      "to_type": "pattern",
+      "confidence": null,
+      "source": "By learning the dynamics from observables (data), reservoir computers can time accurately predict extreme events and chaotic dynamics, but they may require many degrees of freedom (large reservoirs)."
+    },
+    {
+      "rel": "exhibits",
+      "from": "UL-DIS-c014c904",
+      "from_type": "discoverable",
+      "to": "UL-PAT-2b8db201",
+      "to_type": "pattern",
+      "confidence": null,
+      "source": "By developing ad hoc quantum feature maps and removing recurrent connections, the RF-QRC has quantum circuits with smaller depths. This allows the RF-QRC to scale well with higher-dimensional chaotic systems, which makes it suitable for hardware implementation."
+    },
+    {
+      "rel": "exhibits",
+      "from": "UL-DIS-4c2afcbc",
+      "from_type": "discoverable",
+      "to": "UL-PAT-46f9e1ab",
+      "to_type": "pattern",
+      "confidence": null,
+      "source": "Forecasting chaotic systems is a notably complex task, which in recent years has been approached with reasonable success using reservoir computing (RC), a recurrent network with fixed random weights (the reservoir) used to extract the spatio-temporal information of the system. This work presents a hybrid quantum reservoir-computing (HQRC) framework, which replaces the reservoir in RC with a quantum circuit."
+    },
+    {
+      "rel": "exhibits",
+      "from": "UL-DIS-afc2517d",
+      "from_type": "discoverable",
+      "to": "UL-PAT-6be17195",
+      "to_type": "pattern",
+      "confidence": null,
+      "source": "The noiseless simulations of HQRC demonstrate valid prediction times comparable to state-of-the-art classical RC models for both the Lorenz63 and double-scroll chaotic paradigmatic systems and adhere to the attractor dynamics long after the forecasts have deviated from the ground truth."
+    },
+    {
+      "rel": "exhibits",
+      "from": "UL-DIS-105aad9a",
+      "from_type": "discoverable",
+      "to": "UL-PAT-7d635a1f",
+      "to_type": "pattern",
+      "confidence": null,
+      "source": "In particular, the standard RC approach is sensitive to various hyperparameters (reservoir size, training length, etc.). As the proposed method has multiple hyperparameters to select (number and type of layers, type of feature maps, measurement correlators, etc.), we observe a hyperparameter sensitivity as well, however even thought the variations between performance can fluctuate, the forecasts rarely diverge from the stable solution, whic is not always the case for the classical RC."
+    },
+    {
+      "rel": "exhibits",
+      "from": "UL-DIS-9c998877",
+      "from_type": "discoverable",
+      "to": "UL-PAT-82738aea",
+      "to_type": "pattern",
+      "confidence": null,
+      "source": "The exact evaluation of the molecular ground state in quantum chemistry requires an exponentially increasing computational cost. Quantum computation is a promising way to overcome the exponential problem using polynomial-time quantum algorithms."
+    },
+    {
+      "rel": "exhibits",
+      "from": "UL-DIS-0ce5487a",
+      "from_type": "discoverable",
+      "to": "UL-PAT-2b8db201",
+      "to_type": "pattern",
+      "confidence": null,
+      "source": "A quantum-classical hybrid optimization scheme known as the variational quantum eigensolver is preferred for noisy intermediate-scale quantum devices. However, the circuit depth becomes one of the bottlenecks of its application to large molecules of more than 20 qubits."
+    },
+    {
+      "rel": "exhibits",
+      "from": "UL-DIS-0ce5487a",
+      "from_type": "discoverable",
+      "to": "UL-PAT-e864e7f7",
+      "to_type": "pattern",
+      "confidence": null,
+      "source": "The geometric property of molecules described by the point-group symmetry will also provide great convenience for quantum chemical simulation, for which the power has already been demonstrated in conventional ab initio chemical calculations in classical computers. However, the power of point-group symmetry is rarely explored in the quantum computing regime."
+    },
+    {
+      "rel": "exhibits",
+      "from": "UL-DIS-2839272a",
+      "from_type": "discoverable",
+      "to": "UL-PAT-82738aea",
+      "to_type": "pattern",
+      "confidence": null,
+      "source": "Universal and efficient simulation of physical systems is among the most compelling applications of quantum computing. In particular, quantum simulation of molecular energies, which enables numerically exact prediction of chemical reaction rates, promises significant advances in our understanding of chemistry and could enable in silico design of new catalysts, pharmaceuticals, and materials."
+    },
+    {
+      "rel": "exhibits",
+      "from": "UL-DIS-e6df0e58",
+      "from_type": "discoverable",
+      "to": "UL-PAT-d1a15afb",
+      "to_type": "pattern",
+      "confidence": null,
+      "source": "All prior experiments focused on either molecular hydrogen or helium hydride, but none of these prior experiments employed a scalable qubit representation such as second quantization. Instead, all five prior experiments represent the Hamiltonian in a configuration basis that cannot be efficiently decomposed as a sum of local Hamiltonians, and then exponentiate this exponentially large matrix as a classical preprocessing step."
+    },
+    {
+      "rel": "exhibits",
+      "from": "UL-DIS-a3f70fa2",
+      "from_type": "discoverable",
+      "to": "UL-PAT-2b8db201",
+      "to_type": "pattern",
+      "confidence": null,
+      "source": "Because VQE only requires short state preparation and measurement sequences, it has been suggested that classically intractable computations might be possible using VQE without the overhead of error correction. Our experiments substantiate this notion; the robustness of the VQE to systematic device errors allows the experiment to achieve chemical accuracy."
+    },
+    {
+      "rel": "exhibits",
+      "from": "UL-DIS-e7f4034e",
+      "from_type": "discoverable",
+      "to": "UL-PAT-42c8b058",
+      "to_type": "pattern",
+      "confidence": null,
+      "source": "Among them, a fermionic QAOA (FQAOA) for solving constrained optimization problems has been developed [Yoshioka, Sasada, Nakano, and Fujii, Phys. Rev. Research vol. 5, 023071, 2023]. In this algorithm, the constraints are essentially imposed as fermion number conservation at arbitrary approximation level."
+    },
+    {
+      "rel": "exhibits",
+      "from": "UL-DIS-f8db2fd1",
+      "from_type": "discoverable",
+      "to": "UL-PAT-2b8db201",
+      "to_type": "pattern",
+      "confidence": null,
+      "source": "Therefore, it is important to design a driver Hamiltonian that minimizes the influence of noise when using an actual quantum processing unit (QPU)."
+    },
+    {
+      "rel": "exhibits",
+      "from": "UL-DIS-c260c390",
+      "from_type": "discoverable",
+      "to": "UL-PAT-cf253e4a",
+      "to_type": "pattern",
+      "confidence": null,
+      "source": "In an ideal noiseless environment, the conservation law for the fermion number M expressed in Eq. (14) is strictly satisfied. However, in experiments with actual QPUs, this conservation law may be violated."
+    },
+    {
+      "rel": "exhibits",
+      "from": "UL-DIS-fd80cc4a",
+      "from_type": "discoverable",
+      "to": "UL-PAT-1bedff02",
+      "to_type": "pattern",
+      "confidence": null,
+      "source": "Despite the fact that research on cortical circuits has been conducted for over a century, determining how many classes of cortical neurons exist remains an ongoing and uncompleted task. Moreover, the continuous development of techniques and the availability of an increasing number of phenotype datasets have not led to the maintenance of a unique classification system that is easy to update and can consider the different defining features of neurons specific to a given type."
+    },
+    {
+      "rel": "exhibits",
+      "from": "UL-DIS-f584bacf",
+      "from_type": "discoverable",
+      "to": "UL-PAT-daae8340",
+      "to_type": "pattern",
+      "confidence": null,
+      "source": "Previous studies have shown the advantages of quantum algorithms on artificially generated datasets, and initial experiments with small binary classification problems have yielded comparable outcomes to classical algorithms. However, it is essential to investigate the potential quantum advantage using real-world data."
+    },
+    {
+      "rel": "exhibits",
+      "from": "UL-DIS-24a46063",
+      "from_type": "discoverable",
+      "to": "UL-PAT-1bedff02",
+      "to_type": "pattern",
+      "confidence": null,
+      "source": "Using kernel methods, quantum algorithms can be adopted through quantum kernel functions to exploit high-dimensional non-classical feature space where quantum feature maps are used to encode the datapoints into inner products or amplitudes in the Hilbert space."
+    },
+    {
+      "rel": "good_for",
+      "from": "UL-TOL-fffa9230",
+      "from_type": "tool",
+      "to": "UL-PAT-46f9e1ab",
+      "to_type": "pattern",
+      "confidence": null,
+      "source": "In chaotic dynamical systems, extreme events manifest in time series as unpredictable large-amplitude peaks. Although deterministic, extreme events appear seemingly randomly, which makes their forecasting difficult."
+    },
+    {
+      "rel": "good_for",
+      "from": "UL-TOL-fffa9230",
+      "from_type": "tool",
+      "to": "UL-PAT-7d635a1f",
+      "to_type": "pattern",
+      "confidence": null,
+      "source": "By learning the dynamics from observables (data), reservoir computers can time accurately predict extreme events and chaotic dynamics, but they may require many degrees of freedom (large reservoirs)."
+    },
+    {
+      "rel": "good_for",
+      "from": "UL-TOL-b877d9c3",
+      "from_type": "tool",
+      "to": "UL-PAT-7d635a1f",
+      "to_type": "pattern",
+      "confidence": null,
+      "source": "By learning the dynamics from observables (data), reservoir computers can time accurately predict extreme events and chaotic dynamics, but they may require many degrees of freedom (large reservoirs)."
+    },
+    {
+      "rel": "good_for",
+      "from": "UL-TOL-fffa9230",
+      "from_type": "tool",
+      "to": "UL-PAT-2b8db201",
+      "to_type": "pattern",
+      "confidence": null,
+      "source": "By developing ad hoc quantum feature maps and removing recurrent connections, the RF-QRC has quantum circuits with smaller depths. This allows the RF-QRC to scale well with higher-dimensional chaotic systems, which makes it suitable for hardware implementation."
+    },
+    {
+      "rel": "good_for",
+      "from": "UL-TOL-26b5ae7e",
+      "from_type": "tool",
+      "to": "UL-PAT-46f9e1ab",
+      "to_type": "pattern",
+      "confidence": null,
+      "source": "Forecasting chaotic systems is a notably complex task, which in recent years has been approached with reasonable success using reservoir computing (RC), a recurrent network with fixed random weights (the reservoir) used to extract the spatio-temporal information of the system. This work presents a hybrid quantum reservoir-computing (HQRC) framework, which replaces the reservoir in RC with a quantum circuit."
+    },
+    {
+      "rel": "good_for",
+      "from": "UL-TOL-b877d9c3",
+      "from_type": "tool",
+      "to": "UL-PAT-46f9e1ab",
+      "to_type": "pattern",
+      "confidence": null,
+      "source": "Forecasting chaotic systems is a notably complex task, which in recent years has been approached with reasonable success using reservoir computing (RC), a recurrent network with fixed random weights (the reservoir) used to extract the spatio-temporal information of the system."
+    },
+    {
+      "rel": "good_for",
+      "from": "UL-TOL-26b5ae7e",
+      "from_type": "tool",
+      "to": "UL-PAT-6be17195",
+      "to_type": "pattern",
+      "confidence": null,
+      "source": "The noiseless simulations of HQRC demonstrate valid prediction times comparable to state-of-the-art classical RC models for both the Lorenz63 and double-scroll chaotic paradigmatic systems and adhere to the attractor dynamics long after the forecasts have deviated from the ground truth."
+    },
+    {
+      "rel": "good_for",
+      "from": "UL-TOL-26b5ae7e",
+      "from_type": "tool",
+      "to": "UL-PAT-7d635a1f",
+      "to_type": "pattern",
+      "confidence": null,
+      "source": "In particular, the standard RC approach is sensitive to various hyperparameters (reservoir size, training length, etc.). As the proposed method has multiple hyperparameters to select (number and type of layers, type of feature maps, measurement correlators, etc.), we observe a hyperparameter sensitivity as well, however even thought the variations between performance can fluctuate, the forecasts rarely diverge from the stable solution, whic is not always the case for the classical RC."
+    },
+    {
+      "rel": "good_for",
+      "from": "UL-TOL-493c9490",
+      "from_type": "tool",
+      "to": "UL-PAT-82738aea",
+      "to_type": "pattern",
+      "confidence": null,
+      "source": "The exact evaluation of the molecular ground state in quantum chemistry requires an exponentially increasing computational cost. Quantum computation is a promising way to overcome the exponential problem using polynomial-time quantum algorithms."
+    },
+    {
+      "rel": "good_for",
+      "from": "UL-TOL-493c9490",
+      "from_type": "tool",
+      "to": "UL-PAT-2b8db201",
+      "to_type": "pattern",
+      "confidence": null,
+      "source": "A quantum-classical hybrid optimization scheme known as the variational quantum eigensolver is preferred for noisy intermediate-scale quantum devices. However, the circuit depth becomes one of the bottlenecks of its application to large molecules of more than 20 qubits."
+    },
+    {
+      "rel": "good_for",
+      "from": "UL-TOL-c15a71ae",
+      "from_type": "tool",
+      "to": "UL-PAT-e864e7f7",
+      "to_type": "pattern",
+      "confidence": null,
+      "source": "The geometric property of molecules described by the point-group symmetry will also provide great convenience for quantum chemical simulation, for which the power has already been demonstrated in conventional ab initio chemical calculations in classical computers. However, the power of point-group symmetry is rarely explored in the quantum computing regime."
+    },
+    {
+      "rel": "good_for",
+      "from": "UL-TOL-abd80b80",
+      "from_type": "tool",
+      "to": "UL-PAT-e864e7f7",
+      "to_type": "pattern",
+      "confidence": null,
+      "source": "In this work, we use point-group symmetry to directly reduce the operator numbers in the UCC ansatz so that the depth of the quantum circuit is significantly decreased without damage to the accuracy or expensive auxiliary calculations. We present a series of numerical cases with the symmetry-reduced unitary coupled-cluster singles and doubles (SymUCCSD) ansatz by the MindQuantum simulator, including LiH, HF, H2O, BeH2, CH4, and NH3 with its flipping potential energy surface."
+    },
+    {
+      "rel": "good_for",
+      "from": "UL-TOL-aaf1948a",
+      "from_type": "tool",
+      "to": "UL-PAT-82738aea",
+      "to_type": "pattern",
+      "confidence": null,
+      "source": "Second, we experimentally demonstrate the canonical quantum algorithm for chemistry, which consists of Trotterization and quantum phase estimation."
+    },
+    {
+      "rel": "good_for",
+      "from": "UL-TOL-447ede9a",
+      "from_type": "tool",
+      "to": "UL-PAT-d1a15afb",
+      "to_type": "pattern",
+      "confidence": null,
+      "source": "All prior experiments focused on either molecular hydrogen or helium hydride, but none of these prior experiments employed a scalable qubit representation such as second quantization. Instead, all five prior experiments represent the Hamiltonian in a configuration basis that cannot be efficiently decomposed as a sum of local Hamiltonians, and then exponentiate this exponentially large matrix as a classical preprocessing step."
+    },
+    {
+      "rel": "good_for",
+      "from": "UL-TOL-6049c810",
+      "from_type": "tool",
+      "to": "UL-PAT-d1a15afb",
+      "to_type": "pattern",
+      "confidence": null,
+      "source": "Instead, all five prior experiments represent the Hamiltonian in a configuration basis that cannot be efficiently decomposed as a sum of local Hamiltonians, and then exponentiate this exponentially large matrix as a classical preprocessing step."
+    },
+    {
+      "rel": "good_for",
+      "from": "UL-TOL-69e72b4b",
+      "from_type": "tool",
+      "to": "UL-PAT-82738aea",
+      "to_type": "pattern",
+      "confidence": null,
+      "source": "First, we experimentally execute the unitary coupled cluster method using the variational quantum eigensolver. Our efficient implementation predicts the correct dissociation energy to within chemical accuracy of the numerically exact result."
+    },
+    {
+      "rel": "good_for",
+      "from": "UL-TOL-1ff50753",
+      "from_type": "tool",
+      "to": "UL-PAT-42c8b058",
+      "to_type": "pattern",
+      "confidence": null,
+      "source": "Among them, a fermionic QAOA (FQAOA) for solving constrained optimization problems has been developed [Yoshioka, Sasada, Nakano, and Fujii, Phys. Rev. Research vol. 5, 023071, 2023]. In this algorithm, the constraints are essentially imposed as fermion number conservation at arbitrary approximation level."
+    },
+    {
+      "rel": "good_for",
+      "from": "UL-TOL-98b2ee23",
+      "from_type": "tool",
+      "to": "UL-PAT-42c8b058",
+      "to_type": "pattern",
+      "confidence": null,
+      "source": "Quantum approximate optimization algorithm (QAOA) has attracted much attention as an algorithm that has the potential to efficiently solve combinatorial optimization problems."
+    },
+    {
+      "rel": "good_for",
+      "from": "UL-TOL-f7a3d4e1",
+      "from_type": "tool",
+      "to": "UL-PAT-2b8db201",
+      "to_type": "pattern",
+      "confidence": null,
+      "source": "Therefore, it is important to design a driver Hamiltonian that minimizes the influence of noise when using an actual quantum processing unit (QPU)."
+    },
+    {
+      "rel": "good_for",
+      "from": "UL-TOL-1ff50753",
+      "from_type": "tool",
+      "to": "UL-PAT-cf253e4a",
+      "to_type": "pattern",
+      "confidence": null,
+      "source": "In an ideal noiseless environment, the conservation law for the fermion number M expressed in Eq. (14) is strictly satisfied. However, in experiments with actual QPUs, this conservation law may be violated."
+    },
+    {
+      "rel": "good_for",
+      "from": "UL-TOL-f7a3d4e1",
+      "from_type": "tool",
+      "to": "UL-PAT-cf253e4a",
+      "to_type": "pattern",
+      "confidence": null,
+      "source": "Compared to the lad-FQAOA, the cyc-FQAOA takes a relatively large value of PM=4 = 0.17. This difference is due to the fact that the cyclic lattice reduces the number of gate operations, thereby reducing the effect of noise."
+    },
+    {
+      "rel": "good_for",
+      "from": "UL-TOL-94b002f7",
+      "from_type": "tool",
+      "to": "UL-PAT-1bedff02",
+      "to_type": "pattern",
+      "confidence": null,
+      "source": "Despite the fact that research on cortical circuits has been conducted for over a century, determining how many classes of cortical neurons exist remains an ongoing and uncompleted task. Moreover, the continuous development of techniques and the availability of an increasing number of phenotype datasets have not led to the maintenance of a unique classification system that is easy to update and can consider the different defining features of neurons specific to a given type."
+    },
+    {
+      "rel": "good_for",
+      "from": "UL-TOL-94b002f7",
+      "from_type": "tool",
+      "to": "UL-PAT-daae8340",
+      "to_type": "pattern",
+      "confidence": null,
+      "source": "Previous studies have shown the advantages of quantum algorithms on artificially generated datasets, and initial experiments with small binary classification problems have yielded comparable outcomes to classical algorithms. However, it is essential to investigate the potential quantum advantage using real-world data."
+    },
+    {
+      "rel": "good_for",
+      "from": "UL-TOL-7a5857e9",
+      "from_type": "tool",
+      "to": "UL-PAT-1bedff02",
+      "to_type": "pattern",
+      "confidence": null,
+      "source": "We named the first one q_kernel_zz, which applies a ZZFeatureMap and an encoding function described by Havlíček et al., who defined a feature map on n-qubits generated by the unitary."
+    },
+    {
+      "rel": "good_for",
+      "from": "UL-TOL-3cebdf8f",
+      "from_type": "tool",
+      "to": "UL-PAT-1bedff02",
+      "to_type": "pattern",
+      "confidence": null,
+      "source": "The last quantum algorithm (q_kernel_training) trains a quantum kernel with quantum kernel alignment (QKA), which iteratively adapts a parametrized quantum kernel to the dataset and simultaneously converges to the maximum SVM margin."
+    },
+    {
+      "rel": "good_for",
+      "from": "UL-TOL-583ae4e0",
+      "from_type": "tool",
+      "to": "UL-PAT-1bedff02",
+      "to_type": "pattern",
+      "confidence": null,
+      "source": "In classical ML, kernel methods provide a way to perform a linear classification on a highly complex data set in the framework of a support vector machine (SVM)."
+    },
+    {
+      "rel": "applies_to",
+      "from": "UL-TOL-fffa9230",
+      "from_type": "tool",
+      "to": "UL-DIS-e03341de",
+      "to_type": "discoverable",
+      "confidence": null,
+      "source": "In chaotic dynamical systems, extreme events manifest in time series as unpredictable large-amplitude peaks. Although deterministic, extreme events appear seemingly randomly, which makes their forecasting difficult.",
+      "via": "UL-PAT-46f9e1ab"
+    },
+    {
+      "rel": "applies_to",
+      "from": "UL-TOL-fffa9230",
+      "from_type": "tool",
+      "to": "UL-DIS-896a1c1d",
+      "to_type": "discoverable",
+      "confidence": null,
+      "source": "By learning the dynamics from observables (data), reservoir computers can time accurately predict extreme events and chaotic dynamics, but they may require many degrees of freedom (large reservoirs).",
+      "via": "UL-PAT-7d635a1f"
+    },
+    {
+      "rel": "applies_to",
+      "from": "UL-TOL-b877d9c3",
+      "from_type": "tool",
+      "to": "UL-DIS-896a1c1d",
+      "to_type": "discoverable",
+      "confidence": null,
+      "source": "By learning the dynamics from observables (data), reservoir computers can time accurately predict extreme events and chaotic dynamics, but they may require many degrees of freedom (large reservoirs).",
+      "via": "UL-PAT-7d635a1f"
+    },
+    {
+      "rel": "applies_to",
+      "from": "UL-TOL-fffa9230",
+      "from_type": "tool",
+      "to": "UL-DIS-c014c904",
+      "to_type": "discoverable",
+      "confidence": null,
+      "source": "By developing ad hoc quantum feature maps and removing recurrent connections, the RF-QRC has quantum circuits with smaller depths. This allows the RF-QRC to scale well with higher-dimensional chaotic systems, which makes it suitable for hardware implementation.",
+      "via": "UL-PAT-2b8db201"
+    },
+    {
+      "rel": "applies_to",
+      "from": "UL-TOL-26b5ae7e",
+      "from_type": "tool",
+      "to": "UL-DIS-4c2afcbc",
+      "to_type": "discoverable",
+      "confidence": null,
+      "source": "Forecasting chaotic systems is a notably complex task, which in recent years has been approached with reasonable success using reservoir computing (RC), a recurrent network with fixed random weights (the reservoir) used to extract the spatio-temporal information of the system. This work presents a hybrid quantum reservoir-computing (HQRC) framework, which replaces the reservoir in RC with a quantum circuit.",
+      "via": "UL-PAT-46f9e1ab"
+    },
+    {
+      "rel": "applies_to",
+      "from": "UL-TOL-b877d9c3",
+      "from_type": "tool",
+      "to": "UL-DIS-4c2afcbc",
+      "to_type": "discoverable",
+      "confidence": null,
+      "source": "Forecasting chaotic systems is a notably complex task, which in recent years has been approached with reasonable success using reservoir computing (RC), a recurrent network with fixed random weights (the reservoir) used to extract the spatio-temporal information of the system.",
+      "via": "UL-PAT-46f9e1ab"
+    },
+    {
+      "rel": "applies_to",
+      "from": "UL-TOL-26b5ae7e",
+      "from_type": "tool",
+      "to": "UL-DIS-afc2517d",
+      "to_type": "discoverable",
+      "confidence": null,
+      "source": "The noiseless simulations of HQRC demonstrate valid prediction times comparable to state-of-the-art classical RC models for both the Lorenz63 and double-scroll chaotic paradigmatic systems and adhere to the attractor dynamics long after the forecasts have deviated from the ground truth.",
+      "via": "UL-PAT-6be17195"
+    },
+    {
+      "rel": "applies_to",
+      "from": "UL-TOL-26b5ae7e",
+      "from_type": "tool",
+      "to": "UL-DIS-105aad9a",
+      "to_type": "discoverable",
+      "confidence": null,
+      "source": "In particular, the standard RC approach is sensitive to various hyperparameters (reservoir size, training length, etc.). As the proposed method has multiple hyperparameters to select (number and type of layers, type of feature maps, measurement correlators, etc.), we observe a hyperparameter sensitivity as well, however even thought the variations between performance can fluctuate, the forecasts rarely diverge from the stable solution, whic is not always the case for the classical RC.",
+      "via": "UL-PAT-7d635a1f"
+    },
+    {
+      "rel": "applies_to",
+      "from": "UL-TOL-26b5ae7e",
+      "from_type": "tool",
+      "to": "UL-DIS-896a1c1d",
+      "to_type": "discoverable",
+      "confidence": null,
+      "source": "Despite the small size, for the best hyperparameters, we obtain VPT of 10.68, which is better than the state-of-the-art classical approaches with comparable reservoir sizes…",
+      "via": "UL-PAT-7d635a1f"
+    },
+    {
+      "rel": "applies_to",
+      "from": "UL-TOL-493c9490",
+      "from_type": "tool",
+      "to": "UL-DIS-9c998877",
+      "to_type": "discoverable",
+      "confidence": null,
+      "source": "The exact evaluation of the molecular ground state in quantum chemistry requires an exponentially increasing computational cost. Quantum computation is a promising way to overcome the exponential problem using polynomial-time quantum algorithms.",
+      "via": "UL-PAT-82738aea"
+    },
+    {
+      "rel": "applies_to",
+      "from": "UL-TOL-493c9490",
+      "from_type": "tool",
+      "to": "UL-DIS-0ce5487a",
+      "to_type": "discoverable",
+      "confidence": null,
+      "source": "A quantum-classical hybrid optimization scheme known as the variational quantum eigensolver is preferred for noisy intermediate-scale quantum devices. However, the circuit depth becomes one of the bottlenecks of its application to large molecules of more than 20 qubits.",
+      "via": "UL-PAT-2b8db201"
+    },
+    {
+      "rel": "applies_to",
+      "from": "UL-TOL-c15a71ae",
+      "from_type": "tool",
+      "to": "UL-DIS-0ce5487a",
+      "to_type": "discoverable",
+      "confidence": null,
+      "source": "The geometric property of molecules described by the point-group symmetry will also provide great convenience for quantum chemical simulation, for which the power has already been demonstrated in conventional ab initio chemical calculations in classical computers. However, the power of point-group symmetry is rarely explored in the quantum computing regime.",
+      "via": "UL-PAT-e864e7f7"
+    },
+    {
+      "rel": "applies_to",
+      "from": "UL-TOL-abd80b80",
+      "from_type": "tool",
+      "to": "UL-DIS-0ce5487a",
+      "to_type": "discoverable",
+      "confidence": null,
+      "source": "In this work, we use point-group symmetry to directly reduce the operator numbers in the UCC ansatz so that the depth of the quantum circuit is significantly decreased without damage to the accuracy or expensive auxiliary calculations. We present a series of numerical cases with the symmetry-reduced unitary coupled-cluster singles and doubles (SymUCCSD) ansatz by the MindQuantum simulator, including LiH, HF, H2O, BeH2, CH4, and NH3 with its flipping potential energy surface.",
+      "via": "UL-PAT-e864e7f7"
+    },
+    {
+      "rel": "applies_to",
+      "from": "UL-TOL-493c9490",
+      "from_type": "tool",
+      "to": "UL-DIS-2839272a",
+      "to_type": "discoverable",
+      "confidence": null,
+      "source": "Universal and efficient simulation of physical systems is among the most compelling applications of quantum computing. In particular, quantum simulation of molecular energies, which enables numerically exact prediction of chemical reaction rates, promises significant advances in our understanding of chemistry and could enable in silico design of new catalysts, pharmaceuticals, and materials.",
+      "via": "UL-PAT-82738aea"
+    },
+    {
+      "rel": "applies_to",
+      "from": "UL-TOL-aaf1948a",
+      "from_type": "tool",
+      "to": "UL-DIS-2839272a",
+      "to_type": "discoverable",
+      "confidence": null,
+      "source": "Second, we experimentally demonstrate the canonical quantum algorithm for chemistry, which consists of Trotterization and quantum phase estimation.",
+      "via": "UL-PAT-82738aea"
+    },
+    {
+      "rel": "applies_to",
+      "from": "UL-TOL-447ede9a",
+      "from_type": "tool",
+      "to": "UL-DIS-e6df0e58",
+      "to_type": "discoverable",
+      "confidence": null,
+      "source": "All prior experiments focused on either molecular hydrogen or helium hydride, but none of these prior experiments employed a scalable qubit representation such as second quantization. Instead, all five prior experiments represent the Hamiltonian in a configuration basis that cannot be efficiently decomposed as a sum of local Hamiltonians, and then exponentiate this exponentially large matrix as a classical preprocessing step.",
+      "via": "UL-PAT-d1a15afb"
+    },
+    {
+      "rel": "applies_to",
+      "from": "UL-TOL-6049c810",
+      "from_type": "tool",
+      "to": "UL-DIS-e6df0e58",
+      "to_type": "discoverable",
+      "confidence": null,
+      "source": "Instead, all five prior experiments represent the Hamiltonian in a configuration basis that cannot be efficiently decomposed as a sum of local Hamiltonians, and then exponentiate this exponentially large matrix as a classical preprocessing step.",
+      "via": "UL-PAT-d1a15afb"
+    },
+    {
+      "rel": "applies_to",
+      "from": "UL-TOL-493c9490",
+      "from_type": "tool",
+      "to": "UL-DIS-a3f70fa2",
+      "to_type": "discoverable",
+      "confidence": null,
+      "source": "Because VQE only requires short state preparation and measurement sequences, it has been suggested that classically intractable computations might be possible using VQE without the overhead of error correction. Our experiments substantiate this notion; the robustness of the VQE to systematic device errors allows the experiment to achieve chemical accuracy.",
+      "via": "UL-PAT-2b8db201"
+    },
+    {
+      "rel": "applies_to",
+      "from": "UL-TOL-69e72b4b",
+      "from_type": "tool",
+      "to": "UL-DIS-2839272a",
+      "to_type": "discoverable",
+      "confidence": null,
+      "source": "First, we experimentally execute the unitary coupled cluster method using the variational quantum eigensolver. Our efficient implementation predicts the correct dissociation energy to within chemical accuracy of the numerically exact result.",
+      "via": "UL-PAT-82738aea"
+    },
+    {
+      "rel": "applies_to",
+      "from": "UL-TOL-1ff50753",
+      "from_type": "tool",
+      "to": "UL-DIS-e7f4034e",
+      "to_type": "discoverable",
+      "confidence": null,
+      "source": "Among them, a fermionic QAOA (FQAOA) for solving constrained optimization problems has been developed [Yoshioka, Sasada, Nakano, and Fujii, Phys. Rev. Research vol. 5, 023071, 2023]. In this algorithm, the constraints are essentially imposed as fermion number conservation at arbitrary approximation level.",
+      "via": "UL-PAT-42c8b058"
+    },
+    {
+      "rel": "applies_to",
+      "from": "UL-TOL-98b2ee23",
+      "from_type": "tool",
+      "to": "UL-DIS-e7f4034e",
+      "to_type": "discoverable",
+      "confidence": null,
+      "source": "Quantum approximate optimization algorithm (QAOA) has attracted much attention as an algorithm that has the potential to efficiently solve combinatorial optimization problems.",
+      "via": "UL-PAT-42c8b058"
+    },
+    {
+      "rel": "applies_to",
+      "from": "UL-TOL-f7a3d4e1",
+      "from_type": "tool",
+      "to": "UL-DIS-f8db2fd1",
+      "to_type": "discoverable",
+      "confidence": null,
+      "source": "Therefore, it is important to design a driver Hamiltonian that minimizes the influence of noise when using an actual quantum processing unit (QPU).",
+      "via": "UL-PAT-2b8db201"
+    },
+    {
+      "rel": "applies_to",
+      "from": "UL-TOL-1ff50753",
+      "from_type": "tool",
+      "to": "UL-DIS-c260c390",
+      "to_type": "discoverable",
+      "confidence": null,
+      "source": "In an ideal noiseless environment, the conservation law for the fermion number M expressed in Eq. (14) is strictly satisfied. However, in experiments with actual QPUs, this conservation law may be violated.",
+      "via": "UL-PAT-cf253e4a"
+    },
+    {
+      "rel": "applies_to",
+      "from": "UL-TOL-f7a3d4e1",
+      "from_type": "tool",
+      "to": "UL-DIS-c260c390",
+      "to_type": "discoverable",
+      "confidence": null,
+      "source": "Compared to the lad-FQAOA, the cyc-FQAOA takes a relatively large value of PM=4 = 0.17. This difference is due to the fact that the cyclic lattice reduces the number of gate operations, thereby reducing the effect of noise.",
+      "via": "UL-PAT-cf253e4a"
+    },
+    {
+      "rel": "applies_to",
+      "from": "UL-TOL-94b002f7",
+      "from_type": "tool",
+      "to": "UL-DIS-fd80cc4a",
+      "to_type": "discoverable",
+      "confidence": null,
+      "source": "Despite the fact that research on cortical circuits has been conducted for over a century, determining how many classes of cortical neurons exist remains an ongoing and uncompleted task. Moreover, the continuous development of techniques and the availability of an increasing number of phenotype datasets have not led to the maintenance of a unique classification system that is easy to update and can consider the different defining features of neurons specific to a given type.",
+      "via": "UL-PAT-1bedff02"
+    },
+    {
+      "rel": "applies_to",
+      "from": "UL-TOL-94b002f7",
+      "from_type": "tool",
+      "to": "UL-DIS-f584bacf",
+      "to_type": "discoverable",
+      "confidence": null,
+      "source": "Previous studies have shown the advantages of quantum algorithms on artificially generated datasets, and initial experiments with small binary classification problems have yielded comparable outcomes to classical algorithms. However, it is essential to investigate the potential quantum advantage using real-world data.",
+      "via": "UL-PAT-daae8340"
+    },
+    {
+      "rel": "applies_to",
+      "from": "UL-TOL-94b002f7",
+      "from_type": "tool",
+      "to": "UL-DIS-24a46063",
+      "to_type": "discoverable",
+      "confidence": null,
+      "source": "Using kernel methods, quantum algorithms can be adopted through quantum kernel functions to exploit high-dimensional non-classical feature space where quantum feature maps are used to encode the datapoints into inner products or amplitudes in the Hilbert space.",
+      "via": "UL-PAT-1bedff02"
+    },
+    {
+      "rel": "applies_to",
+      "from": "UL-TOL-7a5857e9",
+      "from_type": "tool",
+      "to": "UL-DIS-24a46063",
+      "to_type": "discoverable",
+      "confidence": null,
+      "source": "We named the first one q_kernel_zz, which applies a ZZFeatureMap and an encoding function described by Havlíček et al., who defined a feature map on n-qubits generated by the unitary.",
+      "via": "UL-PAT-1bedff02"
+    },
+    {
+      "rel": "applies_to",
+      "from": "UL-TOL-3cebdf8f",
+      "from_type": "tool",
+      "to": "UL-DIS-24a46063",
+      "to_type": "discoverable",
+      "confidence": null,
+      "source": "The last quantum algorithm (q_kernel_training) trains a quantum kernel with quantum kernel alignment (QKA), which iteratively adapts a parametrized quantum kernel to the dataset and simultaneously converges to the maximum SVM margin.",
+      "via": "UL-PAT-1bedff02"
+    },
+    {
+      "rel": "applies_to",
+      "from": "UL-TOL-583ae4e0",
+      "from_type": "tool",
+      "to": "UL-DIS-fd80cc4a",
+      "to_type": "discoverable",
+      "confidence": null,
+      "source": "In classical ML, kernel methods provide a way to perform a linear classification on a highly complex data set in the framework of a support vector machine (SVM).",
+      "via": "UL-PAT-1bedff02"
+    },
+    {
+      "rel": "variant_of",
+      "from": "UL-TOL-fffa9230",
+      "from_type": "tool",
+      "to": "UL-TOL-bcad4e8e",
+      "to_type": "tool"
+    },
+    {
+      "rel": "variant_of",
+      "from": "UL-TOL-26b5ae7e",
+      "from_type": "tool",
+      "to": "UL-TOL-b877d9c3",
+      "to_type": "tool"
+    },
+    {
+      "rel": "variant_of",
+      "from": "UL-TOL-abd80b80",
+      "from_type": "tool",
+      "to": "UL-TOL-c15a71ae",
+      "to_type": "tool"
+    },
+    {
+      "rel": "variant_of",
+      "from": "UL-TOL-1ff50753",
+      "from_type": "tool",
+      "to": "UL-TOL-98b2ee23",
+      "to_type": "tool"
+    }
+  ]
+}
