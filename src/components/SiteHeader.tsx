@@ -258,7 +258,7 @@ export function SiteHeader() {
             type="button"
             onClick={() => setSearchOpen(false)}
             aria-label="Close search"
-            className="absolute right-6 top-6 p-2 text-dim transition-colors hover:text-cream"
+            className="absolute right-6 top-6 z-10 p-2 text-dim transition-colors hover:text-cream"
           >
             <X size={24} strokeWidth={1.5} aria-hidden />
           </button>
@@ -298,7 +298,7 @@ export function SiteHeader() {
             type="button"
             onClick={() => setMenuOpen(false)}
             aria-label="Close menu"
-            className="absolute right-6 top-6 p-2 text-dim transition-colors hover:text-cream"
+            className="fixed right-6 top-6 z-10 p-2 text-dim transition-colors hover:text-cream"
           >
             <X size={24} strokeWidth={1.5} aria-hidden />
           </button>
