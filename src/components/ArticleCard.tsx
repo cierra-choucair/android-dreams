@@ -10,12 +10,13 @@ export function postHref(post: Post): string {
 }
 
 /**
- * Standard article card: top accent line in the format color, eyebrow,
- * Bebas headline, one-line excerpt, date + byline.
+ * Standard post card: elevated panel with rounded corners, image running
+ * edge-to-edge across the top, bold kicker in the format accent, bold
+ * headline, quiet meta at the bottom.
  */
 export function ArticleCard({
   post,
-  showImage = false,
+  showImage = true,
   accentOverride,
 }: {
   post: Post;
@@ -26,27 +27,25 @@ export function ArticleCard({
   const accent = accentOverride ?? { text: format.text, bg: format.bg };
 
   return (
-    <article className="floaty group relative flex h-full flex-col overflow-hidden border border-cream/10 bg-cream/[0.03] hover:bg-cream/[0.05]">
-      <span
-        aria-hidden
-        className={`block h-[2px] w-full ${accent.bg} opacity-40 transition-opacity group-hover:opacity-100`}
-      />
+    <article className="floaty group relative flex h-full flex-col overflow-hidden border border-cream/[0.07] bg-panel">
       {showImage && (
-        <ImageSlot image={post.featuredImage} className="aspect-[16/9] border-x-0 border-t-0" />
+        <ImageSlot bare image={post.featuredImage} className="aspect-[16/9]" />
       )}
       <div className="flex flex-1 flex-col p-5">
-        <p className={`eyebrow ${accent.text}`}>{format.name}</p>
-        <h3 className="mt-3 font-display text-2xl leading-[1.05] tracking-wide text-cream">
+        <p className={`font-serif text-[0.85rem] font-bold ${accent.text}`}>
+          {format.name}
+        </p>
+        <h3 className="mt-2 font-serif text-xl font-bold leading-snug text-cream">
           <Link href={postHref(post)} className="transition-colors group-hover:text-cream">
             {/* Stretched link: whole card is clickable */}
             <span className="absolute inset-0" aria-hidden />
             {post.title}
           </Link>
         </h3>
-        <p className="mt-3 line-clamp-2 text-[0.95rem] italic leading-relaxed text-dim">
+        <p className="mt-2 line-clamp-2 text-[0.92rem] font-light leading-relaxed text-dim">
           {post.excerpt}
         </p>
-        <p className="mt-auto pt-4 font-serif font-semibold text-[0.72rem] uppercase tracking-wide2 text-cream/65">
+        <p className="mt-auto pt-4 font-serif text-[0.78rem] font-medium text-cream/60">
           {formatDateStamp(post.date)}
           {post.author.name && <> · {post.author.name}</>}
         </p>
@@ -55,29 +54,65 @@ export function ArticleCard({
   );
 }
 
-/** Larger feature treatment: image left, headline + dek right. */
-export function FeatureCard({ post }: { post: Post }) {
+/**
+ * Lead treatment: text panel left, large image right — one card,
+ * per the front-page reference.
+ */
+export function FeatureCard({ post, priority = false }: { post: Post; priority?: boolean }) {
   const format = formatFromCategories(post.categorySlugs);
 
   return (
-    <article className="floaty group relative grid gap-6 overflow-hidden border border-cream/10 bg-cream/[0.03] hover:bg-cream/[0.05] md:grid-cols-2">
-      <ImageSlot
-        image={post.featuredImage}
-        className="aspect-[16/10] md:aspect-auto md:min-h-[20rem] md:border-y-0 md:border-l-0"
-        label="COVER IMAGE SLOT"
-      />
-      <div className="flex flex-col justify-center p-6 pb-8 md:py-10 md:pr-10">
-        <p className={`eyebrow ${format.text}`}>{format.name}</p>
-        <h3 className="mt-4 font-display text-3xl leading-[1.02] tracking-wide text-cream sm:text-4xl">
+    <article className="floaty group relative grid overflow-hidden border border-cream/[0.07] bg-panel lg:grid-cols-[6fr_7fr]">
+      <div className="order-2 flex flex-col p-6 sm:p-8 lg:order-1">
+        <p className={`font-serif text-[0.9rem] font-bold ${format.text}`}>
+          {format.name}
+        </p>
+        <h3 className="mt-3 font-serif text-2xl font-bold leading-[1.12] text-cream sm:text-3xl">
           <Link href={postHref(post)}>
             <span className="absolute inset-0" aria-hidden />
             {post.title}
           </Link>
         </h3>
-        <p className="mt-4 text-lg italic leading-relaxed text-dim">{post.excerpt}</p>
-        <p className="mt-6 font-serif font-semibold text-[0.72rem] uppercase tracking-wide2 text-cream/65">
-          {formatDateStamp(post.date)} · {post.author.name} ·{" "}
-          {post.readingMinutes} min read
+        <p className="mt-4 max-w-xl text-[1.02rem] font-light leading-relaxed text-dim">
+          {post.excerpt}
+        </p>
+        <p className="mt-auto pt-6 font-serif text-[0.78rem] font-medium text-cream/60">
+          {formatDateStamp(post.date)} · {post.author.name} · {post.readingMinutes} min read
+        </p>
+      </div>
+      <ImageSlot
+        bare
+        image={post.featuredImage}
+        className="order-1 aspect-[16/9] lg:order-2 lg:aspect-auto lg:min-h-[24rem]"
+        label="LEAD IMAGE SLOT"
+        priority={priority}
+        sizes="(min-width: 1024px) 55vw, 100vw"
+      />
+    </article>
+  );
+}
+
+/**
+ * Side card: image left, text right — the stacked right-column
+ * treatment from the reference.
+ */
+export function SideCard({ post }: { post: Post }) {
+  const format = formatFromCategories(post.categorySlugs);
+  return (
+    <article className="floaty group relative grid grid-cols-[2fr_3fr] overflow-hidden border border-cream/[0.07] bg-panel">
+      <ImageSlot bare image={post.featuredImage} className="min-h-[9rem]" label="IMAGE" />
+      <div className="flex flex-col p-4 sm:p-5">
+        <p className={`font-serif text-[0.8rem] font-bold ${format.text}`}>
+          {format.name}
+        </p>
+        <h3 className="mt-1.5 font-serif text-[1.05rem] font-bold leading-snug text-cream">
+          <Link href={postHref(post)}>
+            <span className="absolute inset-0" aria-hidden />
+            {post.title}
+          </Link>
+        </h3>
+        <p className="mt-auto pt-3 font-serif text-[0.72rem] font-medium text-cream/60">
+          {formatDateStamp(post.date)} · {post.readingMinutes} min
         </p>
       </div>
     </article>
