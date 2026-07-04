@@ -97,7 +97,7 @@ function Headshot({ image, name }: { image: string; name: string }) {
       aria-hidden
       className="image-slot floaty-static relative flex aspect-square items-center justify-center overflow-hidden border border-cream/10"
     >
-      <div className="absolute inset-0 bg-grid" />
+      <div className="absolute inset-0 bg-cyber" />
       <span className="relative font-serif font-semibold text-[0.68rem] uppercase tracking-wide4 text-cream/65">
         Headshot slot
       </span>

@@ -59,7 +59,7 @@ function NavDropdown({
         aria-haspopup="true"
         onClick={() => setOpen(isOpen ? null : id)}
         onMouseEnter={() => setOpen(id)}
-        className={`flex items-center gap-1.5 font-serif font-semibold text-[0.76rem] uppercase tracking-wide2 transition-colors ${
+        className={`inline-flex items-center gap-1.5 font-serif font-semibold text-[0.76rem] uppercase leading-none tracking-wide2 transition-colors ${
           active || isOpen ? "text-orange" : "text-dim hover:text-cream"
         }`}
       >
@@ -187,7 +187,7 @@ export function SiteHeader() {
               <li>
                 <Link
                   href="/qfrontline"
-                  className={`font-serif font-semibold text-[0.76rem] uppercase tracking-wide2 transition-colors ${
+                  className={`inline-flex items-center font-serif font-semibold text-[0.76rem] uppercase leading-none tracking-wide2 transition-colors ${
                     pathname.startsWith("/qfrontline") ? "text-orange" : "text-dim hover:text-cream"
                   }`}
                 >
@@ -205,7 +205,7 @@ export function SiteHeader() {
               <li>
                 <Link
                   href="/about"
-                  className={`font-serif font-semibold text-[0.76rem] uppercase tracking-wide2 transition-colors ${
+                  className={`inline-flex items-center font-serif font-semibold text-[0.76rem] uppercase leading-none tracking-wide2 transition-colors ${
                     pathname === "/about" ? "text-orange" : "text-dim hover:text-cream"
                   }`}
                 >
@@ -250,7 +250,7 @@ export function SiteHeader() {
           role="dialog"
           aria-modal="true"
           aria-label="Search Android Dreams"
-          className="fixed inset-0 z-[60] bg-ink/[0.97] bg-grid"
+          className="fixed inset-0 z-[60] bg-ink/[0.97] bg-cyber"
         >
           <div className="pointer-events-none absolute inset-0 glow-orange-tl" />
           <div className="pointer-events-none absolute inset-0 glow-magenta-br" />
@@ -291,7 +291,7 @@ export function SiteHeader() {
           role="dialog"
           aria-modal="true"
           aria-label="Site menu"
-          className="fixed inset-0 z-[60] overflow-y-auto bg-ink/[0.97] bg-grid lg:hidden"
+          className="fixed inset-0 z-[60] overflow-y-auto bg-ink/[0.97] bg-cyber lg:hidden"
         >
           <div className="pointer-events-none absolute inset-0 glow-orange-tl" />
           <button

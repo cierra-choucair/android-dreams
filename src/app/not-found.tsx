@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function NotFound() {
   return (
     <div className="relative overflow-hidden">
-      <div className="pointer-events-none absolute inset-0 bg-grid" />
+      <div className="pointer-events-none absolute inset-0 bg-cyber" />
       <div className="pointer-events-none absolute inset-0 glow-orange-tl" />
       <div className="pointer-events-none absolute inset-0 glow-magenta-br" />
       <div className="relative mx-auto flex min-h-[70vh] max-w-3xl flex-col items-center justify-center px-4 py-24 text-center sm:px-6">

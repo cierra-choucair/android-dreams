@@ -40,7 +40,7 @@ export default async function SundayLetterPage({
     <div className="relative">
       {/* ─────────── The newsletter, and its front door ─────────── */}
       <section className="relative overflow-hidden border-b border-cream/10">
-        <div className="pointer-events-none absolute inset-0 bg-grid" />
+        <div className="pointer-events-none absolute inset-0 bg-cyber" />
         <div className="pointer-events-none absolute inset-0 glow-gold-center" />
         <div className="relative mx-auto max-w-3xl px-4 py-20 text-center sm:px-6">
           <p className="eyebrow text-gold">{meta.cadence} · The Newsletter</p>
