@@ -1,7 +1,6 @@
-import Link from "next/link";
-import { NewsletterForm } from "./NewsletterForm";
+import { AD_NEWSLETTER_ARCHIVE_URL, AD_SUBSCRIBE_URL } from "@/lib/links";
 
-/** Full-width Sunday Letter band with the magenta radial glow. */
+/** Full-width Sunday Letter band — subscribe on beehiiv. */
 export function NewsletterCTA() {
   return (
     <section aria-labelledby="newsletter-cta" className="relative overflow-hidden border-y border-cream/10">
@@ -11,7 +10,7 @@ export function NewsletterCTA() {
         <div>
           <h2
             id="newsletter-cta"
-            className="font-display text-5xl leading-none tracking-wide text-cream sm:text-6xl"
+            className="font-display text-5xl font-bold leading-none tracking-wide text-cream sm:text-6xl"
           >
             Get the Sunday Letter.
           </h2>
@@ -20,14 +19,23 @@ export function NewsletterCTA() {
             inbox. The newsletter of Android Dreams.
           </p>
         </div>
-        <div className="lg:pl-10">
-          <NewsletterForm accent="orange" publication="ad" />
-          <p className="mt-1 font-serif font-semibold text-[0.68rem] uppercase tracking-wide2 text-cream/65">
-            Free ·{" "}
-            <Link href="/sunday-letter" className="underline decoration-dimmer underline-offset-2 hover:text-cream">
-              Read past letters
-            </Link>
-          </p>
+        <div className="flex flex-wrap items-center gap-5 lg:justify-end lg:pl-10">
+          <a
+            href={AD_SUBSCRIBE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="floaty rounded-lg bg-orange px-8 py-4 font-serif text-sm font-semibold uppercase tracking-wide2 text-ink hover:bg-orange/85"
+          >
+            Subscribe — free
+          </a>
+          <a
+            href={AD_NEWSLETTER_ARCHIVE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-serif text-[0.78rem] font-semibold uppercase tracking-wide2 text-cream/80 transition-colors hover:text-orange"
+          >
+            Read past letters →
+          </a>
         </div>
       </div>
     </section>

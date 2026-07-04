@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { FormEvent, useCallback, useEffect, useRef, useState } from "react";
 import { ChevronDown, Menu, Search, X } from "lucide-react";
+import { AD_SUBSCRIBE_URL } from "@/lib/links";
 
 const AD_MENU = [
   { href: "/transmissions", label: "Transmissions" },
@@ -223,12 +224,14 @@ export function SiteHeader() {
             >
               <Search size={18} strokeWidth={1.5} aria-hidden />
             </button>
-            <Link
-              href="/sunday-letter"
+            <a
+              href={AD_SUBSCRIBE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="hidden rounded-lg border border-orange px-4 py-1.5 font-serif font-semibold text-[0.72rem] uppercase tracking-wide2 text-orange transition-colors hover:bg-orange hover:text-ink sm:inline-block"
             >
               Subscribe
-            </Link>
+            </a>
             <button
               type="button"
               onClick={() => setMenuOpen(true)}
