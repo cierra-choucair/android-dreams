@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArticleCard, postHref } from "@/components/ArticleCard";
-import { ImageSlot } from "@/components/ImageSlot";
+import { ArticleCard, FeatureCard, postHref, SideCard } from "@/components/ArticleCard";
 import { NewsletterCTA } from "@/components/NewsletterCTA";
 import { SectionHeader } from "@/components/SectionHeader";
 import { FORMATS, formatFromCategories } from "@/lib/formats";
@@ -21,24 +20,6 @@ function pulledQuote(post: Post): string {
   return post.excerpt;
 }
 
-/** Rail item: kicker + headline + meta, ruled — no box. */
-function RailItem({ post }: { post: Post }) {
-  const format = formatFromCategories(post.categorySlugs);
-  return (
-    <li className="group border-b border-cream/10 py-4 first:pt-0 last:border-b-0">
-      <p className={`eyebrow ${format.text}`}>{format.name}</p>
-      <h3 className="mt-1.5 font-serif text-[1.05rem] font-semibold leading-snug text-cream">
-        <Link href={postHref(post)} className="transition-colors group-hover:text-orange">
-          {post.title}
-        </Link>
-      </h3>
-      <p className="mt-1.5 font-serif text-[0.72rem] font-medium uppercase tracking-wide2 text-cream/60">
-        {formatDateStamp(post.date)} · {post.readingMinutes} min
-      </p>
-    </li>
-  );
-}
-
 export default async function HomePage() {
   const [featured, latestAll, transmissions, deepReads, sciFi, sundayLetter] =
     await Promise.all([
@@ -52,7 +33,7 @@ export default async function HomePage() {
 
   const rail = latestAll.posts
     .filter((p) => p.id !== featured?.id)
-    .slice(0, 6);
+    .slice(0, 3);
   const lens = sciFi.posts[0];
   const letter = sundayLetter.posts[0];
 
@@ -108,62 +89,31 @@ export default async function HomePage() {
         <h2 id="lead-latest" className="sr-only">
           Top stories
         </h2>
-        <div className="grid gap-10 lg:grid-cols-[2fr_1fr]">
-          {/* Lead */}
+        <div className="grid gap-5 lg:grid-cols-[5fr_3fr]">
+          {/* Lead: text beside image, one card */}
           {featured ? (
-            <article className="floaty group relative overflow-hidden border border-cream/10 bg-cream/[0.03]">
-              <ImageSlot
-                image={featured.featuredImage}
-                className="aspect-[16/8] rounded-b-none border-x-0 border-t-0"
-                label="LEAD IMAGE SLOT"
-                priority
-              />
-              <div className="p-7 sm:p-9">
-                <p className={`eyebrow ${formatFromCategories(featured.categorySlugs).text}`}>
-                  {formatFromCategories(featured.categorySlugs).name} · Featured
-                </p>
-                <h3 className="mt-4 font-display text-4xl font-bold leading-[1.02] tracking-wide text-cream sm:text-5xl">
-                  <Link href={postHref(featured)}>
-                    <span className="absolute inset-0" aria-hidden />
-                    {featured.title}
-                  </Link>
-                </h3>
-                <p className="mt-4 max-w-2xl text-lg italic leading-relaxed text-dim">
-                  {featured.excerpt}
-                </p>
-                <p className="mt-6 font-serif text-[0.72rem] font-semibold uppercase tracking-wide2 text-cream/65">
-                  {formatDateStamp(featured.date)} · {featured.author.name} ·{" "}
-                  {featured.readingMinutes} min read
-                </p>
-              </div>
-            </article>
+            <FeatureCard post={featured} priority />
           ) : (
-            <div className="floaty-static border border-cream/10 bg-cream/[0.03] p-9">
-              <p className="eyebrow text-orange">Transmission pending</p>
-              <p className="mt-4 italic text-dim">
+            <div className="floaty-static border border-cream/[0.07] bg-panel p-9">
+              <p className="font-serif text-[0.9rem] font-bold text-orange">
+                Transmission pending
+              </p>
+              <p className="mt-4 font-light text-dim">
                 The first feature is on its way from the frontier.
               </p>
             </div>
           )}
 
-          {/* Rail */}
-          <aside aria-labelledby="the-latest">
-            <h3
-              id="the-latest"
-              className="border-b-2 border-orange pb-3 font-display text-2xl font-bold tracking-wide text-cream"
-            >
-              The Latest
-            </h3>
-            <ul className="mt-2">
-              {rail.length > 0 ? (
-                rail.map((post) => <RailItem key={post.id} post={post} />)
-              ) : (
-                <li className="py-4 font-serif text-sm font-medium text-cream/65">
-                  Awaiting the first signals.
-                </li>
-              )}
-            </ul>
-          </aside>
+          {/* Stacked side cards */}
+          <div className="grid content-start gap-5">
+            {rail.length > 0 ? (
+              rail.map((post) => <SideCard key={post.id} post={post} />)
+            ) : (
+              <p className="font-serif text-sm font-medium text-cream/65">
+                Awaiting the first signals.
+              </p>
+            )}
+          </div>
         </div>
       </section>
 

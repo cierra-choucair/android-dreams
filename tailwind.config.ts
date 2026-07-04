@@ -12,6 +12,7 @@ const config: Config = {
         cyan: "#3A8FFF", // left half · human · 0
         gold: "#A098B8", // Dust · credits · metadata
         ink: "#050308", // Void · the letterbox · primary surface
+        panel: "#15111F", // elevated card surface on Void
         cream: "#F6F3FF", // Bone · title type · primary ink
         dim: "rgba(246,243,255,0.65)",
         dimmer: "rgba(246,243,255,0.42)",
