@@ -73,7 +73,7 @@ export function ArticleView({
           {post.excerpt && (
             <p className="mt-5 text-xl italic leading-relaxed text-dim">{post.excerpt}</p>
           )}
-          <p className="mt-7 font-mono text-[0.7rem] uppercase tracking-wide2 text-dim">
+          <p className="mt-7 font-serif font-semibold text-[0.76rem] uppercase tracking-wide2 text-dim">
             {post.author.slug ? (
               <Link
                 href={`/authors/${post.author.slug}`}
@@ -84,9 +84,9 @@ export function ArticleView({
             ) : (
               <span className="text-cream/80">{post.author.name}</span>
             )}
-            <span className="text-dimmer"> · </span>
+            <span className="text-cream/65"> · </span>
             <time dateTime={post.date}>{formatDate(post.date)}</time>
-            <span className="text-dimmer"> · </span>
+            <span className="text-cream/65"> · </span>
             {post.readingMinutes} min read
           </p>
           <div aria-hidden className="mt-6 h-px w-full bg-orange/70" />
@@ -118,7 +118,7 @@ export function ArticleView({
                 <li key={tag.id}>
                   <Link
                     href={`/topics/${tag.slug}`}
-                    className="inline-block border border-cream/15 px-3 py-1 font-mono text-[0.6rem] uppercase tracking-wide2 text-dim transition-colors hover:border-orange hover:text-orange"
+                    className="inline-block border border-cream/15 px-3 py-1 font-serif font-semibold text-[0.68rem] uppercase tracking-wide2 text-dim transition-colors hover:border-orange hover:text-orange"
                   >
                     {tag.name}
                   </Link>

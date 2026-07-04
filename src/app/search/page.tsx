@@ -26,7 +26,7 @@ async function SearchResults({ q, page }: { q: string; page: number }) {
 
   return (
     <>
-      <p className="mb-8 font-mono text-[0.7rem] uppercase tracking-wide2 text-dim">
+      <p className="mb-8 font-serif font-semibold text-[0.76rem] uppercase tracking-wide2 text-dim">
         {total} {total === 1 ? "result" : "results"} for “{q}”
       </p>
       {posts.length > 0 ? (
@@ -36,7 +36,7 @@ async function SearchResults({ q, page }: { q: string; page: number }) {
           ))}
         </div>
       ) : (
-        <p className="font-mono text-xs uppercase tracking-wide2 text-dimmer">
+        <p className="font-serif font-semibold text-xs uppercase tracking-wide2 text-cream/65">
           Nothing in the archive matches. Try a broader signal.
         </p>
       )}
@@ -68,11 +68,11 @@ export default function SearchPage({ searchParams }: { searchParams: SearchParam
               name="q"
               defaultValue={q}
               placeholder="Quantum, alignment, coherence…"
-              className="min-w-0 flex-1 border border-orange/40 bg-ink/60 px-4 py-3 font-mono text-sm text-cream placeholder:text-dimmer focus:border-orange focus:outline-none"
+              className="min-w-0 flex-1 rounded-full border border-orange/40 bg-ink/60 px-6 py-3 font-serif text-sm font-normal text-cream placeholder:text-cream/50 focus:border-orange focus:outline-none"
             />
             <button
               type="submit"
-              className="bg-orange px-6 py-3 font-mono text-xs uppercase tracking-wide2 text-ink transition-colors hover:bg-orange/85"
+              className="rounded-full bg-orange px-7 py-3 font-serif font-semibold text-xs uppercase tracking-wide2 text-ink transition-colors hover:bg-orange/85"
             >
               Search
             </button>
@@ -85,7 +85,7 @@ export default function SearchPage({ searchParams }: { searchParams: SearchParam
               <SearchResults q={q} page={page} />
             </Suspense>
           ) : (
-            <p className="font-mono text-xs uppercase tracking-wide2 text-dimmer">
+            <p className="font-serif font-semibold text-xs uppercase tracking-wide2 text-cream/65">
               Enter a query to search every format in the archive.
             </p>
           )}

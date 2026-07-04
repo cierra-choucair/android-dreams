@@ -25,7 +25,7 @@ export function Pagination({
   return (
     <nav
       aria-label="Pagination"
-      className="mt-14 flex items-center justify-between border-t border-cream/10 pt-6 font-mono text-[0.7rem] uppercase tracking-wide2"
+      className="mt-14 flex items-center justify-between border-t border-cream/10 pt-6 font-serif font-semibold text-[0.76rem] uppercase tracking-wide2"
     >
       {page > 1 ? (
         <Link href={href(page - 1)} className="text-dim transition-colors hover:text-orange">
@@ -36,7 +36,7 @@ export function Pagination({
           ← Newer
         </span>
       )}
-      <span className="text-dimmer">
+      <span className="text-cream/65">
         Page {page} / {totalPages}
       </span>
       {page < totalPages ? (

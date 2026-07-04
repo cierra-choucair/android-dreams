@@ -46,7 +46,7 @@ export default function ContactPage() {
                 <p className="mt-2 text-[0.95rem] leading-relaxed text-dim">{c.body}</p>
               </div>
             ))}
-            <p className="pt-2 font-mono text-[0.65rem] uppercase tracking-wide2 text-dimmer">
+            <p className="pt-2 font-serif font-semibold text-[0.72rem] uppercase tracking-wide2 text-cream/65">
               We respond to everything that isn't spam. Give us a few days.
             </p>
           </div>

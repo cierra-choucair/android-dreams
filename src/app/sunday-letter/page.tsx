@@ -54,7 +54,7 @@ export default async function SundayLetterPage({
           </p>
           <div className="mx-auto mt-10 max-w-xl text-left">
             <NewsletterForm accent="gold" publication="ad" />
-            <p className="mt-1 text-center font-mono text-[0.6rem] uppercase tracking-wide2 text-dimmer">
+            <p className="mt-1 text-center font-serif font-semibold text-[0.68rem] uppercase tracking-wide2 text-cream/65">
               Free · Every Sunday · Unsubscribe anytime
             </p>
           </div>
@@ -68,7 +68,7 @@ export default async function SundayLetterPage({
         </h2>
         <div className="pt-8">
           {posts.length === 0 ? (
-            <p className="font-mono text-xs uppercase tracking-wide2 text-dimmer">
+            <p className="font-serif font-semibold text-xs uppercase tracking-wide2 text-cream/65">
               The first letter arrives this Sunday.
             </p>
           ) : (

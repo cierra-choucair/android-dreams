@@ -22,7 +22,7 @@ export function NewsletterCTA() {
         </div>
         <div className="lg:pl-10">
           <NewsletterForm accent="orange" publication="ad" />
-          <p className="mt-1 font-mono text-[0.6rem] uppercase tracking-wide2 text-dimmer">
+          <p className="mt-1 font-serif font-semibold text-[0.68rem] uppercase tracking-wide2 text-cream/65">
             Free ·{" "}
             <Link href="/sunday-letter" className="underline decoration-dimmer underline-offset-2 hover:text-cream">
               Read past letters

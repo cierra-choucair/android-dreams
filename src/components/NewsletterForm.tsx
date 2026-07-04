@@ -7,14 +7,14 @@ type Status = "idle" | "loading" | "success" | "error";
 const ACCENTS = {
   orange: {
     input:
-      "border-orange/40 bg-ink/60 text-cream placeholder:text-dimmer focus:border-orange font-mono",
+      "border-orange/40 bg-ink/60 text-cream placeholder:text-cream/50 focus:border-orange font-serif",
     button:
       "bg-orange text-ink hover:bg-orange/85 focus-visible:outline-orange",
     note: "text-dim",
   },
   gold: {
     input:
-      "border-gold/40 bg-ink/60 text-cream placeholder:text-dimmer focus:border-gold font-mono",
+      "border-gold/40 bg-ink/60 text-cream placeholder:text-cream/50 focus:border-gold font-serif",
     button: "bg-gold text-ink hover:bg-gold/85 focus-visible:outline-gold",
     note: "text-dim",
   },
@@ -81,13 +81,13 @@ export function NewsletterForm({
           required
           placeholder="you@thefuture.com"
           autoComplete="email"
-          className={`min-w-0 flex-1 border px-4 py-3 text-sm focus:outline-none ${colors.input}`}
+          className={`min-w-0 flex-1 rounded-lg border px-4 py-3 text-sm focus:outline-none ${colors.input}`}
         />
         <button
           type="submit"
           disabled={status === "loading"}
-          className={`px-6 py-3 text-xs uppercase tracking-wide2 transition-colors disabled:opacity-60 ${
-            accent === "qf" ? "" : "font-mono"
+          className={`rounded-lg px-6 py-3 text-xs uppercase tracking-wide2 transition-colors disabled:opacity-60 ${
+            accent === "qf" ? "" : "font-serif font-semibold"
           } ${colors.button}`}
         >
           {status === "loading" ? "Transmitting…" : "Subscribe"}
@@ -97,7 +97,7 @@ export function NewsletterForm({
         role="status"
         aria-live="polite"
         className={`mt-3 min-h-[1.25rem] text-xs tracking-wide ${
-          accent === "qf" ? "font-qf-mono" : "font-mono"
+          accent === "qf" ? "font-qf-mono" : "font-serif font-semibold"
         } ${status === "error" ? "text-magenta" : colors.note}`}
       >
         {message}
