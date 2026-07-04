@@ -86,11 +86,14 @@ interface WPCategory {
 async function wpFetch<T>(
   path: string,
   revalidate: number,
+  tags: string[] = ["wp-posts"],
 ): Promise<{ data: T; totalPages: number; total: number } | null> {
   if (PREVIEW_MODE) return null;
   try {
     const res = await fetch(`${WP_BASE}/wp-json/wp/v2${path}`, {
-      next: { revalidate },
+      // Tags let /api/revalidate expire the DATA cache explicitly —
+      // purging the page cache alone can re-render from stale fetches.
+      next: { revalidate, tags },
       headers: { Accept: "application/json" },
     });
     if (!res.ok) return null;
@@ -170,6 +173,7 @@ export async function getCategories(): Promise<Category[]> {
   const res = await wpFetch<WPCategory[]>(
     `/categories?per_page=100`,
     REVALIDATE.taxonomy,
+    ["wp-tax"],
   );
   if (!res) {
     return Object.values(FORMATS).map((f, i) => ({
@@ -193,6 +197,7 @@ async function categoryIdBySlug(slug: string): Promise<number | null> {
   const res = await wpFetch<WPCategory[]>(
     `/categories?slug=${encodeURIComponent(slug)}`,
     REVALIDATE.taxonomy,
+    ["wp-tax"],
   );
   return res?.data?.[0]?.id ?? null;
 }
@@ -204,6 +209,7 @@ export async function getTagBySlug(slug: string): Promise<Tag | null> {
   const res = await wpFetch<WPTerm[]>(
     `/tags?slug=${encodeURIComponent(slug)}`,
     REVALIDATE.taxonomy,
+    ["wp-tax"],
   );
   const tag = res?.data?.[0];
   return tag ? { id: tag.id, name: tag.name, slug: tag.slug } : null;
@@ -216,6 +222,7 @@ export async function getAuthorBySlug(slug: string): Promise<Author | null> {
   const res = await wpFetch<WPUser[]>(
     `/users?slug=${encodeURIComponent(slug)}`,
     REVALIDATE.taxonomy,
+    ["wp-tax"],
   );
   const user = res?.data?.[0];
   return user ? mapAuthor(user) : null;
@@ -225,7 +232,7 @@ export async function getAuthorById(id: number): Promise<Author | null> {
   if (PREVIEW_MODE) {
     return SAMPLE_AUTHORS.find((a) => a.id === id) ?? null;
   }
-  const res = await wpFetch<WPUser>(`/users/${id}`, REVALIDATE.taxonomy);
+  const res = await wpFetch<WPUser>(`/users/${id}`, REVALIDATE.taxonomy, ["wp-tax"]);
   return res ? mapAuthor(res.data) : null;
 }
 
@@ -344,6 +351,7 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
   const res = await wpFetch<WPPost[]>(
     `/posts?slug=${encodeURIComponent(slug)}&_embed=1`,
     REVALIDATE.article,
+    ["wp-posts", `wp-post-${slug}`],
   );
   const raw = res?.data?.[0];
   return raw ? mapPost(raw) : null;

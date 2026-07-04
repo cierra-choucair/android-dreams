@@ -1,4 +1,4 @@
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import { NextResponse } from "next/server";
 import { ALL_FORMATS, isFormatSlug } from "@/lib/formats";
 
@@ -48,6 +48,15 @@ export async function POST(request: Request) {
     revalidated.push(path);
   };
 
+  // Expire the DATA cache first: pages re-rendered below must refetch
+  // from WordPress rather than reuse cached API responses.
+  revalidateTag("wp-posts");
+  revalidated.push("tag:wp-posts");
+  if (slug) {
+    revalidateTag(`wp-post-${slug}`);
+    revalidated.push(`tag:wp-post-${slug}`);
+  }
+
   if (slug) {
     // Unknown category (e.g. the webhook omitted it): try every format —
     // revalidating a path that was never rendered is a no-op.
@@ -62,6 +71,8 @@ export async function POST(request: Request) {
     hit("/sitemap.xml");
   } else {
     // Full purge: every route regenerates on its next request.
+    revalidateTag("wp-tax");
+    revalidated.push("tag:wp-tax");
     revalidatePath("/", "layout");
     revalidated.push("/ (entire site)");
   }
