@@ -6,7 +6,7 @@ import { SectionHeader } from "@/components/SectionHeader";
 import { FORMATS, formatFromCategories } from "@/lib/formats";
 import type { Post } from "@/lib/types";
 import { getFeaturedPost, getPosts, REVALIDATE } from "@/lib/wp";
-import { firstParagraph, formatDate, formatDateStamp } from "@/lib/utils";
+import { formatDateStamp } from "@/lib/utils";
 
 export const revalidate = 60;
 
@@ -21,21 +21,19 @@ function pulledQuote(post: Post): string {
 }
 
 export default async function HomePage() {
-  const [featured, latestAll, transmissions, deepReads, sciFi, sundayLetter] =
+  const [featured, latestAll, transmissions, deepReads, sciFi] =
     await Promise.all([
       getFeaturedPost(),
       getPosts({ perPage: 8, revalidate: REVALIDATE.home }),
       getPosts({ category: "transmissions", perPage: 4, revalidate: REVALIDATE.home }),
       getPosts({ category: "deep-read", perPage: 3, revalidate: REVALIDATE.home }),
       getPosts({ category: "sci-fi-lens", perPage: 1, revalidate: REVALIDATE.home }),
-      getPosts({ category: "sunday-letter", perPage: 1, revalidate: REVALIDATE.home }),
     ]);
 
   const rail = latestAll.posts
     .filter((p) => p.id !== featured?.id)
     .slice(0, 3);
   const lens = sciFi.posts[0];
-  const letter = sundayLetter.posts[0];
 
   return (
     <>
@@ -216,40 +214,6 @@ export default async function HomePage() {
           </p>
         )}
       </section>
-
-      {/* ──────────────────── FROM THE SUNDAY LETTER ──────────────────── */}
-      {letter && (
-        <section
-          aria-labelledby="home-sunday-letter"
-          className="relative border-t border-cream/10"
-        >
-          <div className="pointer-events-none absolute inset-0 glow-gold-center" />
-          <div className="relative mx-auto max-w-3xl px-4 py-16 text-center sm:px-6">
-            <p className="eyebrow text-gold">From the Sunday Letter</p>
-            <h2
-              id="home-sunday-letter"
-              className="mt-4 font-display text-4xl font-bold tracking-wide text-cream"
-            >
-              {letter.title}
-            </h2>
-            <p className="mt-8 text-left text-[1.15rem] leading-[1.75] text-cream/90">
-              {firstParagraph(letter.content)}
-            </p>
-            <div aria-hidden className="mx-auto mt-10 h-[2px] w-24 rounded-full bg-gold" />
-            <p className="mt-8">
-              <Link
-                href={postHref(letter)}
-                className="font-serif text-xs font-semibold uppercase tracking-wide2 text-gold transition-colors hover:text-cream"
-              >
-                Read the full letter →
-              </Link>
-            </p>
-            <p className="mt-3 font-serif text-[0.68rem] font-medium uppercase tracking-wide2 text-cream/65">
-              {formatDate(letter.date)}
-            </p>
-          </div>
-        </section>
-      )}
 
       {/* ─────────────────────── NEWSLETTER CTA ─────────────────────── */}
       <NewsletterCTA />

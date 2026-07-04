@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { ArticleCard } from "@/components/ArticleCard";
-import { NewsletterForm } from "@/components/NewsletterForm";
 import { Pagination } from "@/components/Pagination";
 import { FORMATS } from "@/lib/formats";
+import { AD_SUBSCRIBE_URL } from "@/lib/links";
 import { getPosts, REVALIDATE } from "@/lib/wp";
 
 export const revalidate = 300;
@@ -52,10 +52,17 @@ export default async function SundayLetterPage({
             every Sunday. This is the Android Dreams newsletter: what you read
             here is what arrives in your inbox.
           </p>
-          <div className="mx-auto mt-10 max-w-xl text-left">
-            <NewsletterForm accent="gold" publication="ad" />
-            <p className="mt-1 text-center font-serif font-semibold text-[0.68rem] uppercase tracking-wide2 text-cream/65">
-              Free · Every Sunday · Unsubscribe anytime
+          <div className="mt-10">
+            <a
+              href={AD_SUBSCRIBE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="floaty inline-block rounded-lg bg-gold px-8 py-4 font-serif text-sm font-semibold uppercase tracking-wide2 text-ink hover:bg-gold/85"
+            >
+              Subscribe — free
+            </a>
+            <p className="mt-4 font-serif text-[0.68rem] font-semibold uppercase tracking-wide2 text-cream/65">
+              Every Sunday · Unsubscribe anytime
             </p>
           </div>
         </div>
