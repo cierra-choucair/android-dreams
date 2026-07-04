@@ -46,26 +46,18 @@ export default async function HomePage() {
             fill
             priority
             sizes="100vw"
-            className="object-cover object-[38%_18%]"
+            className="object-cover object-[50%_42%]"
           />
-          {/* Legibility scrims: darken toward the wordmark side and the base */}
-          <div className="absolute inset-0 bg-gradient-to-r from-ink/30 via-ink/10 to-ink/70" />
-          <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-ink/80 via-ink/25 to-transparent" />
+          {/* Legibility scrim: only a soft base band for the tagline */}
+          <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-ink/80 via-ink/30 to-transparent" />
         </div>
-        <div className="relative mx-auto flex min-h-[22rem] max-w-7xl items-center justify-end px-4 py-16 sm:px-6 lg:min-h-[26rem] lg:py-20">
-          <div className="max-w-xl">
-            <h1 className="font-display font-bold leading-[0.92] tracking-[0.06em] text-cream [text-shadow:0_2px_24px_rgba(5,3,8,0.85)]">
-              <span className="block text-[clamp(3rem,7vw,5.5rem)]">ANDROID</span>
-              <span className="block text-[clamp(3rem,7vw,5.5rem)]">DREAMS</span>
-            </h1>
-            <p className="mt-4 font-serif text-sm font-medium uppercase tracking-[0.18em] text-orange sm:text-base">
-              Imagine the future
-            </p>
-            <p className="mt-5 font-serif text-lg font-light leading-relaxed text-cream/85 [text-shadow:0_1px_16px_rgba(5,3,8,0.9)]">
-              Quantum technology, artificial intelligence, and the deep
-              science building our sci-fi future — reported from the frontier.
-            </p>
-          </div>
+        <h1 className="sr-only">Android Dreams — Imagine the future</h1>
+        <div className="relative mx-auto flex min-h-[15rem] max-w-7xl items-end justify-center px-4 pb-7 sm:px-6 lg:min-h-[21rem]">
+          <p className="flex items-center gap-5 font-serif text-sm font-medium uppercase tracking-[0.3em] text-cream [text-shadow:0_1px_14px_rgba(5,3,8,0.9)] sm:text-base">
+            <span aria-hidden className="h-px w-10 bg-cyan/80 sm:w-16" />
+            Imagine the future
+            <span aria-hidden className="h-px w-10 bg-magenta/80 sm:w-16" />
+          </p>
         </div>
       </section>
 
