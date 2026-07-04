@@ -66,6 +66,13 @@ export async function POST(request: Request) {
       hit(`/${format}`);
       hit(`/${format}/rss.xml`);
     }
+    // Literal URLs don't reliably purge dynamic-segment routes in Next 14;
+    // invalidate the article route patterns as well. Untouched articles
+    // re-render from their still-cached data, so this stays cheap.
+    revalidatePath("/[category]/[slug]", "page");
+    revalidated.push("route:/[category]/[slug]");
+    revalidatePath("/qfrontline/[slug]", "page");
+    revalidated.push("route:/qfrontline/[slug]");
     hit("/");
     hit("/rss.xml");
     hit("/sitemap.xml");
