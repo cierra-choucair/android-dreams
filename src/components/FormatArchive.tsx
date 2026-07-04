@@ -96,9 +96,9 @@ export async function FormatArchive({
         {/* Filter / sort controls */}
         <nav
           aria-label="Sort"
-          className="flex items-center gap-6 border-b border-cream/10 py-4 font-mono text-[0.65rem] uppercase tracking-wide2"
+          className="flex items-center gap-6 border-b border-cream/10 py-4 font-serif font-semibold text-[0.72rem] uppercase tracking-wide2"
         >
-          <span className="text-dimmer">Sort:</span>
+          <span className="text-cream/65">Sort:</span>
           <Link
             href={sortHref("newest")}
             aria-current={sort === "desc" ? "true" : undefined}
@@ -118,7 +118,7 @@ export async function FormatArchive({
         {/* Grid */}
         <div className="pt-10">
           {posts.length === 0 ? (
-            <p className="font-mono text-xs uppercase tracking-wide2 text-dimmer">
+            <p className="font-serif font-semibold text-xs uppercase tracking-wide2 text-cream/65">
               Nothing published here yet. The frontier is quiet — for now.
             </p>
           ) : (

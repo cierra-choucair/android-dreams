@@ -20,7 +20,7 @@ export function ImageSlot({
 }) {
   if (image) {
     return (
-      <div className={`relative overflow-hidden border border-cream/10 ${className}`}>
+      <div className={`relative overflow-hidden rounded-lg border border-cream/10 ${className}`}>
         <Image
           src={image.url}
           alt={image.alt}
@@ -35,10 +35,10 @@ export function ImageSlot({
   return (
     <div
       aria-hidden
-      className={`image-slot relative flex items-center justify-center overflow-hidden border border-cream/10 ${className}`}
+      className={`image-slot relative flex items-center justify-center overflow-hidden rounded-lg border border-cream/10 ${className}`}
     >
       <div className="absolute inset-0 bg-grid" />
-      <span className="relative font-mono text-[0.6rem] uppercase tracking-wide4 text-dimmer">
+      <span className="relative font-serif font-semibold text-[0.68rem] uppercase tracking-wide4 text-cream/65">
         {label}
       </span>
     </div>

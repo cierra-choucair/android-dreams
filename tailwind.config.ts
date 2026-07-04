@@ -32,9 +32,17 @@ const config: Config = {
         "qf-mono": ["var(--font-jetbrains)", "JetBrains Mono", "monospace"],
       },
       letterSpacing: {
-        eyebrow: "0.3em",
-        wide2: "0.2em",
-        wide4: "0.4em",
+        // Editorial kicker tracking — tight, confident, not airy
+        eyebrow: "0.09em",
+        wide2: "0.06em",
+        wide4: "0.12em",
+      },
+      boxShadow: {
+        // "Floaty" elevation for cards and panels on the dark surface
+        float: "0 10px 40px -12px rgba(0,0,0,0.65), 0 2px 8px rgba(0,0,0,0.3)",
+        "float-lg": "0 24px 70px -16px rgba(0,0,0,0.7), 0 4px 14px rgba(0,0,0,0.35)",
+        // Light-surface (QFrontline) equivalents
+        "float-light": "0 10px 34px -12px rgba(10,6,16,0.18), 0 2px 8px rgba(10,6,16,0.06)",
       },
       maxWidth: {
         prose: "65ch",
@@ -52,11 +60,29 @@ const config: Config = {
           "0%, 60%": { opacity: "1" },
           "61%, 100%": { opacity: "0.2" },
         },
+        // Superposition field: two states drifting through each other
+        drift1: {
+          "0%, 100%": { transform: "translate(-8%, -6%) scale(1)" },
+          "50%": { transform: "translate(10%, 8%) scale(1.15)" },
+        },
+        drift2: {
+          "0%, 100%": { transform: "translate(6%, 10%) scale(1.1)" },
+          "50%": { transform: "translate(-10%, -8%) scale(0.95)" },
+        },
+        // Measurement: an interference ring expanding and dissolving
+        ringPulse: {
+          "0%": { transform: "scale(0.55)", opacity: "0.55" },
+          "100%": { transform: "scale(1.6)", opacity: "0" },
+        },
       },
       animation: {
         pulseGlow: "pulseGlow 3s ease-in-out infinite",
         shimmer: "shimmer 2s linear infinite",
         cursor: "cursor 1.3s steps(1) infinite",
+        drift1: "drift1 22s ease-in-out infinite",
+        drift2: "drift2 26s ease-in-out infinite",
+        ringPulse: "ringPulse 9s ease-out infinite",
+        "spin-slower": "spin 90s linear infinite",
       },
     },
   },

@@ -58,7 +58,7 @@ function NavDropdown({
         aria-haspopup="true"
         onClick={() => setOpen(isOpen ? null : id)}
         onMouseEnter={() => setOpen(id)}
-        className={`flex items-center gap-1.5 font-mono text-[0.7rem] uppercase tracking-wide2 transition-colors ${
+        className={`flex items-center gap-1.5 font-serif font-semibold text-[0.76rem] uppercase tracking-wide2 transition-colors ${
           active || isOpen ? "text-orange" : "text-dim hover:text-cream"
         }`}
       >
@@ -73,7 +73,7 @@ function NavDropdown({
       {isOpen && (
         <ul
           onMouseLeave={() => setOpen(null)}
-          className="absolute left-1/2 top-full z-50 mt-3 w-64 -translate-x-1/2 border border-cream/15 bg-ink py-2 shadow-[0_16px_50px_rgba(0,0,0,0.6)]"
+          className="absolute left-1/2 top-full z-50 mt-3 w-64 -translate-x-1/2 rounded-xl border border-cream/15 bg-ink py-2 shadow-float-lg"
         >
           <span
             aria-hidden
@@ -83,7 +83,7 @@ function NavDropdown({
             <li key={link.href}>
               <Link
                 href={link.href}
-                className={`block px-5 py-2.5 font-mono text-[0.68rem] uppercase tracking-wide2 transition-colors ${
+                className={`block px-5 py-2.5 font-serif font-semibold text-[0.68rem] uppercase tracking-wide2 transition-colors ${
                   pathname === link.href || pathname.startsWith(`${link.href}/`)
                     ? "text-orange"
                     : "text-dim hover:bg-cream/[0.04] hover:text-cream"
@@ -186,7 +186,7 @@ export function SiteHeader() {
               <li>
                 <Link
                   href="/qfrontline"
-                  className={`font-mono text-[0.7rem] uppercase tracking-wide2 transition-colors ${
+                  className={`font-serif font-semibold text-[0.76rem] uppercase tracking-wide2 transition-colors ${
                     pathname.startsWith("/qfrontline") ? "text-orange" : "text-dim hover:text-cream"
                   }`}
                 >
@@ -204,7 +204,7 @@ export function SiteHeader() {
               <li>
                 <Link
                   href="/about"
-                  className={`font-mono text-[0.7rem] uppercase tracking-wide2 transition-colors ${
+                  className={`font-serif font-semibold text-[0.76rem] uppercase tracking-wide2 transition-colors ${
                     pathname === "/about" ? "text-orange" : "text-dim hover:text-cream"
                   }`}
                 >
@@ -225,7 +225,7 @@ export function SiteHeader() {
             </button>
             <Link
               href="/sunday-letter"
-              className="hidden border border-orange px-4 py-1.5 font-mono text-[0.65rem] uppercase tracking-wide2 text-orange transition-colors hover:bg-orange hover:text-ink sm:inline-block"
+              className="hidden rounded-lg border border-orange px-4 py-1.5 font-serif font-semibold text-[0.72rem] uppercase tracking-wide2 text-orange transition-colors hover:bg-orange hover:text-ink sm:inline-block"
             >
               Subscribe
             </Link>
@@ -272,9 +272,9 @@ export function SiteHeader() {
                 type="search"
                 placeholder="Quantum, alignment, coherence…"
                 autoComplete="off"
-                className="w-full border-b-2 border-orange/60 bg-transparent pb-4 font-display text-4xl font-bold tracking-wide text-cream placeholder:text-dimmer focus:border-orange focus:outline-none sm:text-6xl"
+                className="w-full rounded-2xl border border-orange/50 bg-ink/70 px-7 py-6 font-display text-3xl font-bold tracking-wide text-cream shadow-float placeholder:text-cream/40 focus:border-orange focus:outline-none sm:text-5xl"
               />
-              <p className="mt-4 font-mono text-[0.65rem] uppercase tracking-wide2 text-dimmer">
+              <p className="mt-4 font-serif font-semibold text-[0.72rem] uppercase tracking-wide2 text-cream/65">
                 Press Enter to search · Esc to close
               </p>
             </form>
@@ -335,7 +335,7 @@ export function SiteHeader() {
               ))}
             </ul>
             <p className="eyebrow mt-12 text-gold">Elsewhere</p>
-            <ul className="mt-6 space-y-3 font-mono text-sm">
+            <ul className="mt-6 space-y-3 font-serif font-semibold text-sm">
               {[
                 { href: "/sunday-letter", label: "The Sunday Letter · Subscribe" },
                 { href: "/about", label: "About" },

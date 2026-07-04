@@ -39,7 +39,7 @@ export function SiteFooter() {
               <span aria-hidden className="inline-block h-5 w-[3px] translate-y-[2px] bg-orange" />
               <span className="text-cream">DREAMS</span>
             </Link>
-            <p className="mt-2 font-serif text-[0.65rem] font-extralight uppercase tracking-[0.55em] text-gold">
+            <p className="mt-2 font-serif text-[0.72rem] font-extralight uppercase tracking-[0.55em] text-gold">
               Imagine the future
             </p>
             <p className="mt-6 max-w-xs text-[0.95rem] italic leading-relaxed text-dim">
@@ -57,7 +57,7 @@ export function SiteFooter() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="font-mono text-xs uppercase tracking-wide2 text-dim transition-colors hover:text-cream"
+                    className="font-serif font-semibold text-xs uppercase tracking-wide2 text-dim transition-colors hover:text-cream"
                   >
                     {link.label}
                   </Link>
@@ -74,14 +74,14 @@ export function SiteFooter() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="font-mono text-xs uppercase tracking-wide2 text-dim transition-colors hover:text-cream"
+                    className="font-serif font-semibold text-xs uppercase tracking-wide2 text-dim transition-colors hover:text-cream"
                   >
                     {link.label}
                   </Link>
                 </li>
               ))}
             </ul>
-            <p className="mt-6 max-w-xs text-sm italic leading-relaxed text-dimmer">
+            <p className="mt-6 max-w-xs text-sm italic leading-relaxed text-cream/65">
               Four properties. One thesis: the future is still shapeable.
             </p>
           </nav>
@@ -89,10 +89,10 @@ export function SiteFooter() {
 
         {/* Bottom bar */}
         <div className="mt-16 flex flex-col gap-4 border-t border-cream/10 pt-8 sm:flex-row sm:items-center sm:justify-between">
-          <p className="font-mono text-[0.65rem] uppercase tracking-wide2 text-dimmer">
+          <p className="font-serif font-semibold text-[0.72rem] uppercase tracking-wide2 text-cream/65">
             © {new Date().getFullYear()} Android Dreams Media
           </p>
-          <p className="font-mono text-[0.65rem] tracking-wide2 text-dimmer">
+          <p className="font-serif font-semibold text-[0.72rem] tracking-wide2 text-cream/65">
             Set in Outfit and JetBrains Mono. Presented in 2.39:1. Published
             from the frontier.
           </p>
@@ -101,7 +101,7 @@ export function SiteFooter() {
               <li key={link.label}>
                 <a
                   href={link.href}
-                  className="font-mono text-[0.65rem] uppercase tracking-wide2 text-dim transition-colors hover:text-orange"
+                  className="font-serif font-semibold text-[0.72rem] uppercase tracking-wide2 text-dim transition-colors hover:text-orange"
                   {...(link.href.startsWith("http")
                     ? { target: "_blank", rel: "noopener noreferrer" }
                     : {})}

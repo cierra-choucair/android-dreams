@@ -17,7 +17,7 @@ export default function NotFound() {
         </p>
         <Link
           href="/"
-          className="mt-10 border border-orange px-6 py-3 font-mono text-xs uppercase tracking-wide2 text-orange transition-colors hover:bg-orange hover:text-ink"
+          className="mt-10 border border-orange px-6 py-3 font-serif font-semibold text-xs uppercase tracking-wide2 text-orange transition-colors hover:bg-orange hover:text-ink"
         >
           Return to the frontier
         </Link>

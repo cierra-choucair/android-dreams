@@ -81,7 +81,7 @@ function Headshot({ image, name }: { image: string; name: string }) {
   );
   if (exists) {
     return (
-      <div className="relative aspect-square overflow-hidden border border-cream/10">
+      <div className="floaty-static relative aspect-square overflow-hidden border border-cream/10">
         <Image
           src={`/brand/founders/${image}`}
           alt={`Portrait of ${name}`}
@@ -95,10 +95,10 @@ function Headshot({ image, name }: { image: string; name: string }) {
   return (
     <div
       aria-hidden
-      className="image-slot relative flex aspect-square items-center justify-center border border-cream/10"
+      className="image-slot floaty-static relative flex aspect-square items-center justify-center overflow-hidden border border-cream/10"
     >
       <div className="absolute inset-0 bg-grid" />
-      <span className="relative font-mono text-[0.6rem] uppercase tracking-wide4 text-dimmer">
+      <span className="relative font-serif font-semibold text-[0.68rem] uppercase tracking-wide4 text-cream/65">
         Headshot slot
       </span>
     </div>
@@ -150,22 +150,22 @@ export default function AboutPage() {
               <Link
                 key={p.name}
                 href={p.href}
-                className={`group border ${p.border} bg-cream/[0.02] p-7 transition-colors hover:bg-cream/[0.05]`}
+                className={`floaty group border ${p.border} bg-cream/[0.03] p-7 hover:bg-cream/[0.05]`}
               >
-                <p className={`font-mono text-[0.65rem] uppercase tracking-wide2 ${p.accent}`}>
+                <p className={`font-serif font-semibold text-[0.72rem] uppercase tracking-wide2 ${p.accent}`}>
                   {p.role}
                 </p>
                 <h3 className="mt-3 font-display text-3xl leading-none tracking-wide text-cream">
                   {p.name}
                 </h3>
                 <p className="mt-4 text-[0.95rem] leading-relaxed text-dim">{p.body}</p>
-                <p className="mt-5 font-mono text-[0.65rem] uppercase tracking-wide2 text-dimmer transition-colors group-hover:text-cream">
+                <p className="mt-5 font-serif font-semibold text-[0.72rem] uppercase tracking-wide2 text-cream/65 transition-colors group-hover:text-cream">
                   Visit →
                 </p>
               </Link>
             ))}
           </div>
-          <p className="mt-10 text-center font-mono text-[0.65rem] uppercase tracking-wide2 text-dimmer">
+          <p className="mt-10 text-center font-serif font-semibold text-[0.72rem] uppercase tracking-wide2 text-cream/65">
             · The magazine seeds the community · the community fills the
             summit · the summit earns Davos ·
           </p>
@@ -183,7 +183,7 @@ export default function AboutPage() {
                 <h3 className="mt-6 font-display text-3xl leading-none tracking-wide text-cream">
                   {f.name}
                 </h3>
-                <p className="mt-2 font-mono text-[0.65rem] uppercase tracking-wide2 text-orange">
+                <p className="mt-2 font-serif font-semibold text-[0.72rem] uppercase tracking-wide2 text-orange">
                   {f.title}
                 </p>
                 <p className="mt-4 text-[0.95rem] leading-relaxed text-dim">{f.bio}</p>
@@ -195,7 +195,7 @@ export default function AboutPage() {
         {/* ─────────────────── The manifesto, one door down ─────────────────── */}
         <section
           aria-labelledby="manifesto-cta"
-          className="relative mt-24 overflow-hidden border border-cream/10"
+          className="floaty-static relative mt-24 overflow-hidden border border-cream/10"
         >
           <div className="pointer-events-none absolute inset-0 glow-orange-tl" />
           <div className="relative flex flex-col items-start gap-6 p-10 sm:flex-row sm:items-center sm:justify-between">
@@ -210,7 +210,7 @@ export default function AboutPage() {
             </div>
             <Link
               href="/manifesto"
-              className="shrink-0 border border-orange px-6 py-3 font-mono text-xs uppercase tracking-wide2 text-orange transition-colors hover:bg-orange hover:text-ink"
+              className="shrink-0 rounded-lg border border-orange px-6 py-3 font-serif font-semibold text-xs uppercase tracking-wide2 text-orange transition-colors hover:bg-orange hover:text-ink"
             >
               Read the manifesto
             </Link>

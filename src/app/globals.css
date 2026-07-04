@@ -137,9 +137,27 @@
     );
   }
 
-  /* Section eyebrow: mono, all-caps, wide tracking — color via text-* */
+  /* Editorial kicker: Outfit, semibold, all-caps — color via text-* */
   .eyebrow {
-    @apply font-mono text-[0.7rem] uppercase tracking-eyebrow;
+    @apply font-serif text-[0.72rem] font-semibold uppercase tracking-eyebrow;
+  }
+
+  /* Floaty panel: soft radius, elevation, gentle lift on hover */
+  .floaty {
+    @apply rounded-xl shadow-float transition-all duration-200;
+  }
+  .floaty:hover {
+    transform: translateY(-3px);
+    @apply shadow-float-lg;
+  }
+  .floaty-static {
+    @apply rounded-xl shadow-float;
+  }
+  .floaty-light {
+    @apply rounded-xl shadow-float-light transition-all duration-200;
+  }
+  .floaty-light:hover {
+    transform: translateY(-3px);
   }
 
   /* Clearly-marked image slot placeholder (no stock photography) */

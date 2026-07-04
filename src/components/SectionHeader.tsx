@@ -4,7 +4,7 @@ import Link from "next/link";
 export function SectionHeader({
   title,
   label,
-  labelClass = "text-dimmer",
+  labelClass = "text-cream/65",
   href,
   hrefLabel,
   titleClass = "text-cream",
@@ -23,7 +23,7 @@ export function SectionHeader({
           {title}
         </h2>
         {label && (
-          <span className={`font-mono text-[0.65rem] uppercase tracking-wide2 ${labelClass}`}>
+          <span className={`font-serif font-semibold text-[0.72rem] uppercase tracking-wide2 ${labelClass}`}>
             {label}
           </span>
         )}
@@ -31,7 +31,7 @@ export function SectionHeader({
       {href && (
         <Link
           href={href}
-          className="font-mono text-[0.7rem] uppercase tracking-wide2 text-dim transition-colors hover:text-orange"
+          className="font-serif font-semibold text-[0.76rem] uppercase tracking-wide2 text-dim transition-colors hover:text-orange"
         >
           {hrefLabel ?? "View all"} →
         </Link>

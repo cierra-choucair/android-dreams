@@ -58,7 +58,7 @@ export default async function AuthorPage({ params, searchParams }: Params) {
                 {author.description}
               </p>
             )}
-            <p className="mt-4 font-mono text-[0.65rem] uppercase tracking-wide2 text-dimmer">
+            <p className="mt-4 font-serif font-semibold text-[0.72rem] uppercase tracking-wide2 text-cream/65">
               {total} {total === 1 ? "article" : "articles"}
             </p>
           </div>
@@ -66,7 +66,7 @@ export default async function AuthorPage({ params, searchParams }: Params) {
 
         <div className="pt-10">
           {posts.length === 0 ? (
-            <p className="font-mono text-xs uppercase tracking-wide2 text-dimmer">
+            <p className="font-serif font-semibold text-xs uppercase tracking-wide2 text-cream/65">
               No articles yet.
             </p>
           ) : (

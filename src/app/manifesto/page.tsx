@@ -9,12 +9,15 @@ export const metadata: Metadata = {
 
 function SectionHeading({ numeral, title }: { numeral: string; title: string }) {
   return (
-    <h2 className="mt-24 flex items-baseline gap-5 font-display text-4xl tracking-wide text-cream sm:text-5xl">
-      <span aria-hidden className="font-mono text-sm tracking-wide2 text-orange">
-        § {numeral}
-      </span>
-      {title}
-    </h2>
+    <div className="mt-24">
+      <p aria-hidden className="eyebrow text-orange">
+        Part {numeral}
+      </p>
+      <h2 className="mt-3 font-display text-4xl tracking-wide text-cream sm:text-5xl">
+        {title}
+      </h2>
+      <div aria-hidden className="mt-5 h-[2px] w-14 rounded-full bg-orange" />
+    </div>
   );
 }
 
@@ -51,7 +54,7 @@ export default function ManifestoPage() {
             <br />
             <span className="text-orange">Learning to Know Itself.</span>
           </h1>
-          <div aria-hidden className="mx-auto mt-12 h-16 w-[3px] bg-orange" />
+          <div aria-hidden className="mx-auto mt-12 h-[2px] w-20 rounded-full bg-orange" />
         </header>
 
         {/* Preamble */}
@@ -267,10 +270,10 @@ export default function ManifestoPage() {
         {/* Signature */}
         <footer className="mt-24 border-t border-cream/10 pt-10 text-center">
           <div aria-hidden className="mx-auto mb-8 h-2.5 w-2.5 bg-orange" />
-          <p className="font-mono text-xs uppercase tracking-wide2 text-dim">
+          <p className="font-serif font-semibold text-xs uppercase tracking-wide2 text-dim">
             Cierra Lunde Choucair · Founder &amp; Editor · Android Dreams
           </p>
-          <p className="mt-2 font-mono text-[0.65rem] uppercase tracking-wide2 text-dimmer">
+          <p className="mt-2 font-serif font-semibold text-[0.72rem] uppercase tracking-wide2 text-cream/65">
             androiddreams.com
           </p>
         </footer>

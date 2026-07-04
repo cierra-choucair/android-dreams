@@ -149,13 +149,13 @@ export default function CommunityPage() {
           <div className="mt-10 flex flex-wrap gap-4">
             <Link
               href="/community/join"
-              className="bg-qf-signal px-6 py-3 font-qf-mono text-xs uppercase tracking-[0.2em] text-qf-void transition-colors hover:bg-qf-ink"
+              className="rounded-lg rounded-lg bg-qf-signal px-6 py-3 font-qf-mono text-xs uppercase tracking-[0.2em] text-qf-void transition-colors hover:bg-qf-ink"
             >
               Request an invite
             </Link>
             <Link
               href="/qfrontline"
-              className="border border-qf-ink/30 px-6 py-3 font-qf-mono text-xs uppercase tracking-[0.2em] text-qf-ink transition-colors hover:border-qf-signal hover:text-qf-signal"
+              className="rounded-lg border border-qf-ink/30 px-6 py-3 font-qf-mono text-xs uppercase tracking-[0.2em] text-qf-ink transition-colors hover:border-qf-signal hover:text-qf-signal"
             >
               Read QFrontline first
             </Link>
@@ -187,7 +187,7 @@ export default function CommunityPage() {
         </div>
 
         {/* The funnel */}
-        <div className="mt-12 overflow-x-auto border border-qf-void/15 bg-qf-void px-5 py-5">
+        <div className="mt-12 overflow-x-auto rounded-xl border border-qf-void/15 bg-qf-void px-5 py-5 shadow-float-light">
           <p className="whitespace-nowrap font-qf-mono text-[0.75rem] leading-loose text-qf-ink">
             <span aria-hidden className="text-qf-signal">&gt; </span>
             {FUNNEL.map((step, i) => (
@@ -209,7 +209,7 @@ export default function CommunityPage() {
           <SectionTitle id="who-its-for">Who it&apos;s for</SectionTitle>
           <div className="mt-10 grid gap-5 md:grid-cols-3">
             {AUDIENCES.map((a, i) => (
-              <div key={a.title} className="border border-qf-void/10 bg-white p-6">
+              <div key={a.title} className="floaty-light rounded-xl border border-qf-void/10 bg-white p-6">
                 <p className="font-qf-mono text-xs text-qf-signal-deep">
                   [{String(i + 1).padStart(2, "0")}]
                 </p>
@@ -272,7 +272,7 @@ export default function CommunityPage() {
                 ))}
               </ul>
             </div>
-            <div className="border border-qf-void/15 bg-white p-6">
+            <div className="floaty-light rounded-xl border border-qf-void/15 bg-white p-6">
               <p className="font-qf-mono text-[0.75rem] uppercase tracking-[0.2em] text-qf-signal-deep">
                 The rhythm
               </p>
@@ -303,7 +303,7 @@ export default function CommunityPage() {
         </p>
 
         <div className="mt-12 grid gap-5 md:grid-cols-2">
-          <div className="border border-qf-void/10 bg-white p-7">
+          <div className="floaty-light rounded-xl border border-qf-void/10 bg-white p-7">
             <p className="font-qf-mono text-xs uppercase tracking-[0.2em] text-qf-signal-deep">
               Public front door
             </p>
@@ -320,7 +320,7 @@ export default function CommunityPage() {
                 href={linkedinUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-5 inline-block border border-qf-void/30 px-5 py-2.5 font-qf-mono text-[0.7rem] uppercase tracking-[0.2em] text-qf-void transition-colors hover:border-qf-signal hover:text-qf-signal"
+                className="mt-5 inline-block rounded-lg border border-qf-void/30 px-5 py-2.5 font-qf-mono text-[0.7rem] uppercase tracking-[0.2em] text-qf-void transition-colors hover:border-qf-signal hover:text-qf-signal"
               >
                 Follow on LinkedIn →
               </a>
@@ -330,7 +330,7 @@ export default function CommunityPage() {
               </p>
             )}
           </div>
-          <div className="border border-qf-void/10 bg-white p-7">
+          <div className="floaty-light rounded-xl border border-qf-void/10 bg-white p-7">
             <p className="font-qf-mono text-xs uppercase tracking-[0.2em] text-qf-signal-deep">
               Operational hub
             </p>
@@ -347,14 +347,14 @@ export default function CommunityPage() {
                 href={discordUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-5 inline-block bg-qf-signal px-5 py-2.5 font-qf-mono text-[0.7rem] uppercase tracking-[0.2em] text-qf-void transition-colors hover:bg-qf-ink"
+                className="mt-5 inline-block rounded-lg bg-qf-signal px-5 py-2.5 font-qf-mono text-[0.7rem] uppercase tracking-[0.2em] text-qf-void transition-colors hover:bg-qf-ink"
               >
                 Join the Discord →
               </a>
             ) : (
               <Link
                 href="/community/join"
-                className="mt-5 inline-block bg-qf-signal px-5 py-2.5 font-qf-mono text-[0.7rem] uppercase tracking-[0.2em] text-qf-void transition-colors hover:bg-qf-ink"
+                className="mt-5 inline-block rounded-lg bg-qf-signal px-5 py-2.5 font-qf-mono text-[0.7rem] uppercase tracking-[0.2em] text-qf-void transition-colors hover:bg-qf-ink"
               >
                 Request an invite →
               </Link>

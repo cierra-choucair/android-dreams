@@ -47,7 +47,7 @@ export default function CommunityJoinPage() {
 
       <section className="mx-auto max-w-3xl px-4 py-16 sm:px-6">
         {discordUrl ? (
-          <div className="mb-12 border border-qf-void/15 bg-qf-void/[0.025] p-6">
+          <div className="mb-12 rounded-xl border border-qf-void/15 bg-qf-void/[0.025] p-6">
             <p className="font-qf-mono text-xs uppercase tracking-[0.2em] text-qf-void/60">
               The fast lane
             </p>
@@ -59,7 +59,7 @@ export default function CommunityJoinPage() {
               href={discordUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-4 inline-block bg-qf-signal px-6 py-3 font-qf-mono text-xs uppercase tracking-[0.2em] text-qf-void transition-colors hover:bg-qf-ink"
+              className="mt-4 inline-block rounded-lg rounded-lg bg-qf-signal px-6 py-3 font-qf-mono text-xs uppercase tracking-[0.2em] text-qf-void transition-colors hover:bg-qf-ink"
             >
               Join the Discord →
             </a>

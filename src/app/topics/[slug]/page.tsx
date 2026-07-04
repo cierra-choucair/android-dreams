@@ -42,14 +42,14 @@ export default async function TopicPage({ params, searchParams }: Params) {
           <h1 className="mt-3 font-display text-5xl tracking-wide text-cream sm:text-6xl">
             {tag.name}
           </h1>
-          <p className="mt-4 font-mono text-[0.65rem] uppercase tracking-wide2 text-dimmer">
+          <p className="mt-4 font-serif font-semibold text-[0.72rem] uppercase tracking-wide2 text-cream/65">
             {total} {total === 1 ? "article" : "articles"}
           </p>
         </header>
 
         <div className="pt-10">
           {posts.length === 0 ? (
-            <p className="font-mono text-xs uppercase tracking-wide2 text-dimmer">
+            <p className="font-serif font-semibold text-xs uppercase tracking-wide2 text-cream/65">
               No articles yet.
             </p>
           ) : (

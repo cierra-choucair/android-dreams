@@ -26,7 +26,7 @@ export function ArticleCard({
   const accent = accentOverride ?? { text: format.text, bg: format.bg };
 
   return (
-    <article className="group relative flex h-full flex-col border border-cream/10 bg-cream/[0.02] transition-colors hover:bg-cream/[0.045]">
+    <article className="floaty group relative flex h-full flex-col overflow-hidden border border-cream/10 bg-cream/[0.03] hover:bg-cream/[0.05]">
       <span
         aria-hidden
         className={`block h-[2px] w-full ${accent.bg} opacity-40 transition-opacity group-hover:opacity-100`}
@@ -46,7 +46,7 @@ export function ArticleCard({
         <p className="mt-3 line-clamp-2 text-[0.95rem] italic leading-relaxed text-dim">
           {post.excerpt}
         </p>
-        <p className="mt-auto pt-4 font-mono text-[0.65rem] uppercase tracking-wide2 text-dimmer">
+        <p className="mt-auto pt-4 font-serif font-semibold text-[0.72rem] uppercase tracking-wide2 text-cream/65">
           {formatDateStamp(post.date)}
           {post.author.name && <> · {post.author.name}</>}
         </p>
@@ -60,7 +60,7 @@ export function FeatureCard({ post }: { post: Post }) {
   const format = formatFromCategories(post.categorySlugs);
 
   return (
-    <article className="group relative grid gap-6 border border-cream/10 bg-cream/[0.02] transition-colors hover:bg-cream/[0.045] md:grid-cols-2">
+    <article className="floaty group relative grid gap-6 overflow-hidden border border-cream/10 bg-cream/[0.03] hover:bg-cream/[0.05] md:grid-cols-2">
       <ImageSlot
         image={post.featuredImage}
         className="aspect-[16/10] md:aspect-auto md:min-h-[20rem] md:border-y-0 md:border-l-0"
@@ -75,7 +75,7 @@ export function FeatureCard({ post }: { post: Post }) {
           </Link>
         </h3>
         <p className="mt-4 text-lg italic leading-relaxed text-dim">{post.excerpt}</p>
-        <p className="mt-6 font-mono text-[0.65rem] uppercase tracking-wide2 text-dimmer">
+        <p className="mt-6 font-serif font-semibold text-[0.72rem] uppercase tracking-wide2 text-cream/65">
           {formatDateStamp(post.date)} · {post.author.name} ·{" "}
           {post.readingMinutes} min read
         </p>
