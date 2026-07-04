@@ -2,12 +2,18 @@
 /**
  * Plugin Name: Android Dreams — Front-End Revalidation
  * Description: Pings the Next.js site to regenerate pages the moment a post is published, updated, or unpublished. Install as an mu-plugin (wp-content/mu-plugins/ad-revalidate.php).
- * Version: 1.1
+ * Version: 1.2
  *
  * Configuration — add to wp-config.php:
  *
  *   define('AD_REVALIDATE_URL',    'https://www.androiddreamsmedia.com/api/revalidate');
  *   define('AD_REVALIDATE_SECRET', 'the-same-value-as-REVALIDATE_SECRET-on-Vercel');
+ *
+ * v1.2: flushes SiteGround's own cache BEFORE pinging the front end.
+ * SiteGround Speed Optimizer can keep serving hours-old wp-json
+ * responses after an edit, so the front end would faithfully refetch —
+ * and re-cache — stale content. Purging the origin first guarantees
+ * the refetch sees the new revision.
  *
  * v1.1: blocking request with a short timeout (fire-and-forget requests
  * get dropped on some shared hosts), follows www/apex redirects, and
@@ -30,6 +36,12 @@ add_action('transition_post_status', function ($new_status, $old_status, $post) 
     if (!$endpoint || !$secret) {
         update_option('ad_revalidate_last', gmdate('c') . ' SKIPPED: AD_REVALIDATE_URL / AD_REVALIDATE_SECRET not defined in wp-config.php', false);
         return;
+    }
+
+    // Purge SiteGround's origin cache first so the front end's refetch
+    // gets the fresh revision, not a cached wp-json response.
+    if (function_exists('sg_cachepress_purge_cache')) {
+        sg_cachepress_purge_cache();
     }
 
     $categories = array_map(

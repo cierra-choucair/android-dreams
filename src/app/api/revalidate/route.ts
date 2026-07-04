@@ -76,6 +76,11 @@ export async function POST(request: Request) {
     hit("/");
     hit("/rss.xml");
     hit("/sitemap.xml");
+    // Belt and braces: expire every cached page. With the data cache
+    // already tag-purged above this is cheap — pages that didn't change
+    // re-render once from fresh fetches on their next visit.
+    revalidatePath("/", "layout");
+    revalidated.push("/ (entire site)");
   } else {
     // Full purge: every route regenerates on its next request.
     revalidateTag("wp-tax");

@@ -5,7 +5,11 @@ import { formatFromCategories, isFormatSlug } from "@/lib/formats";
 import { getPostBySlug, getRelatedPosts } from "@/lib/wp";
 import { SITE_URL, truncate } from "@/lib/utils";
 
-export const revalidate = 900; // individual articles: 15 minutes
+// Render per request so edits publish instantly — Vercel's on-demand HTML
+// cache for dynamic segments doesn't purge reliably. The WP fetches inside
+// keep their own 15-minute data cache (tag-purged by /api/revalidate), so
+// requests stay cheap; only the HTML assembly runs each time.
+export const revalidate = 0;
 
 interface Params {
   params: { category: string; slug: string };

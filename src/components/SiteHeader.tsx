@@ -250,7 +250,7 @@ export function SiteHeader() {
           role="dialog"
           aria-modal="true"
           aria-label="Search Android Dreams"
-          className="fixed inset-0 z-[60] bg-ink/[0.97] bg-cyber"
+          className="fixed inset-0 z-[60] bg-ink bg-cyber"
         >
           <div className="pointer-events-none absolute inset-0 glow-orange-tl" />
           <div className="pointer-events-none absolute inset-0 glow-magenta-br" />
@@ -258,7 +258,7 @@ export function SiteHeader() {
             type="button"
             onClick={() => setSearchOpen(false)}
             aria-label="Close search"
-            className="absolute right-6 top-6 p-2 text-dim transition-colors hover:text-cream"
+            className="absolute right-6 top-6 z-10 p-2 text-dim transition-colors hover:text-cream"
           >
             <X size={24} strokeWidth={1.5} aria-hidden />
           </button>
@@ -291,14 +291,14 @@ export function SiteHeader() {
           role="dialog"
           aria-modal="true"
           aria-label="Site menu"
-          className="fixed inset-0 z-[60] overflow-y-auto bg-ink/[0.97] bg-cyber lg:hidden"
+          className="fixed inset-0 z-[60] overflow-y-auto bg-ink bg-cyber lg:hidden"
         >
           <div className="pointer-events-none absolute inset-0 glow-orange-tl" />
           <button
             type="button"
             onClick={() => setMenuOpen(false)}
             aria-label="Close menu"
-            className="absolute right-6 top-6 p-2 text-dim transition-colors hover:text-cream"
+            className="fixed right-6 top-6 z-10 p-2 text-dim transition-colors hover:text-cream"
           >
             <X size={24} strokeWidth={1.5} aria-hidden />
           </button>

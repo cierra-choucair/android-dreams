@@ -4,7 +4,8 @@ import { ArticleView } from "@/components/ArticleView";
 import { getPostBySlug, getRelatedPosts } from "@/lib/wp";
 import { SITE_URL, truncate } from "@/lib/utils";
 
-export const revalidate = 900;
+// Per-request render; data stays tag-cached. See /[category]/[slug]/page.tsx.
+export const revalidate = 0;
 
 interface Params {
   params: { slug: string };
