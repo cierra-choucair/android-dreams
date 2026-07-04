@@ -1,18 +1,23 @@
 <?php
 /**
  * Plugin Name: Android Dreams — Front-End Revalidation
- * Description: Pings the Next.js site to regenerate pages the moment a post is published, updated, or unpublished. Install as an mu-plugin (wp-content/mu-plugins/ad-revalidate.php) or paste into the theme's functions.php.
- * Version: 1.0
+ * Description: Pings the Next.js site to regenerate pages the moment a post is published, updated, or unpublished. Install as an mu-plugin (wp-content/mu-plugins/ad-revalidate.php).
+ * Version: 1.1
  *
  * Configuration — add to wp-config.php:
  *
  *   define('AD_REVALIDATE_URL',    'https://www.androiddreamsmedia.com/api/revalidate');
  *   define('AD_REVALIDATE_SECRET', 'the-same-value-as-REVALIDATE_SECRET-on-Vercel');
+ *
+ * v1.1: blocking request with a short timeout (fire-and-forget requests
+ * get dropped on some shared hosts), follows www/apex redirects, and
+ * logs failures to the PHP error log plus a wp_options breadcrumb you
+ * can inspect at /wp-admin (Tools → Site Health → Info, or via
+ * `wp option get ad_revalidate_last`).
  */
 
 add_action('transition_post_status', function ($new_status, $old_status, $post) {
-    // Only standard posts, and only when a live page is affected:
-    // publishing, updating a published post, or unpublishing.
+    // Only standard posts, and only when a live page is affected.
     if ($post->post_type !== 'post') {
         return;
     }
@@ -23,6 +28,7 @@ add_action('transition_post_status', function ($new_status, $old_status, $post) 
     $endpoint = defined('AD_REVALIDATE_URL') ? AD_REVALIDATE_URL : '';
     $secret   = defined('AD_REVALIDATE_SECRET') ? AD_REVALIDATE_SECRET : '';
     if (!$endpoint || !$secret) {
+        update_option('ad_revalidate_last', gmdate('c') . ' SKIPPED: AD_REVALIDATE_URL / AD_REVALIDATE_SECRET not defined in wp-config.php', false);
         return;
     }
 
@@ -31,10 +37,11 @@ add_action('transition_post_status', function ($new_status, $old_status, $post) 
         wp_get_post_categories($post->ID, ['fields' => 'all'])
     );
 
-    wp_remote_post($endpoint, [
-        'timeout'  => 5,
-        'blocking' => false, // fire-and-forget; never slows down the editor
-        'headers'  => [
+    $response = wp_remote_post($endpoint, [
+        'timeout'     => 5,
+        'blocking'    => true, // reliable delivery; adds <1s to a save
+        'redirection' => 3,    // survive www ↔ apex redirects
+        'headers'     => [
             'Content-Type'        => 'application/json',
             'x-revalidate-secret' => $secret,
         ],
@@ -44,4 +51,19 @@ add_action('transition_post_status', function ($new_status, $old_status, $post) 
             'status'     => $new_status,
         ]),
     ]);
+
+    if (is_wp_error($response)) {
+        $summary = 'ERROR: ' . $response->get_error_message();
+    } else {
+        $code    = wp_remote_retrieve_response_code($response);
+        $body    = substr((string) wp_remote_retrieve_body($response), 0, 200);
+        $summary = "HTTP {$code}: {$body}";
+    }
+
+    // Breadcrumb for debugging: the result of the most recent ping.
+    update_option('ad_revalidate_last', gmdate('c') . " {$post->post_name} → {$summary}", false);
+
+    if (is_wp_error($response) || wp_remote_retrieve_response_code($response) >= 400) {
+        error_log("[ad-revalidate] {$post->post_name}: {$summary}");
+    }
 }, 10, 3);
