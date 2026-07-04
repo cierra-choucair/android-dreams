@@ -50,7 +50,9 @@
 @layer utilities {
   /* Cyber gradient atmosphere — palette colors, no grid lines */
   .bg-cyber {
-    background:
+    /* background-image, not the `background` shorthand — the shorthand
+       resets background-color and erases any bg-* utility underneath. */
+    background-image:
       radial-gradient(ellipse 75% 60% at 12% 0%, rgba(58, 143, 255, 0.1), transparent 62%),
       radial-gradient(ellipse 70% 55% at 88% 18%, rgba(255, 31, 61, 0.1), transparent 62%),
       radial-gradient(ellipse 65% 50% at 50% 105%, rgba(255, 138, 61, 0.08), transparent 65%);

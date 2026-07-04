@@ -250,7 +250,7 @@ export function SiteHeader() {
           role="dialog"
           aria-modal="true"
           aria-label="Search Android Dreams"
-          className="fixed inset-0 z-[60] bg-ink/[0.97] bg-cyber"
+          className="fixed inset-0 z-[60] bg-ink bg-cyber"
         >
           <div className="pointer-events-none absolute inset-0 glow-orange-tl" />
           <div className="pointer-events-none absolute inset-0 glow-magenta-br" />
@@ -291,7 +291,7 @@ export function SiteHeader() {
           role="dialog"
           aria-modal="true"
           aria-label="Site menu"
-          className="fixed inset-0 z-[60] overflow-y-auto bg-ink/[0.97] bg-cyber lg:hidden"
+          className="fixed inset-0 z-[60] overflow-y-auto bg-ink bg-cyber lg:hidden"
         >
           <div className="pointer-events-none absolute inset-0 glow-orange-tl" />
           <button
