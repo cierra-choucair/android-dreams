@@ -30,9 +30,8 @@ export default function DavosPage() {
         aria-label="House of Quantum"
         className="relative flex min-h-[calc(100vh-4rem)] flex-col overflow-hidden border-b border-gold/20"
       >
-        <div className="pointer-events-none absolute inset-0 bg-grid" />
-        <div className="pointer-events-none absolute inset-0 rings-gold" />
-        {/* A slow sweep of light across the rings — the room, turning */}
+        <div className="pointer-events-none absolute inset-0 bg-cyber" />
+        {/* A slow sweep of light — the room, turning */}
         <div
           aria-hidden
           className="pointer-events-none absolute left-1/2 top-1/2 h-[160vmax] w-[160vmax] -translate-x-1/2 -translate-y-1/2 animate-spin-slower"

@@ -37,47 +37,34 @@ export default async function HomePage() {
 
   return (
     <>
-      {/* ─────────── MASTHEAD — compact cinematic band ─────────── */}
-      <section
-        aria-label="Android Dreams"
-        className="relative overflow-hidden border-b border-cream/10"
-      >
-        <div className="pointer-events-none absolute inset-0 bg-grid" />
-        <div className="pointer-events-none absolute inset-0 glow-cyan-left" />
-        <div className="pointer-events-none absolute inset-0 glow-magenta-right" />
-        <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[1.2fr_auto_1fr] lg:gap-14">
-          <div>
-            <h1 className="font-display font-bold leading-[0.95] tracking-[0.06em]">
-              <span className="block text-[clamp(2.75rem,6.5vw,4.75rem)] text-cream">
-                ANDROID DREAMS
-              </span>
+      {/* ─────────── MASTHEAD — full-bleed banner ─────────── */}
+      <section aria-label="Android Dreams" className="relative overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src="/brand/ad-mark.jpg"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-[38%_18%]"
+          />
+          {/* Legibility scrims: darken toward the wordmark side and the base */}
+          <div className="absolute inset-0 bg-gradient-to-r from-ink/30 via-ink/10 to-ink/70" />
+          <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-ink/80 via-ink/25 to-transparent" />
+        </div>
+        <div className="relative mx-auto flex min-h-[22rem] max-w-7xl items-center justify-end px-4 py-16 sm:px-6 lg:min-h-[26rem] lg:py-20">
+          <div className="max-w-xl">
+            <h1 className="font-display font-bold leading-[0.92] tracking-[0.06em] text-cream [text-shadow:0_2px_24px_rgba(5,3,8,0.85)]">
+              <span className="block text-[clamp(3rem,7vw,5.5rem)]">ANDROID</span>
+              <span className="block text-[clamp(3rem,7vw,5.5rem)]">DREAMS</span>
             </h1>
             <p className="mt-4 font-serif text-sm font-medium uppercase tracking-[0.18em] text-orange sm:text-base">
               Imagine the future
             </p>
-            <p className="mt-5 max-w-lg font-serif text-lg font-light leading-relaxed text-cream/80">
+            <p className="mt-5 font-serif text-lg font-light leading-relaxed text-cream/85 [text-shadow:0_1px_16px_rgba(5,3,8,0.9)]">
               Quantum technology, artificial intelligence, and the deep
               science building our sci-fi future — reported from the frontier.
             </p>
-            <p className="mt-6 font-serif text-[0.72rem] font-semibold uppercase tracking-wide4 text-cream/65">
-              Vol 01 · {new Date().getUTCFullYear()} · Presented in 2.39:1
-            </p>
-          </div>
-
-          {/* The seam */}
-          <div aria-hidden className="hidden w-[3px] self-stretch rounded-full bg-orange lg:block" />
-          <div aria-hidden className="h-[3px] w-24 rounded-full bg-orange lg:hidden" />
-
-          <div className="relative flex items-center justify-center">
-            <Image
-              src="/brand/ad-mark.jpg"
-              alt="The Android Dreams mark: a portrait split at a glowing seam — half human face in cool blue light, half machine in deep crimson."
-              width={2351}
-              height={2351}
-              priority
-              sizes="(min-width: 1024px) 32vw, 70vw"
-              className="max-h-[38vh] w-auto rounded-xl shadow-float-lg"
-            />
           </div>
         </div>
       </section>

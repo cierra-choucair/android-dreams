@@ -43,7 +43,7 @@ export function ImageSlot({
       aria-hidden
       className={`image-slot relative flex items-center justify-center overflow-hidden ${chrome} ${className}`}
     >
-      <div className="absolute inset-0 bg-grid" />
+      <div className="absolute inset-0 bg-cyber" />
       <span className="relative font-serif text-[0.68rem] font-semibold uppercase tracking-wide4 text-cream/50">
         {label}
       </span>

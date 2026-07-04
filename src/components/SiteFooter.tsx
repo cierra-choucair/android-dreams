@@ -26,7 +26,7 @@ const SOCIAL_LINKS = [
 export function SiteFooter() {
   return (
     <footer className="relative border-t border-cream/10 bg-[#040308]">
-      <div className="pointer-events-none absolute inset-0 bg-grid" />
+      <div className="pointer-events-none absolute inset-0 bg-cyber" />
       <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6">
         <div className="grid gap-12 md:grid-cols-3">
           {/* Brand */}

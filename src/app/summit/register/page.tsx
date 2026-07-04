@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function SummitRegisterPage() {
   return (
     <div className="relative overflow-hidden">
-      <div className="pointer-events-none absolute inset-0 bg-grid" />
+      <div className="pointer-events-none absolute inset-0 bg-cyber" />
       <div className="pointer-events-none absolute inset-0 glow-magenta-center" />
       <div className="relative mx-auto flex min-h-[60vh] max-w-3xl flex-col items-center justify-center px-4 py-24 text-center sm:px-6">
         <p className="eyebrow text-magenta">Early bird</p>

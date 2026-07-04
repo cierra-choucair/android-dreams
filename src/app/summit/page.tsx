@@ -59,7 +59,7 @@ function SuperpositionField({ className = "" }: { className?: string }) {
           style={{ animationDelay: "6s" }}
         />
       </div>
-      <div className="absolute inset-0 bg-grid" />
+      <div className="absolute inset-0 bg-cyber" />
     </div>
   );
 }

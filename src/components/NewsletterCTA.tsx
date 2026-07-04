@@ -5,7 +5,7 @@ export function NewsletterCTA() {
   return (
     <section aria-labelledby="newsletter-cta" className="relative overflow-hidden border-y border-cream/10">
       <div className="pointer-events-none absolute inset-0 glow-magenta-center" />
-      <div className="pointer-events-none absolute inset-0 bg-grid" />
+      <div className="pointer-events-none absolute inset-0 bg-cyber" />
       <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-4 py-20 sm:px-6 lg:grid-cols-2">
         <div>
           <h2
