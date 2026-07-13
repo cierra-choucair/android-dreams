@@ -67,10 +67,6 @@ const PRINCIPLES = [
     title: "Career access is earned",
     body: "Visibility and introductions follow credible participation and useful work.",
   },
-  {
-    title: "AI assistance, no AI slop",
-    body: "AI may support drafting and research; generic, unsourced, polished-but-empty posts are rejected.",
-  },
 ];
 
 const TRACKS = [
