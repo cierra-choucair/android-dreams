@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArticleCard } from "@/components/ArticleCard";
 import { ImageSlot } from "@/components/ImageSlot";
+import { ShareBar } from "@/components/ShareBar";
 import { formatFromCategories } from "@/lib/formats";
 import type { Post } from "@/lib/types";
 import { formatDate, SITE_URL } from "@/lib/utils";
@@ -89,6 +90,10 @@ export function ArticleView({
             <span className="text-cream/65"> · </span>
             {post.readingMinutes} min read
           </p>
+          <ShareBar
+            url={`${SITE_URL}/${format.slug}/${post.slug}`}
+            title={post.title}
+          />
           <div aria-hidden className="mt-6 h-px w-full bg-orange/70" />
         </header>
 

@@ -65,11 +65,45 @@ export async function POST(request: Request) {
       `${wpBase}/wp-json/contact-form-7/v1/contact-forms/${formId}/feedback`,
       { method: "POST", body: cf7 },
     );
-    const data = (await res.json().catch(() => ({}))) as { status?: string };
+    const data = (await res.json().catch(() => ({}))) as {
+      status?: string;
+      message?: string;
+    };
 
-    if (res.ok && data.status === "mail_sent") {
+    // "mail_sent" is the clean path. "mail_failed" means CF7 accepted the
+    // submission but WordPress couldn't send the notification email —
+    // Flamingo has still stored it, so the sign-up is safe. Don't turn a
+    // captured lead away; log it so the mail problem gets fixed.
+    if (res.ok && (data.status === "mail_sent" || data.status === "mail_failed")) {
+      if (data.status === "mail_failed") {
+        console.error(
+          `[inquire] form=${String(form)}: submission stored, but WordPress could not send the notification email. Install/configure WP Mail SMTP on the CMS.`,
+        );
+      }
       return NextResponse.json({ ok: true });
     }
+
+    if (data.status === "validation_failed") {
+      console.error(`[inquire] form=${String(form)}: CF7 validation failed — ${data.message}`);
+      return NextResponse.json(
+        {
+          error:
+            "The CMS rejected the fields — the form template's field names don't match (your-name, your-email, your-organization, your-message).",
+        },
+        { status: 502 },
+      );
+    }
+
+    if (res.status === 404) {
+      return NextResponse.json(
+        { error: "No form with that ID on the CMS — check WP_CF7_QRC_FORM_ID." },
+        { status: 502 },
+      );
+    }
+
+    console.error(
+      `[inquire] form=${String(form)}: unexpected CF7 response ${res.status} status=${data.status} — ${data.message}`,
+    );
     return NextResponse.json(
       { error: "The message didn't go through. Try again." },
       { status: 502 },

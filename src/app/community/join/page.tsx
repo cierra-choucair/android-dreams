@@ -5,7 +5,7 @@ import { InquiryForm } from "@/components/InquiryForm";
 export const metadata: Metadata = {
   title: "Request an Invite — Quantum Readiness Community",
   description:
-    "Request an invite to the Quantum Readiness Community — the developer-first community layer of QFrontline.",
+    "Request an invite to the Quantum Readiness Community — the developer community from QFrontline. Free to join, contribution-gated.",
   robots: { index: false },
 };
 
@@ -59,7 +59,7 @@ export default function CommunityJoinPage() {
               href={discordUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-4 inline-block rounded-lg rounded-lg bg-qf-signal px-6 py-3 font-qf-mono text-xs uppercase tracking-[0.2em] text-qf-void transition-colors hover:bg-qf-ink"
+              className="mt-4 inline-block rounded-lg bg-qf-signal px-6 py-3 font-qf-mono text-xs uppercase tracking-[0.2em] text-qf-void transition-colors hover:bg-qf-ink"
             >
               Join the Discord →
             </a>

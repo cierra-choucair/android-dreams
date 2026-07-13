@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Quantum Readiness Community — Practical Quantum Readiness for Builders",
   description:
-    "The developer-first community layer of QFrontline and Android Dreams. Structured discussion, four-week workgroups, portfolio artifacts, and career visibility earned through contribution.",
+    "The developer community from QFrontline and Android Dreams. Structured discussion, four-week workgroups, portfolio-ready projects, and career visibility earned through contribution — free to join.",
   alternates: { canonical: "/community" },
 };
 
@@ -14,13 +14,13 @@ const NOT_LIST = [
   "Not a space for speculative claims",
 ];
 
-const FUNNEL = [
-  "QFrontline article / Dev Brief",
-  "LinkedIn discussion",
-  "Discord thread",
-  "workgroup",
-  "repo · brief · demo · resource",
-  "recruiter, partner & expert visibility",
+/** The member journey, reader to builder — shown as a terminal strip. */
+const JOURNEY = [
+  "read the reporting",
+  "join the discussion",
+  "build in a workgroup",
+  "ship a repo, brief, or demo",
+  "get seen for your work",
 ];
 
 const AUDIENCES = [
@@ -131,7 +131,7 @@ export default function CommunityPage() {
         <div className="pointer-events-none absolute inset-0 glow-signal-tl" />
         <div className="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:py-28">
           <p className="font-qf-mono text-[0.65rem] uppercase tracking-[0.3em] text-qf-dust">
-            A community layer of QFrontline · Android Dreams
+            The QFrontline community · An Android Dreams property
           </p>
           <h1 className="mt-8 text-[clamp(3rem,9vw,7rem)] leading-none">
             <QrcLockup />
@@ -149,7 +149,7 @@ export default function CommunityPage() {
           <div className="mt-10 flex flex-wrap gap-4">
             <Link
               href="/community/join"
-              className="rounded-lg rounded-lg bg-qf-signal px-6 py-3 font-qf-mono text-xs uppercase tracking-[0.2em] text-qf-void transition-colors hover:bg-qf-ink"
+              className="rounded-lg bg-qf-signal px-6 py-3 font-qf-mono text-xs uppercase tracking-[0.2em] text-qf-void transition-colors hover:bg-qf-ink"
             >
               Request an invite
             </Link>
@@ -186,11 +186,14 @@ export default function CommunityPage() {
           </ul>
         </div>
 
-        {/* The funnel */}
-        <div className="mt-12 overflow-x-auto rounded-xl border border-qf-void/15 bg-qf-void px-5 py-5 shadow-float-light">
+        {/* The member journey */}
+        <p className="mt-12 font-qf-mono text-[0.75rem] uppercase tracking-[0.2em] text-qf-void/50">
+          How membership works
+        </p>
+        <div className="mt-4 overflow-x-auto rounded-xl border border-qf-void/15 bg-qf-void px-5 py-5 shadow-float-light">
           <p className="whitespace-nowrap font-qf-mono text-[0.75rem] leading-loose text-qf-ink">
             <span aria-hidden className="text-qf-signal">&gt; </span>
-            {FUNNEL.map((step, i) => (
+            {JOURNEY.map((step, i) => (
               <span key={step}>
                 {i > 0 && <span aria-hidden className="text-qf-signal"> → </span>}
                 {step}
@@ -248,7 +251,7 @@ export default function CommunityPage() {
       {/* ─────────────────────── WORKGROUPS ─────────────────────── */}
       <section aria-labelledby="workgroups" className="border-y border-qf-void/10 bg-qf-void/[0.025]">
         <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6">
-          <SectionTitle id="workgroups">Workgroups are the core unit</SectionTitle>
+          <SectionTitle id="workgroups">Built around workgroups</SectionTitle>
           <div className="mt-8 grid gap-10 lg:grid-cols-2">
             <div>
               <p className="max-w-xl font-qf-sans text-lg font-light leading-relaxed text-qf-void/85">
@@ -305,7 +308,7 @@ export default function CommunityPage() {
         <div className="mt-12 grid gap-5 md:grid-cols-2">
           <div className="floaty-light rounded-xl border border-qf-void/10 bg-white p-7">
             <p className="font-qf-mono text-xs uppercase tracking-[0.2em] text-qf-signal-deep">
-              Public front door
+              Follow in public
             </p>
             <h3 className="mt-3 font-qf-sans text-2xl font-semibold tracking-tight text-qf-void">
               LinkedIn
@@ -332,7 +335,7 @@ export default function CommunityPage() {
           </div>
           <div className="floaty-light rounded-xl border border-qf-void/10 bg-white p-7">
             <p className="font-qf-mono text-xs uppercase tracking-[0.2em] text-qf-signal-deep">
-              Operational hub
+              Where the work happens
             </p>
             <h3 className="mt-3 font-qf-sans text-2xl font-semibold tracking-tight text-qf-void">
               Discord
@@ -365,7 +368,7 @@ export default function CommunityPage() {
         {/* Attribution */}
         <p className="mt-16 border-t border-qf-void/10 pt-8 text-center font-qf-mono text-[0.65rem] uppercase tracking-[0.3em] text-qf-void/50">
           <span aria-hidden className="text-qf-signal-deep">&gt; </span>
-          The community layer of{" "}
+          The community of{" "}
           <Link
             href="/qfrontline"
             className="text-qf-void/70 underline decoration-qf-signal/40 underline-offset-4 transition-colors hover:text-qf-signal-deep"
