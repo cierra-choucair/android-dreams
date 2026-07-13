@@ -1,10 +1,9 @@
 import { NextResponse } from "next/server";
 
 /**
- * Inquiry endpoint for the /davos invitation form, the /contact page, and
- * the /hackathon launch-updates signup. Relays to the WordPress Contact
- * Form 7 REST endpoint; the target form ID is configured per form via env
- * vars.
+ * Inquiry endpoint for the /davos invitation form and the /contact page.
+ * Relays to the WordPress Contact Form 7 REST endpoint; the target form ID
+ * is configured per form via env vars.
  */
 
 function resolveTarget(form: unknown) {
@@ -14,9 +13,7 @@ function resolveTarget(form: unknown) {
       ? process.env.WP_CF7_CONTACT_FORM_ID
       : form === "qrc"
         ? process.env.WP_CF7_QRC_FORM_ID || process.env.WP_CF7_CONTACT_FORM_ID
-        : form === "hackathon"
-          ? process.env.WP_CF7_HACKATHON_FORM_ID || process.env.WP_CF7_CONTACT_FORM_ID
-          : process.env.WP_CF7_DAVOS_FORM_ID;
+        : process.env.WP_CF7_DAVOS_FORM_ID;
   return { wpBase, formId };
 }
 
@@ -106,18 +103,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid request." }, { status: 400 });
   }
 
-  const { form, email, organization } = body;
-  let { name, message } = body;
-
-  // The hackathon signup captures only an email address. Backfill the other
-  // CF7 template fields so a template with required name/message fields
-  // (including the contact-form fallback) still accepts the relay. Keep in
-  // sync with the fallback values in HackathonSignup.
-  if (form === "hackathon") {
-    if (typeof name !== "string" || !name.trim()) name = "Hackathon updates signup";
-    if (typeof message !== "string" || !message.trim())
-      message = "Sign me up for updates on the quantum hackathon.";
-  }
+  const { form, name, email, organization, message } = body;
 
   if (
     typeof name !== "string" ||

@@ -38,7 +38,6 @@ npm run dev
 | `WP_CF7_DAVOS_FORM_ID` | Contact Form 7 form ID for the `/davos` invitation form. |
 | `WP_CF7_CONTACT_FORM_ID` | Contact Form 7 form ID for the `/contact` page. |
 | `WP_CF7_QRC_FORM_ID` | Contact Form 7 form ID for QRC invite requests (falls back to contact form). |
-| `WP_CF7_HACKATHON_FORM_ID` | Contact Form 7 form ID for `/hackathon` launch-updates signups (falls back to contact form). |
 | `REVALIDATE_SECRET` | Shared secret for on-demand revalidation — see "Instant publishing" below. |
 
 ## Content model (WordPress)
@@ -63,7 +62,6 @@ Special **tags**: `featured` pins a post to the homepage hero;
 - `/qfrontline` developer vertical landing + `/qfrontline/[slug]`
 - `/authors/[slug]`, `/topics/[slug]`, `/search`
 - `/community` (+ `/community/join`), `/summit`, `/davos` — sibling property landings
-- `/hackathon` — pre-launch landing for the Universum Labs × CQT Serbia quantum hackathon
 - `/about`, `/contact` — `/newsletter` redirects to `/sunday-letter`, which is the newsletter
 - `/rss.xml` + per-format `/[format]/rss.xml`, `/sitemap.xml`, `/robots.txt`
 
@@ -95,3 +93,9 @@ vercel deploy
 
 Set the environment variables in the Vercel project settings. No other
 configuration is required.
+
+## Also in this repo
+
+- `hackathon/` — standalone static pre-launch site for the Universum
+  Labs × CQT Serbia quantum hackathon. Not part of the Next.js app;
+  deploys separately. See `hackathon/README.md`.

@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Serbia's First Applied Quantum Hackathon — Universum Labs × CQT Serbia</title>
+  <meta
+    name="description"
+    content="Serbia's first applied quantum hackathon, from the Center for Quantum Technologies Serbia and Universum Labs. Real problem statements, beginner-friendly framing — Belgrade, autumn 2026. Sign up for launch updates."
+  />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Serbia's First Applied Quantum Hackathon" />
+  <meta
+    property="og:description"
+    content="Real problem statements, real quantum tools — built for students, staged in Belgrade. A Universum Labs × CQT Serbia partnership. Sign up for launch updates."
+  />
+  <meta name="twitter:card" content="summary" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Ccircle%20cx='16'%20cy='16'%20r='13'%20fill='none'%20stroke='%238B5CF6'%20stroke-width='2'/%3E%3Cellipse%20cx='16'%20cy='16'%20rx='13'%20ry='5'%20fill='none'%20stroke='%238B5CF6'%20stroke-opacity='.55'/%3E%3Cline%20x1='16'%20y1='16'%20x2='24'%20y2='8'%20stroke='%2322D3EE'%20stroke-width='2'/%3E%3Ccircle%20cx='24'%20cy='8'%20r='2.5'%20fill='%2322D3EE'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <p class="wordmark">UNIVERSUM&nbsp;LABS <span class="times">×</span> CQT&nbsp;SERBIA</p>
+      <nav class="topnav" aria-label="Page">
+        <a href="#partners">Partners</a>
+        <a href="#challenge">The Challenge</a>
+        <a class="btn btn-primary btn-small" href="#updates">Get updates</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ──────── HERO — a qubit, live ──────── -->
+    <section class="hero" aria-label="Serbia's first applied quantum hackathon">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="pill">Pre-launch · Belgrade · Autumn 2026</p>
+          <h1>
+            Serbia&rsquo;s first
+            <span class="grad">applied quantum</span>
+            hackathon.
+          </h1>
+          <p class="lede">
+            Real problem statements, real quantum tools, and challenges you
+            can actually get your hands around — built for students. The
+            official launch is coming. Be first in line.
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#updates">Get launch updates</a>
+            <a class="btn btn-ghost" href="#challenge">About the challenge</a>
+          </div>
+          <p class="microline">
+            A founding partnership of Universum Labs and the Center for
+            Quantum Technologies Serbia
+          </p>
+        </div>
+
+        <figure class="hero-viz">
+          <!-- Bloch sphere: static geometry in markup, state vector animated by script.js.
+               Projection: tilt 22°, azimuth −30°, R = 110. -->
+          <svg
+            id="bloch"
+            viewBox="-152 -152 304 304"
+            role="img"
+            aria-label="Animated Bloch sphere: the state vector of a qubit precessing between the north pole, state zero, and the south pole, state one"
+          >
+            <defs>
+              <radialGradient id="sphereFill" cx="38%" cy="30%" r="75%">
+                <stop offset="0%" stop-color="rgba(139,92,246,0.16)" />
+                <stop offset="55%" stop-color="rgba(139,92,246,0.05)" />
+                <stop offset="100%" stop-color="rgba(139,92,246,0)" />
+              </radialGradient>
+              <linearGradient id="vecGrad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="77.8" y2="-42.1">
+                <stop offset="0%" stop-color="#8B5CF6" />
+                <stop offset="100%" stop-color="#22D3EE" />
+              </linearGradient>
+              <filter id="softGlow" x="-80%" y="-80%" width="260%" height="260%">
+                <feGaussianBlur stdDeviation="5" />
+              </filter>
+            </defs>
+
+            <!-- Sphere body -->
+            <circle r="110" fill="url(#sphereFill)" stroke="rgba(244,240,255,0.28)" stroke-width="1.2" />
+            <!-- Latitudes -->
+            <ellipse rx="95.3" ry="35.7" cy="-51" fill="none" stroke="rgba(244,240,255,0.08)" />
+            <ellipse rx="95.3" ry="35.7" cy="51" fill="none" stroke="rgba(244,240,255,0.08)" />
+            <!-- Equator -->
+            <ellipse rx="110" ry="41.2" fill="none" stroke="rgba(139,92,246,0.45)" stroke-dasharray="3 4" />
+
+            <!-- Axes -->
+            <g stroke="rgba(244,240,255,0.22)" stroke-width="1">
+              <line x1="0" y1="117.3" x2="0" y2="-117.3" />
+              <line x1="0" y1="0" x2="109.6" y2="23.7" />
+              <line x1="0" y1="0" x2="63.2" y2="-41" />
+            </g>
+            <g class="axis-labels" fill="rgba(244,240,255,0.55)">
+              <text x="0" y="-126" text-anchor="middle">|0⟩</text>
+              <text x="0" y="138" text-anchor="middle">|1⟩</text>
+              <text x="118" y="31">x</text>
+              <text x="69" y="-46">y</text>
+            </g>
+
+            <!-- Trail of the state vector's tip -->
+            <polyline id="trail" points="" fill="none" stroke="#22D3EE" stroke-opacity="0.3" stroke-width="1.5" />
+
+            <!-- State vector + projections (updated each frame) -->
+            <g id="state">
+              <g stroke="rgba(34,211,238,0.5)" stroke-width="1" stroke-dasharray="2 4">
+                <line id="dropline" x1="77.8" y1="-42.1" x2="77.8" y2="16.8" />
+                <line id="floorline" x1="0" y1="0" x2="77.8" y2="16.8" />
+              </g>
+              <line id="vector" x1="0" y1="0" x2="77.8" y2="-42.1" stroke="url(#vecGrad)" stroke-width="2.5" stroke-linecap="round" />
+              <circle id="tipGlow" cx="77.8" cy="-42.1" r="9" fill="#22D3EE" opacity="0.55" filter="url(#softGlow)" />
+              <circle id="tip" cx="77.8" cy="-42.1" r="4.2" fill="#E8FCFF" stroke="#22D3EE" stroke-width="1.5" />
+              <text id="psi" class="psi-label" x="88" y="-50" fill="#22D3EE">|ψ⟩</text>
+            </g>
+          </svg>
+          <figcaption class="readout">
+            <span class="mono">|ψ⟩ = cos(θ/2)|0⟩ + e<sup>iφ</sup>·sin(θ/2)|1⟩</span>
+            <span class="mono angles" id="angles">θ = 54.7° · φ = 0.0°</span>
+          </figcaption>
+        </figure>
+      </div>
+      <p class="hero-footline wrap">One weekend · Sector-aligned tracks · A country&rsquo;s first</p>
+    </section>
+
+    <!-- ──────── THE PREMISE ──────── -->
+    <section class="premise" aria-label="The premise">
+      <div class="wrap">
+        <p class="premise-lines">
+          <span class="faint">Not a lecture.</span>
+          <span class="mid">Not a demo.</span>
+          <span>A problem worth <em class="grad">solving</em>.</span>
+        </p>
+        <p class="premise-sub">
+          Most quantum events talk about the future. This one hands you a
+          problem that matters, the tools that apply, and a weekend to build
+          — proof that Serbia&rsquo;s quantum community is here, and working.
+        </p>
+      </div>
+    </section>
+
+    <!-- ──────── THE PARTNERS ──────── -->
+    <section id="partners" class="band" aria-labelledby="partners-heading">
+      <div class="wrap">
+        <p class="eyebrow">The partnership</p>
+        <h2 id="partners-heading">Two organizations. One founding bet on Serbian quantum.</h2>
+        <div class="partner-grid">
+          <article class="card partner-card">
+            <p class="card-eyebrow violet">The Center</p>
+            <h3>Center for Quantum Technologies Serbia</h3>
+            <p>
+              One of the first dedicated quantum organizations of its kind in
+              Serbia — an independent nonprofit association emerging from the
+              Quantum Serbia community to build quantum education, research
+              capacity, and the foundations of a national quantum ecosystem.
+            </p>
+            <p class="card-role violet">Convenes the community · Hosts the challenge</p>
+          </article>
+          <article class="card partner-card">
+            <p class="card-eyebrow cyan">The Partner</p>
+            <h3>Universum Labs</h3>
+            <p>
+              Building quantum intelligence infrastructure — structured
+              use-case analysis, classical-versus-quantum benchmarking, and
+              technology-readiness assessment — with relationships across the
+              international quantum ecosystem of companies, platforms, and
+              education initiatives.
+            </p>
+            <p class="card-role cyan">Designs the challenges · Connects the ecosystem</p>
+          </article>
+        </div>
+        <p class="band-note">
+          A founding strategic partnership: the Center convenes
+          Serbia&rsquo;s emerging quantum community, and Universum Labs turns
+          quantum use cases into challenges students can win.
+        </p>
+      </div>
+    </section>
+
+    <!-- ──────── ABOUT THE CHALLENGE ──────── -->
+    <section id="challenge" aria-labelledby="challenge-heading">
+      <div class="wrap">
+        <p class="eyebrow">About the challenge</p>
+        <h2 id="challenge-heading">Challenges you understand. Problems that matter.</h2>
+        <p class="section-lede">
+          Every track starts from a real quantum use case — assessed for
+          technical maturity, matched against its classical baseline, and
+          chosen for its relevance to Serbia&rsquo;s industry and research
+          strengths. You&rsquo;ll know exactly what you&rsquo;re solving, why
+          the problem matters, and which quantum tools apply. No deep quantum
+          training required to enter: each challenge comes with
+          beginner-friendly framing, recommended tools, and clear judging
+          criteria.
+        </p>
+
+        <p class="tracks-kicker">Candidate challenge areas · Final tracks announced at launch</p>
+        <div class="track-grid">
+          <article class="card track-card">
+            <p class="track-number violet" aria-hidden="true">01</p>
+            <h3>Optimization</h3>
+            <p>
+              Quantum optimization for logistics and infrastructure —
+              routing, scheduling, and allocation problems drawn from sectors
+              where Serbia already runs deep.
+            </p>
+            <p class="card-role violet">Problem statement · Tools · Judging criteria</p>
+          </article>
+          <article class="card track-card">
+            <p class="track-number cyan" aria-hidden="true">02</p>
+            <h3>Data Science</h3>
+            <p>
+              Quantum algorithms for data science — bringing quantum methods
+              to the datasets and models Serbian teams already work with
+              every day.
+            </p>
+            <p class="card-role cyan">Problem statement · Tools · Judging criteria</p>
+          </article>
+          <article class="card track-card">
+            <p class="track-number pink" aria-hidden="true">03</p>
+            <h3>Comms &amp; Security</h3>
+            <p>
+              Quantum communications and cybersecurity — the networks, and
+              the post-quantum defenses, the next decade will run on.
+            </p>
+            <p class="card-role pink">Problem statement · Tools · Judging criteria</p>
+          </article>
+        </div>
+        <p class="tracks-note">
+          The final challenge tracks are being selected now, guided by a
+          structured review of which quantum use cases are technically
+          ready, relevant to Serbia, and right-sized for a student weekend.
+          Sign up below and you&rsquo;ll be the first to know when
+          they&rsquo;re announced.
+        </p>
+
+        <div class="facts">
+          <div class="fact">
+            <p class="fact-value">Belgrade</p>
+            <p class="fact-label">Serbia · Host city</p>
+          </div>
+          <div class="fact">
+            <p class="fact-value">Autumn 2026</p>
+            <p class="fact-label">Dates announced at launch</p>
+          </div>
+          <div class="fact">
+            <p class="fact-value">Students First</p>
+            <p class="fact-label">No quantum background required</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────── EMAIL CAPTURE ──────── -->
+    <section id="updates" class="band updates" aria-labelledby="updates-heading">
+      <div class="wrap wrap-narrow">
+        <p class="eyebrow centered">Stay in the loop</p>
+        <h2 id="updates-heading" class="centered">Be first at the starting line.</h2>
+        <p class="section-lede centered">
+          Challenge tracks, dates, and registration all land by email before
+          they&rsquo;re public. A handful of messages between now and launch
+          — no noise.
+        </p>
+        <!-- Paste your form backend URL into data-endpoint (see README.md). -->
+        <form id="signup" class="signup" data-endpoint="" novalidate>
+          <label class="field-label" for="email">Email</label>
+          <div class="signup-row">
+            <input
+              id="email"
+              name="email"
+              type="email"
+              required
+              autocomplete="email"
+              placeholder="you@university.rs"
+            />
+            <button class="btn btn-primary" type="submit">Keep me posted</button>
+          </div>
+          <input class="hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" />
+          <p class="form-status" role="status" aria-live="polite"></p>
+        </form>
+        <p class="privacy">Your address is used for hackathon updates only.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <p>© 2026 Universum Labs · Center for Quantum Technologies Serbia</p>
+      <p class="footer-tag">A founding strategic partnership — built for Serbia&rsquo;s quantum community.</p>
+    </div>
+  </footer>
+
+  <script src="./script.js"></script>
+</body>
+</html>
