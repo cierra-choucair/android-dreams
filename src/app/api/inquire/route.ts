@@ -27,7 +27,8 @@ const feedbackUrl = (wpBase: string, formId: string) =>
  * whether the form ID, the REST route, and the host firewall are all sound.
  */
 export async function GET(request: Request) {
-  const form = new URL(request.url).searchParams.get("form") ?? "qrc";
+  const url = new URL(request.url);
+  const form = url.searchParams.get("form") ?? "qrc";
   const { wpBase, formId } = resolveTarget(form);
 
   if (!wpBase) {
@@ -38,6 +39,13 @@ export async function GET(request: Request) {
   }
 
   const target = feedbackUrl(wpBase, formId);
+
+  // Config mode: hand the browser the CF7 endpoint without probing it.
+  // Used by the form's direct-submission fallback when the CMS host's
+  // bot filter blocks POSTs arriving from this server's datacenter IP.
+  if (url.searchParams.get("config") === "1") {
+    return NextResponse.json({ ok: true, feedbackUrl: target });
+  }
   try {
     const res = await fetch(target, { method: "POST", body: new FormData(), cache: "no-store" });
     const raw = await res.text();

@@ -47,6 +47,34 @@ export function InquiryForm({
   const [message, setMessage] = useState("");
   const v = VARIANTS[form === "qrc" ? "qrc" : "gold"];
 
+  /**
+   * Fallback path: submit straight from the browser to the WordPress
+   * Contact Form 7 endpoint. The server relay posts from a datacenter IP,
+   * which the CMS host's bot filter can intercept — browser traffic is
+   * what CF7 normally receives and passes clean. Returns true on capture
+   * (mail_sent, or mail_failed with the entry stored by Flamingo).
+   */
+  async function submitDirect(data: Record<string, FormDataEntryValue>) {
+    try {
+      const cfg = (await (
+        await fetch(`/api/inquire?form=${form}&config=1`)
+      ).json()) as { feedbackUrl?: string };
+      if (!cfg.feedbackUrl) return false;
+
+      const fd = new FormData();
+      fd.set("your-name", String(data.name ?? ""));
+      fd.set("your-email", String(data.email ?? ""));
+      fd.set("your-organization", String(data.organization ?? ""));
+      fd.set("your-message", String(data.message ?? ""));
+
+      const res = await fetch(cfg.feedbackUrl, { method: "POST", body: fd });
+      const cf7 = (await res.json().catch(() => null)) as { status?: string } | null;
+      return cf7?.status === "mail_sent" || cf7?.status === "mail_failed";
+    } catch {
+      return false;
+    }
+  }
+
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const el = e.currentTarget;
@@ -60,7 +88,7 @@ export function InquiryForm({
         body: JSON.stringify({ ...data, form }),
       });
       const body = (await res.json().catch(() => ({}))) as { error?: string };
-      if (res.ok) {
+      if (res.ok || (res.status >= 500 && (await submitDirect(data)))) {
         setStatus("success");
         setMessage("Received. We read everything — you will hear from us.");
         el.reset();
