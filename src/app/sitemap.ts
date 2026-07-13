@@ -14,6 +14,7 @@ const STATIC_ROUTES: Array<{ path: string; priority: number }> = [
   { path: "/qfrontline", priority: 0.9 },
   { path: "/community", priority: 0.7 },
   { path: "/summit", priority: 0.7 },
+  { path: "/hackathon", priority: 0.7 },
   { path: "/davos", priority: 0.6 },
   { path: "/about", priority: 0.6 },
   { path: "/manifesto", priority: 0.6 },
