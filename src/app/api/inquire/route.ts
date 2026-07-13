@@ -20,6 +20,10 @@ function resolveTarget(form: unknown) {
 const feedbackUrl = (wpBase: string, formId: string) =>
   `${wpBase}/wp-json/contact-form-7/v1/contact-forms/${formId}/feedback`;
 
+// CF7 requires a unit tag naming the on-page form instance; without one it
+// rejects the submission with 400 "There is no valid unit tag."
+const unitTag = (formId: string) => `wpcf7-f${formId}-o1`;
+
 /**
  * Self-diagnosis: GET /api/inquire?form=qrc posts an EMPTY submission to the
  * configured CF7 form and reports the raw response. Nothing gets stored —
@@ -44,10 +48,12 @@ export async function GET(request: Request) {
   // Used by the form's direct-submission fallback when the CMS host's
   // bot filter blocks POSTs arriving from this server's datacenter IP.
   if (url.searchParams.get("config") === "1") {
-    return NextResponse.json({ ok: true, feedbackUrl: target });
+    return NextResponse.json({ ok: true, feedbackUrl: target, unitTag: unitTag(formId) });
   }
   try {
-    const res = await fetch(target, { method: "POST", body: new FormData(), cache: "no-store" });
+    const probe = new FormData();
+    probe.set("_wpcf7_unit_tag", unitTag(formId));
+    const res = await fetch(target, { method: "POST", body: probe, cache: "no-store" });
     const raw = await res.text();
     let cf7: { status?: string; message?: string } = {};
     try {
@@ -124,6 +130,7 @@ export async function POST(request: Request) {
 
   // Contact Form 7 expects multipart/form-data with its field naming scheme.
   const cf7 = new FormData();
+  cf7.set("_wpcf7_unit_tag", unitTag(formId));
   cf7.set("your-name", name.trim().slice(0, 200));
   cf7.set("your-email", email.trim().slice(0, 200));
   cf7.set(
