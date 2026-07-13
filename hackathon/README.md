@@ -10,7 +10,7 @@ of this repository.
 
 ```
 index.html   page structure + all copy
-styles.css   design system (violet/cyan on deep purple)
+styles.css   design system (light theme, violet/cyan accents)
 script.js    animated Bloch sphere hero + signup form handler
 ```
 

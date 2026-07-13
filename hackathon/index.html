@@ -15,6 +15,7 @@
     content="Real problem statements, real quantum tools — built for students, staged in Belgrade. A Universum Labs × CQT Serbia partnership. Sign up for launch updates."
   />
   <meta name="twitter:card" content="summary" />
+  <meta name="theme-color" content="#FBFAFF" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Ccircle%20cx='16'%20cy='16'%20r='13'%20fill='none'%20stroke='%238B5CF6'%20stroke-width='2'/%3E%3Cellipse%20cx='16'%20cy='16'%20rx='13'%20ry='5'%20fill='none'%20stroke='%238B5CF6'%20stroke-opacity='.55'/%3E%3Cline%20x1='16'%20y1='16'%20x2='24'%20y2='8'%20stroke='%2322D3EE'%20stroke-width='2'/%3E%3Ccircle%20cx='24'%20cy='8'%20r='2.5'%20fill='%2322D3EE'/%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -73,13 +74,13 @@
           >
             <defs>
               <radialGradient id="sphereFill" cx="38%" cy="30%" r="75%">
-                <stop offset="0%" stop-color="rgba(139,92,246,0.16)" />
-                <stop offset="55%" stop-color="rgba(139,92,246,0.05)" />
-                <stop offset="100%" stop-color="rgba(139,92,246,0)" />
+                <stop offset="0%" stop-color="rgba(124,58,237,0.13)" />
+                <stop offset="55%" stop-color="rgba(124,58,237,0.04)" />
+                <stop offset="100%" stop-color="rgba(124,58,237,0)" />
               </radialGradient>
               <linearGradient id="vecGrad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="77.8" y2="-42.1">
-                <stop offset="0%" stop-color="#8B5CF6" />
-                <stop offset="100%" stop-color="#22D3EE" />
+                <stop offset="0%" stop-color="#7C3AED" />
+                <stop offset="100%" stop-color="#0891B2" />
               </linearGradient>
               <filter id="softGlow" x="-80%" y="-80%" width="260%" height="260%">
                 <feGaussianBlur stdDeviation="5" />
@@ -87,20 +88,20 @@
             </defs>
 
             <!-- Sphere body -->
-            <circle r="110" fill="url(#sphereFill)" stroke="rgba(244,240,255,0.28)" stroke-width="1.2" />
+            <circle r="110" fill="url(#sphereFill)" stroke="rgba(23,16,46,0.3)" stroke-width="1.2" />
             <!-- Latitudes -->
-            <ellipse rx="95.3" ry="35.7" cy="-51" fill="none" stroke="rgba(244,240,255,0.08)" />
-            <ellipse rx="95.3" ry="35.7" cy="51" fill="none" stroke="rgba(244,240,255,0.08)" />
+            <ellipse rx="95.3" ry="35.7" cy="-51" fill="none" stroke="rgba(23,16,46,0.1)" />
+            <ellipse rx="95.3" ry="35.7" cy="51" fill="none" stroke="rgba(23,16,46,0.1)" />
             <!-- Equator -->
-            <ellipse rx="110" ry="41.2" fill="none" stroke="rgba(139,92,246,0.45)" stroke-dasharray="3 4" />
+            <ellipse rx="110" ry="41.2" fill="none" stroke="rgba(109,40,217,0.5)" stroke-dasharray="3 4" />
 
             <!-- Axes -->
-            <g stroke="rgba(244,240,255,0.22)" stroke-width="1">
+            <g stroke="rgba(23,16,46,0.28)" stroke-width="1">
               <line x1="0" y1="117.3" x2="0" y2="-117.3" />
               <line x1="0" y1="0" x2="109.6" y2="23.7" />
               <line x1="0" y1="0" x2="63.2" y2="-41" />
             </g>
-            <g class="axis-labels" fill="rgba(244,240,255,0.55)">
+            <g class="axis-labels" fill="rgba(23,16,46,0.6)">
               <text x="0" y="-126" text-anchor="middle">|0⟩</text>
               <text x="0" y="138" text-anchor="middle">|1⟩</text>
               <text x="118" y="31">x</text>
@@ -108,18 +109,18 @@
             </g>
 
             <!-- Trail of the state vector's tip -->
-            <polyline id="trail" points="" fill="none" stroke="#22D3EE" stroke-opacity="0.3" stroke-width="1.5" />
+            <polyline id="trail" points="" fill="none" stroke="#0891B2" stroke-opacity="0.35" stroke-width="1.5" />
 
             <!-- State vector + projections (updated each frame) -->
             <g id="state">
-              <g stroke="rgba(34,211,238,0.5)" stroke-width="1" stroke-dasharray="2 4">
+              <g stroke="rgba(8,145,178,0.55)" stroke-width="1" stroke-dasharray="2 4">
                 <line id="dropline" x1="77.8" y1="-42.1" x2="77.8" y2="16.8" />
                 <line id="floorline" x1="0" y1="0" x2="77.8" y2="16.8" />
               </g>
               <line id="vector" x1="0" y1="0" x2="77.8" y2="-42.1" stroke="url(#vecGrad)" stroke-width="2.5" stroke-linecap="round" />
-              <circle id="tipGlow" cx="77.8" cy="-42.1" r="9" fill="#22D3EE" opacity="0.55" filter="url(#softGlow)" />
-              <circle id="tip" cx="77.8" cy="-42.1" r="4.2" fill="#E8FCFF" stroke="#22D3EE" stroke-width="1.5" />
-              <text id="psi" class="psi-label" x="88" y="-50" fill="#22D3EE">|ψ⟩</text>
+              <circle id="tipGlow" cx="77.8" cy="-42.1" r="9" fill="#06B6D4" opacity="0.4" filter="url(#softGlow)" />
+              <circle id="tip" cx="77.8" cy="-42.1" r="4.2" fill="#ffffff" stroke="#0891B2" stroke-width="1.5" />
+              <text id="psi" class="psi-label" x="88" y="-50" fill="#0891B2">|ψ⟩</text>
             </g>
           </svg>
           <figcaption class="readout">
