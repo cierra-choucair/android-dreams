@@ -58,10 +58,11 @@ export function InquiryForm({
     try {
       const cfg = (await (
         await fetch(`/api/inquire?form=${form}&config=1`)
-      ).json()) as { feedbackUrl?: string };
-      if (!cfg.feedbackUrl) return false;
+      ).json()) as { feedbackUrl?: string; unitTag?: string };
+      if (!cfg.feedbackUrl || !cfg.unitTag) return false;
 
       const fd = new FormData();
+      fd.set("_wpcf7_unit_tag", cfg.unitTag);
       fd.set("your-name", String(data.name ?? ""));
       fd.set("your-email", String(data.email ?? ""));
       fd.set("your-organization", String(data.organization ?? ""));
