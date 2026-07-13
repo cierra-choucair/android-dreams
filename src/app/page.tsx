@@ -92,6 +92,15 @@ export default async function HomePage() {
             )}
           </div>
         </div>
+
+        <div className="mt-10 text-center">
+          <Link
+            href="/news"
+            className="inline-block rounded-lg border border-orange px-7 py-3.5 font-serif text-xs font-semibold uppercase tracking-wide2 text-orange transition-colors hover:bg-orange hover:text-ink"
+          >
+            View all news →
+          </Link>
+        </div>
       </section>
 
       {/* ──────────────────── TRANSMISSIONS row ──────────────────── */}

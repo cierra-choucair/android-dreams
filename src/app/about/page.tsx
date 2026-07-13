@@ -33,7 +33,7 @@ const PROPERTIES = [
     href: "/community",
     accent: "text-magenta",
     border: "border-magenta/40",
-    role: "The community layer",
+    role: "The community",
     body: "Where editorial signal becomes practice: working groups, portfolio artifacts, and career visibility for the developers and builders learning to make quantum come alive.",
   },
   {
