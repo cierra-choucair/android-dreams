@@ -39,12 +39,27 @@ npx serve hackathon
 
 ## Deploy
 
-Any static host works — the folder is the site:
+Any static host works — the folder is the site. `vercel.json` is
+included (clean URLs + asset caching).
 
-- **Vercel**: `vercel deploy hackathon` (or a new project with root
-  directory set to `hackathon/`)
-- **Netlify**: drag the folder into the dashboard
-- **GitHub Pages / Cloudflare Pages**: point at this directory
+**Vercel via Git integration (recommended)** — every push then deploys
+automatically:
+
+1. Vercel dashboard → **Add New… → Project** → import
+   `cierra-choucair/android-dreams`.
+2. Set **Root Directory** to `hackathon`.
+3. Framework Preset: **Other**. Leave build command and output directory
+   empty (it's a static folder).
+4. Deploy. Production tracks the repo's default branch — while this
+   lives on a feature branch, either use the branch's preview URL, set
+   the project's production branch to it (Settings → Git), or merge.
+5. Add the custom domain in Settings → Domains when it's chosen (the
+   domain is what gets submitted to IBM for the Fall Fest listing).
+
+**Vercel CLI** (from a machine where you're logged in):
+`cd hackathon && vercel deploy --prod`
+
+**Netlify / GitHub Pages / Cloudflare Pages**: point at this directory.
 
 ## Wire up email capture
 
