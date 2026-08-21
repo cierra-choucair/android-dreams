@@ -93,9 +93,3 @@ vercel deploy
 
 Set the environment variables in the Vercel project settings. No other
 configuration is required.
-
-## Also in this repo
-
-- `hackathon/` — standalone static pre-launch site for the Universum
-  Labs × CQT Serbia quantum hackathon. Not part of the Next.js app;
-  deploys separately. See `hackathon/README.md`.
