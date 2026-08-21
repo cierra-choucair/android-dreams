@@ -1,8 +1,10 @@
-# Quantum Hackathon — standalone pre-launch site
+# Qiskit Fall Fest Serbia — standalone pre-launch site
 
-Pre-launch landing page for Serbia's first applied quantum hackathon, a
-partnership between **Universum Labs** and the **Center for Quantum
-Technologies Serbia (CQT Serbia)**.
+Pre-launch landing page for the Qiskit Fall Fest Serbia and Serbia's
+first applied quantum hackathon — **Universum Labs**, the **Center for
+Quantum Technologies of Serbia**, and **IBM Quantum** (Qiskit Fall
+Fest program). Two Saturdays in Belgrade: Fall Fest lecture day on
+21 November 2026, hackathon on 28 November 2026.
 
 This is a fully standalone static site — plain HTML/CSS/JS, no build
 step, no dependencies. It is **not** part of the Next.js app in the rest
@@ -12,7 +14,20 @@ of this repository.
 index.html   page structure + all copy
 styles.css   design system (light theme, violet/cyan accents)
 script.js    animated Bloch sphere hero + signup form handler
+assets/      partner logos (see "Logos" below)
 ```
+
+## Logos
+
+- `assets/ibm-quantum-rev.svg` — the official IBM Quantum reversed
+  (white) logotype, converted from the supplied `.ai`. It is white-only,
+  so the page shows it on a dark chip, which is what reversed logos are
+  for.
+- `assets/universum-labs.svg` and `assets/cqt-serbia.svg` are **interim
+  stand-ins** drawn to match the real marks — the originals arrived as
+  chat images, not files. Overwrite these two files with the official
+  exports (SVG or PNG at the same paths, updating the `src` extension in
+  `index.html` if PNG) and the site picks them up with no other changes.
 
 ## Preview locally
 
@@ -57,10 +72,13 @@ Options:
 
 ## Content still to land
 
-- **Event name** — the hero currently leads with "Serbia's first applied
-  quantum hackathon" as the working title.
+- **Official logos** — replace the two interim files in `assets/` (see
+  "Logos" above).
 - **Challenge tracks** — the three cards under *About the challenge* are
   candidate areas and labeled as such; swap in the final tracks when
   they're confirmed.
-- **Dates/venue** — "Belgrade · Autumn 2026" placeholder tiles in the
-  facts row.
+- **Venue room** — copy says "university venue in Belgrade, room
+  announced with registration" until the space is reserved in September.
+- **Registration/application links** — the signup form collects emails
+  for now; add Fall Fest registration and the hackathon application form
+  when they exist.
