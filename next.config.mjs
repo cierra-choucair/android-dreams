@@ -17,6 +17,11 @@ const nextConfig = {
         destination: "https://qfrontline.beehiiv.com/subscribe",
         permanent: false,
       },
+      {
+        source: "/qfrontline/the-future-of-quantum-computing-depends-on-programmers",
+        destination: "https://qfrontline.beehiiv.com/subscribe",
+        permanent: false,
+      },
     ];
   },
   images: {
